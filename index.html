@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GENvault — Sega Mega Drive / Genesis</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
   <header>
@@ -55,8 +57,10 @@
           <option value="roms/Castlevania - Bloodlines (ESP).md">Castlevania - Bloodlines</option>
           <option value="roms/Sonic The Hedgehog (ESP).md">Sonic The Hedgehog</option>
           <option value="roms/Taz in Escape from Mars (ESP).bin">Taz in Escape from Mars</option>
-          <option value="roms/Teenage Mutant Ninja Turtles - The Hyperstone Heist (ESP).bin">TMNT - The Hyperstone Heist</option>
-          <option value="roms/Teenage Mutant Ninja Turtles - Tournament Fighters (ESP).bin">TMNT - Tournament Fighters</option>
+          <option value="roms/Teenage Mutant Ninja Turtles - The Hyperstone Heist (ESP).bin">TMNT - The Hyperstone Heist
+          </option>
+          <option value="roms/Teenage Mutant Ninja Turtles - Tournament Fighters (ESP).bin">TMNT - Tournament Fighters
+          </option>
           <option value="roms/Terminator 2 - Judgment Day (ESP).bin">Terminator 2 - Judgment Day</option>
           <option value="roms/Tetris (ESP).bin">Tetris</option>
           <option value="roms/The Addams Family (ESP).bin">The Addams Family</option>
@@ -64,11 +68,13 @@
           <option value="roms/The Flintstones (ESP-Wave).md">The Flintstones</option>
           <option value="roms/The Lion King (ESP).bin">The Lion King</option>
           <option value="roms/The Terminator (ESP).bin">The Terminator</option>
-          <option value="roms/Tiny Toon Adventures - Buster's Hidden Treasure (ESP).md">Tiny Toon Adventures - Buster's Hidden Treasure</option>
+          <option value="roms/Tiny Toon Adventures - Buster's Hidden Treasure (ESP).md">Tiny Toon Adventures - Buster's
+            Hidden Treasure</option>
           <option value="roms/Toejam & Earl (ESP).bin">Toejam & Earl</option>
           <option value="roms/Toy Story (ESP).bin">Toy Story</option>
           <option value="roms/Turbo Outrun (ESP).bin">Turbo Outrun</option>
-          <option value="roms/Venom - Spider-Man Separation Anxiety (ESP).gen">Venom - Spider-Man Separation Anxiety</option>
+          <option value="roms/Venom - Spider-Man Separation Anxiety (ESP).gen">Venom - Spider-Man Separation Anxiety
+          </option>
         </select>
         <button class="btn btn-preset" id="btnLoadPreset">▶ LOAD</button>
       </div>
@@ -80,9 +86,9 @@
     </div>
 
     <div class="btn-row">
-      <button class="btn btn-primary"   id="btnPlay"  disabled>▶ PLAY</button>
+      <button class="btn btn-primary" id="btnPlay" disabled>▶ PLAY</button>
       <button class="btn btn-secondary" id="btnPause" disabled>⏸ PAUSE</button>
-      <button class="btn btn-danger"    id="btnStop"  disabled>⏹ STOP</button>
+      <button class="btn btn-danger" id="btnStop" disabled>⏹ STOP</button>
     </div>
 
     <button class="btn-controls-toggle" id="btnControls">◈ Ver Controles</button>
@@ -101,33 +107,33 @@
       <!-- TABS -->
       <div class="ctrl-tabs">
         <button class="ctrl-tab active" data-panel="panelKeyboard">⌨ Keyboard</button>
-        <button class="ctrl-tab"        data-panel="panelGamepad">🎮 Gamepad</button>
+        <button class="ctrl-tab" data-panel="panelGamepad">🎮 Gamepad</button>
       </div>
 
       <!-- PANEL KEYBOARD -->
       <div class="ctrl-panel active" id="panelKeyboard">
         <div class="keymap-grid">
-          <div class="keymap-item"><span class="key-action">Up</span>      <span class="key-kbd">↑</span></div>
-          <div class="keymap-item"><span class="key-action">Down</span>    <span class="key-kbd">↓</span></div>
-          <div class="keymap-item"><span class="key-action">Left</span>    <span class="key-kbd">←</span></div>
-          <div class="keymap-item"><span class="key-action">Right</span>   <span class="key-kbd">→</span></div>
+          <div class="keymap-item"><span class="key-action">Up</span> <span class="key-kbd">↑</span></div>
+          <div class="keymap-item"><span class="key-action">Down</span> <span class="key-kbd">↓</span></div>
+          <div class="keymap-item"><span class="key-action">Left</span> <span class="key-kbd">←</span></div>
+          <div class="keymap-item"><span class="key-action">Right</span> <span class="key-kbd">→</span></div>
           <div class="keymap-item"><span class="key-action">Button A</span><span class="key-kbd">A</span></div>
           <div class="keymap-item"><span class="key-action">Button B</span><span class="key-kbd">S</span></div>
           <div class="keymap-item"><span class="key-action">Button C</span><span class="key-kbd">D</span></div>
           <div class="keymap-item"><span class="key-action">Button X</span><span class="key-kbd">Q</span></div>
           <div class="keymap-item"><span class="key-action">Button Y</span><span class="key-kbd">W</span></div>
           <div class="keymap-item"><span class="key-action">Button Z</span><span class="key-kbd">E</span></div>
-          <div class="keymap-item"><span class="key-action">Start</span>   <span class="key-kbd">↵</span></div>
-          <div class="keymap-item"><span class="key-action">Mode</span>    <span class="key-kbd">Z</span></div>
+          <div class="keymap-item"><span class="key-action">Start</span> <span class="key-kbd">↵</span></div>
+          <div class="keymap-item"><span class="key-action">Mode</span> <span class="key-kbd">Z</span></div>
         </div>
         <div class="controls-shortcuts">
           <div class="shortcut-title">Internal shortcuts (Genesis.js)</div>
           <div class="shortcut-grid">
             <span>Save state</span><span>Ctrl/Cmd + 1</span>
             <span>Load state</span><span>Ctrl/Cmd + 2</span>
-            <span>Mute</span>     <span>Ctrl/Cmd + 3</span>
+            <span>Mute</span> <span>Ctrl/Cmd + 3</span>
             <span>Fullscreen</span><span>Ctrl/Cmd + F</span>
-            <span>Reset</span>   <span>Ctrl/Cmd + R</span>
+            <span>Reset</span> <span>Ctrl/Cmd + R</span>
           </div>
         </div>
       </div>
@@ -138,7 +144,8 @@
           <span id="gpName" class="gpmap-device">No gamepad connected</span>
           <button class="gpmap-reset-btn" id="btnGPReset">↺ Reset defaults</button>
         </div>
-        <div class="gpmap-hint">Press <strong>Set</strong> next to an action, then press the physical button on your gamepad.</div>
+        <div class="gpmap-hint">Press <strong>Set</strong> next to an action, then press the physical button on your
+          gamepad.</div>
         <div id="gpMapList" class="gpmap-list"></div>
       </div>
 
@@ -148,6 +155,8 @@
   <footer>GENvault · Sega Mega Drive / Genesis Emulator · Genesis.js (PicoDrive) · Gamepad API</footer>
 
   <script src="js/Genesis.min.js"></script>
+  <script src="js/gamepad-mappings.js"></script>
   <script src="js/app.js"></script>
 </body>
+
 </html>
