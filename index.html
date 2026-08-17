@@ -27,7 +27,7 @@
             <div id="emuContainer"></div>
             <div id="loaderOverlay">
               <div class="spin"></div>
-              <p id="loaderText">LOADING ROM...</p>
+              <p id="loaderText">CARGANDO JUEGO...</p>
             </div>
             <button class="btn-fullscreen" id="btnFullscreen" title="Fullscreen">⛶</button>
           </div>
@@ -48,13 +48,13 @@
 
         <div class="gamepad-bar">
           <span>🕹️</span>
-          <span id="gamepadStatus">Gamepad: not detected — connect a gamepad and press any button</span>
+          <span id="gamepadStatus">Control no detectado - Conecte un control y presione cualquier boton</span>
         </div>
 
         <div class="btn-row">
-          <button class="btn btn-primary" id="btnPlay" disabled>▶ PLAY</button>
-          <button class="btn btn-secondary" id="btnPause" disabled>⏸ PAUSE</button>
-          <button class="btn btn-danger" id="btnStop" disabled>⏹ STOP</button>
+          <button class="btn btn-primary" id="btnPlay" disabled>▶ COMENZAR</button>
+          <button class="btn btn-secondary" id="btnPause" disabled>⏸ PAUSAR</button>
+          <button class="btn btn-danger" id="btnStop" disabled>⏹ DETENER</button>
         </div>
 
         <button class="btn-controls-toggle" id="btnControls">◈ Ver Controles</button>
@@ -64,7 +64,7 @@
 
     <!-- ══ COLUMNA ROMS — buscador + carousel (máx. 2 filas) + carga ══ -->
     <aside class="roms-col">
-      <h2 class="roms-heading">◈ Default ROMs</h2>
+      <h2 class="roms-heading">◈ Catálogo de Juegos</h2>
 
       <div class="rom-search">
         <span class="rom-search-icon">🔍</span>
@@ -85,7 +85,7 @@
 
       <div class="file-drop" id="fileDrop">
         <span class="drop-icon">⬆</span>
-        <span class="drop-title">LOAD ROM</span>
+        <span class="drop-title">CARGAR JUEGO</span>
         <span class="drop-sub">Arrastrá y soltá tu archivo acá<br>.md / .bin / .gen / .32x</span>
         <span class="rom-name" id="romName"></span>
         <input type="file" id="romInput" accept=".md,.bin,.gen,.smd,.32x,.rom">
@@ -99,13 +99,13 @@
     <div class="controls-popup">
 
       <div class="controls-popup-header">
-        <span>◈ CONTROLS</span>
+        <span>◈ CONTROLES</span>
         <button class="controls-close" id="btnControlsClose">✕</button>
       </div>
 
       <div class="ctrl-tabs">
-        <button class="ctrl-tab active" data-panel="panelKeyboard">⌨ Keyboard</button>
-        <button class="ctrl-tab" data-panel="panelGamepad">🎮 Gamepad</button>
+        <button class="ctrl-tab active" data-panel="panelKeyboard">⌨ TECLADO</button>
+        <button class="ctrl-tab" data-panel="panelGamepad">🎮 CONTROL</button>
       </div>
 
       <div class="ctrl-panel active" id="panelKeyboard">
@@ -133,11 +133,16 @@
         <div class="controls-shortcuts">
           <div class="shortcut-title">Internal shortcuts (Genesis.js)</div>
           <div class="shortcut-inline">
-            <span class="shortcut-chip"><span class="shortcut-label">Save state</span><span class="shortcut-key">Ctrl/Cmd+1</span></span>
-            <span class="shortcut-chip"><span class="shortcut-label">Load state</span><span class="shortcut-key">Ctrl/Cmd+2</span></span>
-            <span class="shortcut-chip"><span class="shortcut-label">Mute</span><span class="shortcut-key">Ctrl/Cmd+3</span></span>
-            <span class="shortcut-chip"><span class="shortcut-label">Fullscreen</span><span class="shortcut-key">Ctrl/Cmd+F</span></span>
-            <span class="shortcut-chip"><span class="shortcut-label">Reset</span><span class="shortcut-key">Ctrl/Cmd+R</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label">Save state</span><span
+                class="shortcut-key">Ctrl/Cmd+1</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label">Load state</span><span
+                class="shortcut-key">Ctrl/Cmd+2</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label">Mute</span><span
+                class="shortcut-key">Ctrl/Cmd+3</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label">Fullscreen</span><span
+                class="shortcut-key">Ctrl/Cmd+F</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label">Reset</span><span
+                class="shortcut-key">Ctrl/Cmd+R</span></span>
           </div>
         </div>
       </div>
