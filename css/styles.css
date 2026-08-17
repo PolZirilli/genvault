@@ -485,36 +485,71 @@ canvas#splashCanvas {
 
 .controls-close:hover { color: var(--red2); }
 
-.keymap-grid {
+/* ══ EDITOR DE TECLADO — 2 columnas (D-Pad | Botones) ══ */
+.keymap-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 8px 16px;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+}
+
+.keymap-col-title {
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--blue2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.keymap-extra-title { margin-top: 14px; }
+
+.gpmap-list.keymap-extra {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 20px;
+    max-height: none;
     margin-bottom: 20px;
 }
 
-.keymap-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(30, 42, 58, 0.5);
-    font-size: var(--fs-sm);
-    line-height: 130%;
+@media (max-width: 600px) {
+    .keymap-columns,
+    .gpmap-list.keymap-extra {
+        grid-template-columns: 1fr;
+    }
 }
 
-.key-action { color: var(--text2); }
+/* Botones (A B C X Y Z) — grilla de 3×2 en vez de lista vertical */
+.keymap-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
 
-.key-kbd {
+.keymap-btn-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 4px;
     background: var(--panel2);
-    color: var(--chrome2);
     border: 1px solid var(--border2);
-    border-bottom: 2px solid #000;
-    padding: 8px 10px;
+    transition: border-color .15s, background .15s;
+}
+
+.keymap-btn-card.gpmap-listening {
+    border-color: var(--blue);
+    background: rgba(0, 102, 255, 0.08);
+}
+
+.keymap-btn-label {
     font-size: var(--fs-sm);
     font-weight: 700;
-    min-width: 30px;
-    text-align: center;
+    color: var(--text2);
+    letter-spacing: 1px;
 }
+
+.keymap-btn-card .gpmap-btn { min-width: 0; width: 100%; }
+.keymap-btn-card .gpmap-set { width: 100%; padding: 4px 6px; text-align: center; }
 
 .controls-shortcuts {
     border-top: 1px solid var(--border2);
@@ -530,16 +565,24 @@ canvas#splashCanvas {
     text-transform: uppercase;
 }
 
-.shortcut-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 24px;
-    font-size: var(--fs-sm);
-    line-height: 130%;
+/* Shortcuts internos — en línea, se acomodan solos en 1-2 renglones */
+.shortcut-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
 }
 
-.shortcut-grid span:nth-child(odd) { color: var(--text2); }
-.shortcut-grid span:nth-child(even) { color: var(--cyan); text-align: right; }
+.shortcut-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-sm);
+    line-height: 130%;
+    white-space: nowrap;
+}
+
+.shortcut-chip .shortcut-label { color: var(--text2); }
+.shortcut-chip .shortcut-key   { color: var(--cyan); }
 
 footer {
     margin-top: 28px;
