@@ -15,69 +15,86 @@
     <div class="subtitle">Emulador de Sega Mega Drive &amp; Genesis</div>
   </header>
 
-  <div class="console-body">
+  <main class="layout">
 
-    <div class="screen-bezel">
-      <div class="screen-wrap" id="screenWrap">
-        <canvas id="splashCanvas" width="320" height="224"></canvas>
-        <div id="emuContainer"></div>
-        <div id="loaderOverlay">
-          <div class="spin"></div>
-          <p id="loaderText">LOADING ROM...</p>
+    <!-- ══ COLUMNA CONSOLA — igual a la interfaz actual, sin cambios ══ -->
+    <section class="console-col">
+      <div class="console-body">
+
+        <div class="screen-bezel">
+          <div class="screen-wrap" id="screenWrap">
+            <canvas id="splashCanvas" width="320" height="224"></canvas>
+            <div id="emuContainer"></div>
+            <div id="loaderOverlay">
+              <div class="spin"></div>
+              <p id="loaderText">LOADING ROM...</p>
+            </div>
+            <button class="btn-fullscreen" id="btnFullscreen" title="Fullscreen">⛶</button>
+          </div>
+          <div class="screen-label">MEGA DRIVE / GENESIS · 60Hz · NTSC</div>
         </div>
-        <button class="btn-fullscreen" id="btnFullscreen" title="Fullscreen">⛶</button>
+
+        <div class="status-bar">
+          <div class="led" id="led"></div>
+          <span id="statusText"></span>
+          <span class="fps-counter" id="fpsCounter"></span>
+        </div>
+
+        <div id="errorBox">
+          <strong>⚠ ERROR</strong>
+          <span id="errorMsg"></span>
+          <code id="errorHint"></code>
+        </div>
+
+        <div class="gamepad-bar">
+          <span>🕹️</span>
+          <span id="gamepadStatus">Gamepad: not detected — connect a gamepad and press any button</span>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btnPlay" disabled>▶ PLAY</button>
+          <button class="btn btn-secondary" id="btnPause" disabled>⏸ PAUSE</button>
+          <button class="btn btn-danger" id="btnStop" disabled>⏹ STOP</button>
+        </div>
+
+        <button class="btn-controls-toggle" id="btnControls">◈ Ver Controles</button>
+
       </div>
-      <div class="screen-label">MEGA DRIVE / GENESIS · 60Hz · NTSC</div>
-    </div>
+    </section>
 
-    <div class="status-bar">
-      <div class="led" id="led"></div>
-      <span id="statusText"></span>
-      <span class="fps-counter" id="fpsCounter"></span>
-    </div>
+    <!-- ══ COLUMNA ROMS — buscador + carousel (máx. 2 filas) + carga ══ -->
+    <aside class="roms-col">
+      <h2 class="roms-heading">◈ Default ROMs</h2>
 
-    <div id="errorBox">
-      <strong>⚠ ERROR</strong>
-      <span id="errorMsg"></span>
-      <code id="errorHint"></code>
-    </div>
+      <div class="rom-search">
+        <span class="rom-search-icon">🔍</span>
+        <input type="text" id="romSearch" placeholder="Buscar juego...">
+      </div>
 
-    <div class="rom-row">
+      <div class="rom-carousel">
+        <div class="rom-track" id="romTrack">
+          <!-- páginas de tarjetas generadas por js/app.js a partir de ROM_LIBRARY -->
+        </div>
+      </div>
+
+      <div class="rom-pagination">
+        <button class="page-arrow" id="pagePrev">‹</button>
+        <div class="page-dots" id="pageDots"></div>
+        <button class="page-arrow" id="pageNext">›</button>
+      </div>
+
       <div class="file-drop" id="fileDrop">
-        <span class="drop-icon">🎮</span>
+        <span class="drop-icon">⬆</span>
         <span class="drop-title">LOAD ROM</span>
-        <span class="drop-sub">Click or drag a .md / .bin / .gen / .32x file here</span>
+        <span class="drop-sub">Arrastrá y soltá tu archivo acá<br>.md / .bin / .gen / .32x</span>
         <span class="rom-name" id="romName"></span>
         <input type="file" id="romInput" accept=".md,.bin,.gen,.smd,.32x,.rom">
       </div>
-      <div class="rom-preset">
-        <span class="preset-label">DEFAULT ROMs</span>
-        <select id="romSelect">
-          <option value="">— Select a ROM —</option>
-          <option value="roms/Aladdin.md">Aladdin</option>
-          <option value="roms/6-Pak.md">6 Pak</option>
-          </option>
-        </select>
-        <button class="btn btn-preset" id="btnLoadPreset">▶ LOAD</button>
-      </div>
-    </div>
+    </aside>
 
-    <div class="gamepad-bar">
-      <span>🕹️</span>
-      <span id="gamepadStatus">Gamepad: not detected — connect a gamepad and press any button</span>
-    </div>
+  </main>
 
-    <div class="btn-row">
-      <button class="btn btn-primary" id="btnPlay" disabled>▶ PLAY</button>
-      <button class="btn btn-secondary" id="btnPause" disabled>⏸ PAUSE</button>
-      <button class="btn btn-danger" id="btnStop" disabled>⏹ STOP</button>
-    </div>
-
-    <button class="btn-controls-toggle" id="btnControls">◈ Ver Controles</button>
-
-  </div>
-
-  <!-- POPUP DE CONTROLES -->
+  <!-- POPUP DE CONTROLES — igual a la interfaz actual, sin cambios -->
   <div id="controlsOverlay" class="controls-overlay" aria-hidden="true">
     <div class="controls-popup">
 
@@ -86,13 +103,11 @@
         <button class="controls-close" id="btnControlsClose">✕</button>
       </div>
 
-      <!-- TABS -->
       <div class="ctrl-tabs">
         <button class="ctrl-tab active" data-panel="panelKeyboard">⌨ Keyboard</button>
         <button class="ctrl-tab" data-panel="panelGamepad">🎮 Gamepad</button>
       </div>
 
-      <!-- PANEL KEYBOARD -->
       <div class="ctrl-panel active" id="panelKeyboard">
         <div class="keymap-grid">
           <div class="keymap-item"><span class="key-action">Up</span> <span class="key-kbd">↑</span></div>
@@ -120,7 +135,6 @@
         </div>
       </div>
 
-      <!-- PANEL GAMEPAD -->
       <div class="ctrl-panel" id="panelGamepad">
         <div class="gpmap-header">
           <span id="gpName" class="gpmap-device">No gamepad connected</span>
