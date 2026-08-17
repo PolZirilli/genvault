@@ -72,6 +72,7 @@ const CART_ICON_SVG = `
 // ════════════════════════════════════════════
 let carouselPage = 0;
 let carouselPages = [];
+let searchQuery = '';
 
 function getCarouselColumns() {
     const w = window.innerWidth;
@@ -80,11 +81,20 @@ function getCarouselColumns() {
     return 4;
 }
 
-function buildCarouselPages() {
+// Filtra por nombre o región ("ESP", "USA", etc.) — sin distinguir mayúsculas/acentos exactos.
+function getVisibleLibrary() {
+    if (!searchQuery) return ROM_LIBRARY;
+    const q = searchQuery.toLowerCase();
+    return ROM_LIBRARY.filter(rom =>
+        rom.name.toLowerCase().includes(q) ||
+        (rom.region && rom.region.toLowerCase().includes(q)));
+}
+
+function buildCarouselPages(list) {
     const perPage = getCarouselColumns() * 2;
     const pages = [];
-    for (let i = 0; i < ROM_LIBRARY.length; i += perPage) {
-        pages.push(ROM_LIBRARY.slice(i, i + perPage));
+    for (let i = 0; i < list.length; i += perPage) {
+        pages.push(list.slice(i, i + perPage));
     }
     return pages.length ? pages : [[]];
 }
@@ -116,16 +126,21 @@ function renderCarousel() {
     const paginationEl = document.querySelector('.rom-pagination');
     if (!track) return;
 
-    // Sin juegos (catálogo vacío o falló la carga) — mensaje, sin cards vacías.
-    if (!ROM_LIBRARY.length) {
-        track.innerHTML = `<div class="rom-page rom-empty-page"><p class="rom-empty">${escapeHtml(catalogErrorMsg || 'No hay ROMs en el catálogo.')}</p></div>`;
+    const visible = getVisibleLibrary();
+
+    // Sin resultados — catálogo vacío, falló la carga, o la búsqueda no matcheó nada.
+    if (!visible.length) {
+        const msg = !ROM_LIBRARY.length
+            ? (catalogErrorMsg || 'No hay ROMs en el catálogo.')
+            : `No se encontraron juegos para "${searchQuery}".`;
+        track.innerHTML = `<div class="rom-page rom-empty-page"><p class="rom-empty">${escapeHtml(msg)}</p></div>`;
         track.style.transform = 'translateX(0)';
         if (paginationEl) paginationEl.style.display = 'none';
         if (dotsEl) dotsEl.innerHTML = '';
         return;
     }
 
-    carouselPages = buildCarouselPages();
+    carouselPages = buildCarouselPages(visible);
     if (carouselPage >= carouselPages.length) carouselPage = carouselPages.length - 1;
     if (carouselPage < 0) carouselPage = 0;
 
@@ -166,6 +181,12 @@ function goToCarouselPage(index) {
     carouselPage = index;
     renderCarousel();
 }
+
+document.getElementById('romSearch')?.addEventListener('input', e => {
+    searchQuery = e.target.value.trim();
+    carouselPage = 0;
+    renderCarousel();
+});
 
 document.getElementById('pagePrev')?.addEventListener('click', () => {
     if (carouselPage > 0) goToCarouselPage(carouselPage - 1);
