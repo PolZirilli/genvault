@@ -799,6 +799,33 @@ footer {
 .rom-cover .cart-icon { width: 46%; height: 46%; color: var(--border2); }
 .rom-cover .cart-icon path { fill: currentColor; }
 
+.rom-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Estado vacío / carga / error del catálogo — sin cards fantasma */
+.rom-empty-page {
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--border2);
+    background: rgba(0, 102, 255, 0.02);
+    grid-column: 1 / -1;
+}
+
+.rom-empty {
+    font-size: var(--fs-sm);
+    color: var(--chrome-dk);
+    text-align: center;
+    padding: 20px;
+    letter-spacing: .5px;
+    max-width: 32ch;
+}
+
 .rom-cover .rom-tag {
     position: absolute;
     top: 6px;
