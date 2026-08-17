@@ -9,14 +9,14 @@
   {
     "id": "aladdin",
     "name": "Aladdin",
-    "region": "USA",
+    "region": "ESP",
     "cover": null,
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Aladdin.md"
   },
   {
     "id": "alien3",
     "name": "Alien 3",
-    "region": "USA",
+    "region": "ESP",
     "cover": null,
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Alien3.md"
   },
@@ -37,22 +37,134 @@
   {
     "id": "arieltheLittleMermaid",
     "name": "Ariel the Little Mermaid",
-    "region": "USA",
+    "region": "ESP",
     "cover": null,
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Ariel-the-Little-Mermaid.bin"
   },
   {
     "id": "castlevaniabloodlines",
     "name": "Castlevania Bloodlines",
-    "region": "USA",
+    "region": "ESP",
     "cover": null,
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Castlevania-Bloodlines.md"
   },
   {
     "id": "sonicthehedgehog",
     "name": "Sonic The Hedgehog",
-    "region": "USA",
+    "region": "ESP",
     "cover": null,
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Sonic-The-Hedgehog.md"
+  },
+  {
+    "id": "battletoads&doubledragon",
+    "name": "Battletoads & Double Dragon",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Battletoads-%26-Double-Dragon.bin"
+  },
+  {
+    "id": "comixzone",
+    "name": "Comix Zone",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Comix-Zone.bin"
+  },
+  {
+    "id": "Contrahardcorps",
+    "name": "Contra Hard Corps",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Contra-Hard-Corps.bin"
+  },
+  {
+    "id": "demolitionman",
+    "name": "Demolition Man",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Demolition-Man.md"
+  },
+  {
+    "id": "desertstrikereturntothegulf",
+    "name": "Desert Strike Return to the Gulf",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Desert-Strike-Return-to-the-Gulf.md"
+  },
+  {
+    "id": "earthwormjim2",
+    "name": "Earthworm Jim 2",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Earthworm-Jim-2.md"
+  },
+  {
+    "id": "earthwormjim",
+    "name": "Earthworm Jim",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Earthworm-Jim.md"
+  },
+  {
+    "id": "goldenaxeII",
+    "name": "Golden Axe II",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Golden-Axe-II.md"
+  },
+  {
+    "id": "goldenaxeIII",
+    "name": "Golden Axe III",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Golden-Axe-III.md"
+  },
+  {
+    "id": "mortalkombat2unlimited",
+    "name": "Mortal Kombat 2 Unlimited",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Mortal-Kombat-2-Unlimited.md"
+  },
+  {
+    "id": "princeofpersia2theshadowandtheflame",
+    "name": "Prince of Persia 2 The Shadow and The Flame",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Prince-of-Persia-2-The-Shadow-and-The-Flame.md"
+  },
+  {
+    "id": "princeofpersia",
+    "name": "Prince of Persia",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Prince-of-Persia.md"
+  },
+  {
+    "id": "robocopversustheterminator",
+    "name": "Robocop Versus The Terminator",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Robocop-Versus-The-Terminator.md"
+  },
+  {
+    "id": "streetsofrage2",
+    "name": "Streets of Rage 2",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Streets-of-Rage-2.md"
+  },
+  {
+    "id": "headventuresofbatmanandrobin",
+    "name": "The Adventures of Batman and Robin",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The-Adventures-of-Batman-and-Robin.md"
+  },
+  {
+    "id": "worldofillusionstarringmickeymouseanddonaldduck",
+    "name": "World of Illusion Starring Mickey Mouse and Donald Duck",
+    "region": "ESP",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/World-of-Illusion-Starring-Mickey-Mouse-and-Donald-Duck.md"
   }
 ]
