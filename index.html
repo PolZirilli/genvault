@@ -64,7 +64,7 @@
 
     <!-- ══ COLUMNA ROMS — buscador + carousel (máx. 2 filas) + carga ══ -->
     <aside class="roms-col">
-      <h2 class="roms-heading">◈ Catalogo</h2>
+      <h2 class="roms-heading">◈ Default ROMs</h2>
 
       <div class="rom-search">
         <span class="rom-search-icon">🔍</span>
@@ -85,7 +85,7 @@
 
       <div class="file-drop" id="fileDrop">
         <span class="drop-icon">⬆</span>
-        <span class="drop-title">CARGAR JUEGO</span>
+        <span class="drop-title">LOAD ROM</span>
         <span class="drop-sub">Arrastrá y soltá tu archivo acá<br>.md / .bin / .gen / .32x</span>
         <span class="rom-name" id="romName"></span>
         <input type="file" id="romInput" accept=".md,.bin,.gen,.smd,.32x,.rom">
@@ -109,28 +109,35 @@
       </div>
 
       <div class="ctrl-panel active" id="panelKeyboard">
-        <div class="keymap-grid">
-          <div class="keymap-item"><span class="key-action">Up</span> <span class="key-kbd">↑</span></div>
-          <div class="keymap-item"><span class="key-action">Down</span> <span class="key-kbd">↓</span></div>
-          <div class="keymap-item"><span class="key-action">Left</span> <span class="key-kbd">←</span></div>
-          <div class="keymap-item"><span class="key-action">Right</span> <span class="key-kbd">→</span></div>
-          <div class="keymap-item"><span class="key-action">Button A</span><span class="key-kbd">A</span></div>
-          <div class="keymap-item"><span class="key-action">Button B</span><span class="key-kbd">S</span></div>
-          <div class="keymap-item"><span class="key-action">Button C</span><span class="key-kbd">D</span></div>
-          <div class="keymap-item"><span class="key-action">Button X</span><span class="key-kbd">Q</span></div>
-          <div class="keymap-item"><span class="key-action">Button Y</span><span class="key-kbd">W</span></div>
-          <div class="keymap-item"><span class="key-action">Button Z</span><span class="key-kbd">E</span></div>
-          <div class="keymap-item"><span class="key-action">Start</span> <span class="key-kbd">↵</span></div>
-          <div class="keymap-item"><span class="key-action">Mode</span> <span class="key-kbd">Z</span></div>
+        <div class="gpmap-header">
+          <span class="gpmap-device">Editá las teclas a tu gusto</span>
+          <button class="gpmap-reset-btn" id="btnKeymapReset">↺ Reset defaults</button>
         </div>
+        <div class="gpmap-hint">Press <strong>Set</strong> next to an action, then press the key you want to use.
+          Se aplica la próxima vez que cargues un ROM.</div>
+
+        <div class="keymap-columns">
+          <div class="keymap-col">
+            <div class="keymap-col-title">D-Pad</div>
+            <div class="gpmap-list" id="keymapDpadList"></div>
+          </div>
+          <div class="keymap-col">
+            <div class="keymap-col-title">Buttons</div>
+            <div class="keymap-buttons-grid" id="keymapButtonsList"></div>
+          </div>
+        </div>
+
+        <div class="keymap-col-title keymap-extra-title">Start / Mode</div>
+        <div class="gpmap-list keymap-extra" id="keymapExtraList"></div>
+
         <div class="controls-shortcuts">
           <div class="shortcut-title">Internal shortcuts (Genesis.js)</div>
-          <div class="shortcut-grid">
-            <span>Save state</span><span>Ctrl/Cmd + 1</span>
-            <span>Load state</span><span>Ctrl/Cmd + 2</span>
-            <span>Mute</span> <span>Ctrl/Cmd + 3</span>
-            <span>Fullscreen</span><span>Ctrl/Cmd + F</span>
-            <span>Reset</span> <span>Ctrl/Cmd + R</span>
+          <div class="shortcut-inline">
+            <span class="shortcut-chip"><span class="shortcut-label">Save state</span><span class="shortcut-key">Ctrl/Cmd+1</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label">Load state</span><span class="shortcut-key">Ctrl/Cmd+2</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label">Mute</span><span class="shortcut-key">Ctrl/Cmd+3</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label">Fullscreen</span><span class="shortcut-key">Ctrl/Cmd+F</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label">Reset</span><span class="shortcut-key">Ctrl/Cmd+R</span></span>
           </div>
         </div>
       </div>
