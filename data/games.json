@@ -102,14 +102,21 @@
     "name": "Earthworm Jim",
     "region": "🇪🇸",
     "cover": null,
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Earthworm-Jim.md"
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Earthworm-Jim.bin"
+  },
+  {
+    "id": "goldenaxe",
+    "name": "Golden Axe",
+    "region": "🇪🇸",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Golden-Axe.bin"
   },
   {
     "id": "goldenaxeII",
     "name": "Golden Axe II",
     "region": "🇪🇸",
     "cover": null,
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Golden-Axe-II.md"
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Golden-Axe-II.bin"
   },
   {
     "id": "goldenaxeIII",
