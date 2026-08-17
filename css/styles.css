@@ -22,11 +22,12 @@
     --white: #ffffff;
 
     /* Escala tipográfica — mínimo 1rem en todo el sitio */
+    --fs-xxmin: 0.8rem;
     --fs-min: 1rem;
-    --fs-sm: 1rem;
-    --fs-base: 1.05rem;
-    --fs-md: 1.15rem;
-    --fs-lg: 1.35rem;
+    --fs-sm: 1.02rem;
+    --fs-base: 1.04rem;
+    --fs-md: 1.14rem;
+    --fs-lg: 1.34rem;
 }
 
 * {
@@ -1057,7 +1058,7 @@ footer {
 }
 
 .rom-title {
-    font-size: var(--fs-min);
+    font-size: var(--fs-xxmin);
     font-weight: 700;
     color: var(--white);
     line-height: 1.25;
