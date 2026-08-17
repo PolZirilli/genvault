@@ -1057,7 +1057,7 @@ footer {
 }
 
 .rom-title {
-    font-size: var(--fs-sm);
+    font-size: var(--fs-min);
     font-weight: 700;
     color: var(--white);
     line-height: 1.25;
