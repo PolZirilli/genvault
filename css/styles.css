@@ -20,6 +20,13 @@
     --cyan: #00e5ff;
     --text2: #c8d8e8;
     --white: #ffffff;
+
+    /* Escala tipográfica — mínimo 1rem en todo el sitio */
+    --fs-min: 1rem;
+    --fs-sm: 1rem;
+    --fs-base: 1.05rem;
+    --fs-md: 1.15rem;
+    --fs-lg: 1.35rem;
 }
 
 * {
@@ -28,7 +35,8 @@
     box-sizing: border-box;
 }
 
-/* ── CAMBIO 2: Orbitron en body, letter-spacing normal ── */
+html { font-size: 16px; }
+
 body {
     background: var(--bg);
     background-image: repeating-linear-gradient(180deg,
@@ -36,18 +44,24 @@ body {
             rgba(0, 102, 255, 0.018) 2px, rgba(0, 102, 255, 0.018) 3px);
     color: #8fa8c0;
     font-family: 'Orbitron', sans-serif;
+    font-size: var(--fs-base);
+    line-height: 1.4;
     letter-spacing: normal;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px 10px 48px;
+    padding: 24px clamp(12px, 3vw, 32px) 48px;
 }
 
-/* ══ HEADER ══ */
+button, input, select {
+    font-size: var(--fs-min);
+}
+
+/* ══ HEADER — igual que la versión actual, solo centrado arriba de las 2 columnas ══ */
 header {
     text-align: center;
     margin-bottom: 18px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .logo {
@@ -63,25 +77,38 @@ header {
         4px 4px 0 #000d22;
 }
 
-.logo span {
-    color: var(--blue2);
-}
+.logo span { color: var(--blue2); }
 
 .subtitle {
-    font-size: 10px;
+    font-size: var(--fs-sm);
     color: var(--chrome-dk);
     letter-spacing: 1px;
     margin-top: 2px;
     text-transform: uppercase;
 }
 
-/* ══ CUERPO ══ */
+/* ══════════════════════════════════════════
+   LAYOUT — 2 columnas (consola | galería de ROMs)
+   ══════════════════════════════════════════ */
+.layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 22px;
+    align-items: start;
+}
+
+@media (max-width: 980px) {
+    .layout { grid-template-columns: 1fr; }
+}
+
+/* ══ CUERPO — idéntico al actual ══ */
 .console-body {
     background: var(--panel);
     border: 1px solid var(--border2);
     border-top: 3px solid var(--blue);
     width: 100%;
-    max-width: 800px;
     padding: 12px;
     position: relative;
     box-shadow:
@@ -167,7 +194,7 @@ canvas#splashCanvas {
 }
 
 .screen-label {
-    font-size: 7px;
+    font-size: var(--fs-sm);
     font-weight: 700;
     color: var(--border2);
     text-align: center;
@@ -199,19 +226,15 @@ canvas#splashCanvas {
 }
 
 #loaderOverlay p {
-    font-size: 7px;
+    font-size: var(--fs-sm);
     font-weight: 700;
     color: var(--blue2);
     letter-spacing: 2px;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
-/* ══ STATUS BAR ══ */
+/* ══ STATUS BAR — igual que la versión actual ══ */
 .status-bar {
     display: flex;
     align-items: center;
@@ -221,7 +244,7 @@ canvas#splashCanvas {
     border-left: 3px solid var(--blue);
     padding: 8px 14px;
     margin-bottom: 16px;
-    font-size: 9px;
+    font-size: var(--fs-sm);
 }
 
 .led {
@@ -243,14 +266,11 @@ canvas#splashCanvas {
     box-shadow: 0 0 8px var(--red), 0 0 16px rgba(204, 34, 0, 0.4);
 }
 
-#statusText {
-    flex: 1;
-    color: var(--text2);
-}
+#statusText { flex: 1; color: var(--text2); }
 
 .fps-counter {
     color: var(--yellow);
-    font-size: 9px;
+    font-size: var(--fs-sm);
     margin-left: auto;
     font-weight: 700;
 }
@@ -263,12 +283,12 @@ canvas#splashCanvas {
     border-left: 3px solid var(--red);
     padding: 14px;
     margin-bottom: 16px;
-    font-size: 9px;
+    font-size: var(--fs-sm);
     color: #ff6644;
 }
 
 #errorBox strong {
-    font-size: 8px;
+    font-size: var(--fs-sm);
     font-weight: 700;
     display: block;
     margin-bottom: 8px;
@@ -281,164 +301,28 @@ canvas#splashCanvas {
     padding: 4px 8px;
     display: block;
     margin-top: 8px;
-    font-size: 8px;
+    font-size: var(--fs-sm);
     color: var(--cyan);
     border-left: 2px solid var(--cyan);
 }
 
-/* ══ CAMBIO 5: ROM ROW — dos columnas ══ */
-.rom-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 16px;
-}
-
-@media(max-width:540px) {
-    .rom-row {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Columna izquierda — file drop */
-.file-drop {
-    border: 2px dashed var(--border2);
-    padding: 18px 14px;
-    text-align: center;
-    cursor: pointer;
-    transition: all .2s;
-    background: rgba(0, 102, 255, 0.02);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 110px;
-}
-
-.file-drop:hover,
-.file-drop.drag {
-    border-color: var(--blue);
-    background: var(--blue-dim);
-    box-shadow: 0 0 20px rgba(0, 102, 255, 0.1);
-}
-
-.file-drop .drop-icon {
-    font-size: 22px;
-    margin-bottom: 6px;
-}
-
-.file-drop .drop-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--blue2);
-    margin-bottom: 4px;
-    letter-spacing: 2px;
-}
-
-.file-drop .drop-sub {
-    font-size: 0.7rem;
-    color: var(--chrome-dk);
-}
-
-.file-drop .rom-name {
-    font-size: 8px;
-    color: var(--cyan);
-    margin-top: 6px;
-    word-break: break-all;
-}
-
-#romInput {
-    display: none;
-}
-
-/* Columna derecha — preset dropdown */
-.rom-preset {
-    border: 1px solid var(--border2);
-    padding: 18px 14px;
-    background: rgba(0, 102, 255, 0.02);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    min-height: 110px;
-}
-
-.preset-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--blue2);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-#romSelect {
-    background: var(--panel2);
-    border: 1px solid var(--border2);
-    color: var(--text2);
-    padding: 8px 10px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 10px;
-    width: 100%;
-    cursor: pointer;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%233388ff'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    padding-right: 28px;
-}
-
-#romSelect:focus {
-    border-color: var(--blue);
-}
-
-#romSelect option {
-    background: var(--panel2);
-}
-
-.btn-preset {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 8px;
-    font-weight: 700;
-    padding: 9px 14px;
-    background: var(--panel2);
-    color: var(--blue2);
-    border: 1px solid var(--blue);
-    cursor: pointer;
-    letter-spacing: 2px;
-    transition: all .12s;
-    width: 100%;
-}
-
-.btn-preset:hover {
-    background: var(--blue);
-    color: #fff;
-}
-
-/* ══ GAMEPAD BAR ══ */
+/* ══ GAMEPAD BAR — detección, igual que la actual ══ */
 .gamepad-bar {
     background: #07090e;
     border: 1px solid var(--border);
     border-left: 3px solid var(--chrome-dk);
     padding: 8px 14px;
-    font-size: 8px;
+    font-size: var(--fs-sm);
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 16px;
 }
 
-#gamepadStatus {
-    flex: 1;
-    color: var(--chrome-dk);
-}
+#gamepadStatus { flex: 1; color: var(--chrome-dk); }
+#gamepadStatus.connected { color: var(--cyan); }
 
-#gamepadStatus.connected {
-    color: var(--cyan);
-}
-
-/* ══ BOTONES PLAY/PAUSE/STOP ══ */
+/* ══ BOTONES PLAY/PAUSE/STOP — igual que la actual ══ */
 .btn-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -447,18 +331,13 @@ canvas#splashCanvas {
 }
 
 @media(max-width:480px) {
-    .btn-row {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .btn-row .btn-danger {
-        grid-column: span 2;
-    }
+    .btn-row { grid-template-columns: 1fr 1fr; }
+    .btn-row .btn-danger { grid-column: span 2; }
 }
 
 .btn {
     font-family: 'Orbitron', sans-serif;
-    font-size: 9px;
+    font-size: var(--fs-sm);
     font-weight: 700;
     padding: 11px 14px;
     border: none;
@@ -503,9 +382,7 @@ canvas#splashCanvas {
     transform: translateY(-1px);
 }
 
-.btn-secondary:active:not(:disabled) {
-    transform: translateY(3px);
-}
+.btn-secondary:active:not(:disabled) { transform: translateY(3px); }
 
 .btn-danger {
     background: var(--panel2);
@@ -520,9 +397,7 @@ canvas#splashCanvas {
     box-shadow: 0 5px 0 #330600, 0 0 16px var(--red-glow);
 }
 
-.btn-danger:active:not(:disabled) {
-    transform: translateY(3px);
-}
+.btn-danger:active:not(:disabled) { transform: translateY(3px); }
 
 .btn:disabled {
     opacity: .3;
@@ -530,10 +405,10 @@ canvas#splashCanvas {
     transform: none !important;
 }
 
-/* ══ CAMBIO 3: Botón "Ver Controles" ══ */
+/* ══ BOTÓN "Ver Controles" — igual que la actual ══ */
 .btn-controls-toggle {
     font-family: 'Orbitron', sans-serif;
-    font-size: 8px;
+    font-size: var(--fs-sm);
     font-weight: 700;
     padding: 9px 18px;
     background: transparent;
@@ -565,30 +440,23 @@ canvas#splashCanvas {
     backdrop-filter: blur(3px);
 }
 
-.controls-overlay.open {
-    display: flex;
-}
+.controls-overlay.open { display: flex; }
 
 .controls-popup {
     background: var(--panel);
     border: 1px solid var(--border2);
     border-top: 3px solid var(--blue);
     width: min(560px, 92vw);
+    max-height: 86vh;
+    overflow-y: auto;
     padding: 24px;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 102, 255, 0.1);
     animation: popIn .15s ease;
 }
 
 @keyframes popIn {
-    from {
-        transform: scale(.95);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+    from { transform: scale(.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 .controls-popup-header {
@@ -596,8 +464,8 @@ canvas#splashCanvas {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: var(--fs-md);
+    font-weight: 700;
     color: var(--blue2);
     letter-spacing: 2px;
     border-bottom: 1px solid var(--border2);
@@ -608,21 +476,19 @@ canvas#splashCanvas {
     background: none;
     border: none;
     color: var(--chrome-dk);
-    font-size: 14px;
+    font-size: 1.2rem;
     cursor: pointer;
     padding: 2px 6px;
     transition: color .15s;
     font-family: 'Orbitron', sans-serif;
 }
 
-.controls-close:hover {
-    color: var(--red2);
-}
+.controls-close:hover { color: var(--red2); }
 
 .keymap-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 5px 16px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px 16px;
     margin-bottom: 20px;
 }
 
@@ -632,23 +498,21 @@ canvas#splashCanvas {
     align-items: center;
     padding: 6px 0;
     border-bottom: 1px solid rgba(30, 42, 58, 0.5);
-    font-size: 12px;
-    line-height: 120%;
+    font-size: var(--fs-sm);
+    line-height: 130%;
 }
 
-.key-action {
-    color: var(--text2);
-}
+.key-action { color: var(--text2); }
 
 .key-kbd {
     background: var(--panel2);
     color: var(--chrome2);
     border: 1px solid var(--border2);
     border-bottom: 2px solid #000;
-    padding: 10px 6px;
-    font-size: 12px;
+    padding: 8px 10px;
+    font-size: var(--fs-sm);
     font-weight: 700;
-    min-width: 28px;
+    min-width: 30px;
     text-align: center;
 }
 
@@ -658,7 +522,7 @@ canvas#splashCanvas {
 }
 
 .shortcut-title {
-    font-size: 12px;
+    font-size: var(--fs-sm);
     font-weight: 500;
     color: var(--chrome-dk);
     letter-spacing: 2px;
@@ -669,29 +533,27 @@ canvas#splashCanvas {
 .shortcut-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px 24px;
-    font-size: 12px;
-    line-height: 120%;
+    gap: 8px 24px;
+    font-size: var(--fs-sm);
+    line-height: 130%;
 }
 
-.shortcut-grid span:nth-child(odd) {
-    color: var(--text2);
-}
-
-.shortcut-grid span:nth-child(even) {
-    color: var(--cyan);
-    text-align: right;
-}
+.shortcut-grid span:nth-child(odd) { color: var(--text2); }
+.shortcut-grid span:nth-child(even) { color: var(--cyan); text-align: right; }
 
 footer {
     margin-top: 28px;
-    font-size: 7px;
+    font-size: var(--fs-sm);
     color: var(--border2);
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
-/* ══ BOTÓN FULLSCREEN (sobre la pantalla) ══ */
+
+/* ══ BOTÓN FULLSCREEN (sobre la pantalla) — igual que la actual ══ */
 .btn-fullscreen {
     position: absolute;
     bottom: 8px;
@@ -712,21 +574,17 @@ footer {
     padding: 0;
     line-height: 1;
 }
-.screen-wrap:hover .btn-fullscreen {
-    opacity: 1;
-}
+.screen-wrap:hover .btn-fullscreen { opacity: 1; }
 .btn-fullscreen:hover {
     border-color: var(--blue);
     color: var(--white);
     background: rgba(0, 102, 255, 0.25);
 }
 
-/* ══ SCREEN-WRAP EN MODO FULLSCREEN ══ */
 .screen-wrap:-webkit-full-screen { width: 100vw; height: 100vh; aspect-ratio: unset; }
 .screen-wrap:-moz-full-screen    { width: 100vw; height: 100vh; aspect-ratio: unset; }
 .screen-wrap:fullscreen          { width: 100vw; height: 100vh; aspect-ratio: unset; background: #000; }
 
-/* En fullscreen, el canvas de genesis.js y el splash ocupan todo */
 .screen-wrap:fullscreen canvas#splashCanvas,
 .screen-wrap:fullscreen #emuContainer,
 .screen-wrap:fullscreen #emuContainer canvas {
@@ -735,7 +593,6 @@ footer {
     object-fit: contain;
 }
 
-/* El botón fullscreen siempre visible dentro de fullscreen */
 .screen-wrap:fullscreen .btn-fullscreen {
     opacity: 1;
     bottom: 16px;
@@ -743,16 +600,12 @@ footer {
 }
 
 /* ══ TABS DEL POPUP ══ */
-.ctrl-tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 18px;
-}
+.ctrl-tabs { display: flex; gap: 4px; margin-bottom: 18px; }
 .ctrl-tab {
     font-family: 'Orbitron', sans-serif;
-    font-size: 8px;
+    font-size: var(--fs-sm);
     font-weight: 700;
-    padding: 7px 16px;
+    padding: 8px 16px;
     background: transparent;
     color: var(--chrome-dk);
     border: 1px solid var(--border2);
@@ -768,15 +621,9 @@ footer {
 .ctrl-panel.active { display: block; }
 
 /* ══ GAMEPAD MAPPER ══ */
-.gpmap-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    gap: 12px;
-}
+.gpmap-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; gap: 12px; }
 .gpmap-device {
-    font-size: 8px;
+    font-size: var(--fs-sm);
     color: var(--cyan);
     flex: 1;
     white-space: nowrap;
@@ -785,9 +632,9 @@ footer {
 }
 .gpmap-reset-btn {
     font-family: 'Orbitron', sans-serif;
-    font-size: 7px;
+    font-size: var(--fs-sm);
     font-weight: 700;
-    padding: 5px 10px;
+    padding: 6px 10px;
     background: transparent;
     color: var(--chrome-dk);
     border: 1px solid var(--border2);
@@ -798,12 +645,7 @@ footer {
 }
 .gpmap-reset-btn:hover { color: var(--red2); border-color: var(--red); }
 
-.gpmap-hint {
-    font-size: 8px;
-    color: var(--chrome-dk);
-    margin-bottom: 14px;
-    line-height: 1.5;
-}
+.gpmap-hint { font-size: var(--fs-sm); color: var(--chrome-dk); margin-bottom: 14px; line-height: 1.5; }
 .gpmap-hint strong { color: var(--blue2); }
 
 .gpmap-list {
@@ -827,16 +669,10 @@ footer {
     border-bottom: 1px solid rgba(30,42,58,0.5);
     transition: background .15s;
 }
-.gpmap-row.gpmap-listening {
-    background: rgba(0,102,255,0.08);
-    border-color: var(--blue);
-}
-.gpmap-action {
-    font-size: 10px;
-    color: var(--text2);
-}
+.gpmap-row.gpmap-listening { background: rgba(0,102,255,0.08); border-color: var(--blue); }
+.gpmap-action { font-size: var(--fs-sm); color: var(--text2); }
 .gpmap-btn {
-    font-size: 9px;
+    font-size: var(--fs-sm);
     color: var(--cyan);
     min-width: 80px;
     text-align: center;
@@ -844,16 +680,12 @@ footer {
     background: var(--panel2);
     border: 1px solid var(--border2);
 }
-.gpmap-listening .gpmap-btn {
-    color: var(--yellow);
-    border-color: var(--yellow);
-    animation: blink .6s step-end infinite;
-}
+.gpmap-listening .gpmap-btn { color: var(--yellow); border-color: var(--yellow); animation: blink .6s step-end infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
 .gpmap-set {
     font-family: 'Orbitron', sans-serif;
-    font-size: 7px;
+    font-size: var(--fs-sm);
     font-weight: 700;
     padding: 4px 10px;
     background: transparent;
@@ -866,3 +698,199 @@ footer {
 }
 .gpmap-set:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
 .gpmap-listening .gpmap-set { color: var(--red2); border-color: var(--red); }
+
+/* ══════════════════════════════════════════
+   COLUMNA DE ROMS — buscador + carousel + carga
+   ══════════════════════════════════════════ */
+.roms-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.roms-heading {
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    color: var(--blue2);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.rom-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--panel2);
+    border: 1px solid var(--border2);
+    padding: 10px 14px;
+}
+
+.rom-search-icon { font-size: 1rem; color: var(--chrome-dk); }
+
+.rom-search input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text2);
+    font-family: 'Orbitron', sans-serif;
+    font-size: var(--fs-min);
+}
+
+.rom-search input::placeholder { color: var(--chrome-dk); }
+
+/* Carousel — nunca más de 2 filas visibles; se pagina con las flechas */
+.rom-carousel { overflow: hidden; }
+
+.rom-track {
+    display: flex;
+    transition: transform .35s ease;
+}
+
+.rom-page {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 1180px) {
+    .rom-page { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 620px) {
+    .rom-page { grid-template-columns: repeat(2, 1fr); }
+}
+
+.rom-card {
+    background: var(--panel2);
+    border: 1px solid var(--border2);
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: all .15s;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text2);
+    overflow: hidden;
+}
+
+.rom-card:hover, .rom-card:focus-visible {
+    border-color: var(--blue);
+    box-shadow: 0 0 18px rgba(0, 102, 255, 0.15);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.rom-cover {
+    aspect-ratio: 3/4;
+    width: 100%;
+    background:
+        repeating-linear-gradient(135deg, rgba(0,102,255,0.08) 0 2px, transparent 2px 10px),
+        linear-gradient(160deg, #141a26 0%, #0b0e14 100%);
+    border-bottom: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.rom-cover .cart-icon { width: 46%; height: 46%; color: var(--border2); }
+.rom-cover .cart-icon path { fill: currentColor; }
+
+.rom-cover .rom-tag {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    background: rgba(0, 102, 255, 0.15);
+    color: var(--blue2);
+    border: 1px solid var(--border2);
+    padding: 2px 6px;
+}
+
+.rom-info { padding: 8px 10px 10px; }
+
+.rom-title {
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.rom-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.page-arrow {
+    background: var(--panel2);
+    border: 1px solid var(--border2);
+    color: var(--blue2);
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all .15s;
+}
+
+.page-arrow:hover:not(:disabled) { border-color: var(--blue); color: var(--white); }
+.page-arrow:disabled { opacity: .3; cursor: not-allowed; }
+
+.page-dots { display: flex; gap: 8px; }
+.page-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border2); cursor: pointer; }
+.page-dots .dot.active { background: var(--blue); box-shadow: 0 0 8px var(--blue-glow); }
+
+/* Dropzone de carga — mismo estilo que la actual, reubicada bajo la galería */
+.file-drop {
+    border: 2px dashed var(--border2);
+    padding: 20px 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .2s;
+    background: rgba(0, 102, 255, 0.02);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 110px;
+}
+
+.file-drop:hover,
+.file-drop.drag {
+    border-color: var(--blue);
+    background: var(--blue-dim);
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.1);
+}
+
+.file-drop .drop-icon { font-size: 1.4rem; margin-bottom: 6px; }
+
+.file-drop .drop-title {
+    font-size: var(--fs-md);
+    font-weight: 700;
+    color: var(--blue2);
+    margin-bottom: 4px;
+    letter-spacing: 2px;
+}
+
+.file-drop .drop-sub { font-size: var(--fs-sm); color: var(--chrome-dk); }
+
+.file-drop .rom-name {
+    font-size: var(--fs-sm);
+    color: var(--cyan);
+    margin-top: 6px;
+    word-break: break-all;
+}
+
+#romInput { display: none; }
