@@ -27,31 +27,39 @@ const FRAME_DURATION = 1000 / TARGET_FPS;
 const DEAD           = 0.45;
 
 // ════════════════════════════════════════════
-//  GALERÍA DE ROMs (mismos títulos que la versión anterior,
-//  ahora en un carousel de máx. 2 filas en vez de <select>)
+//  GALERÍA DE ROMs — catálogo centralizado en data/games.json.
+//  Cada juego trae { id, name, region, cover, url }. El carousel se
+//  puebla dinámicamente con lo que haya ahí: si hay uno, muestra uno;
+//  si no carga nada, muestra un estado vacío (nunca cards fantasma).
 // ════════════════════════════════════════════
-const ROM_LIBRARY = [
-    { name: 'Castlevania - Bloodlines',                       tag: 'ESP', url: 'roms/Castlevania - Bloodlines (ESP).md' },
-    { name: 'Sonic The Hedgehog',                              tag: 'ESP', url: 'roms/Sonic The Hedgehog (ESP).md' },
-    { name: 'Taz in Escape from Mars',                         tag: 'ESP', url: 'roms/Taz in Escape from Mars (ESP).bin' },
-    { name: "TMNT - The Hyperstone Heist",                     tag: 'ESP', url: 'roms/Teenage Mutant Ninja Turtles - The Hyperstone Heist (ESP).bin' },
-    { name: "TMNT - Tournament Fighters",                      tag: 'ESP', url: 'roms/Teenage Mutant Ninja Turtles - Tournament Fighters (ESP).bin' },
-    { name: 'Terminator 2 - Judgment Day',                     tag: 'ESP', url: 'roms/Terminator 2 - Judgment Day (ESP).bin' },
-    { name: 'Tetris',                                          tag: 'ESP', url: 'roms/Tetris (ESP).bin' },
-    { name: 'The Addams Family',                               tag: 'ESP', url: 'roms/The Addams Family (ESP).bin' },
-    { name: 'The Death and Return of Superman',                tag: 'ESP', url: 'roms/The Death and Return of Superman (ESP).bin' },
-    { name: 'The Flintstones',                                 tag: 'ESP', url: 'roms/The Flintstones (ESP-Wave).md' },
-    { name: 'The Lion King',                                   tag: 'ESP', url: 'roms/The Lion King (ESP).bin' },
-    { name: 'The Terminator',                                  tag: 'ESP', url: 'roms/The Terminator (ESP).bin' },
-    { name: "Tiny Toon Adventures - Buster's Hidden Treasure", tag: 'ESP', url: "roms/Tiny Toon Adventures - Buster's Hidden Treasure (ESP).md" },
-    { name: 'Toejam & Earl',                                   tag: 'ESP', url: 'roms/Toejam & Earl (ESP).bin' },
-    { name: 'Toy Story',                                       tag: 'ESP', url: 'roms/Toy Story (ESP).bin' },
-    { name: 'Turbo Outrun',                                    tag: 'ESP', url: 'roms/Turbo Outrun (ESP).bin' },
-    { name: 'Venom - Spider-Man Separation Anxiety',           tag: 'ESP', url: 'roms/Venom - Spider-Man Separation Anxiety (ESP).gen' },
-];
+const GAMES_JSON_URL = 'data/games.json';
+let ROM_LIBRARY      = [];
+let catalogErrorMsg  = null;
 
-// Ícono de cartucho en pixel-art puro CSS/SVG — placeholder hasta tener
-// portadas reales (no usamos arte de tapa con copyright).
+function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+}
+
+async function loadGameLibrary() {
+    try {
+        const res = await fetch(GAMES_JSON_URL, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        if (!Array.isArray(data)) throw new Error('data/games.json debe ser un array de juegos.');
+        ROM_LIBRARY = data.filter(g => g && typeof g.name === 'string' && typeof g.url === 'string');
+        catalogErrorMsg = ROM_LIBRARY.length ? null : 'Todavía no hay ROMs cargados en el catálogo.';
+    } catch (err) {
+        console.error('No se pudo cargar data/games.json:', err);
+        ROM_LIBRARY = [];
+        catalogErrorMsg = 'No se pudo cargar el catálogo de ROMs (data/games.json). Podés cargar tu ROM manualmente abajo.';
+    }
+    renderCarousel();
+}
+
+// Ícono de cartucho en pixel-art puro CSS/SVG — se usa como portada por
+// default (o si `cover` no carga) hasta que el juego tenga portada real.
 const CART_ICON_SVG = `
 <svg class="cart-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
   <path d="M6 2h12v3h1v3h-1v11H6V8H5V5h1V2z m2 2v3h8V4H8z m-1 6v9h10v-9H7z m2 2h2v2H9v-2z m4 0h2v2h-2v-2z"/>
@@ -82,42 +90,70 @@ function buildCarouselPages() {
 }
 
 function romCardHTML(rom) {
+    const name    = escapeHtml(rom.name);
+    const url     = escapeHtml(rom.url);
+    const tagHTML = rom.region ? `<span class="rom-tag">${escapeHtml(rom.region)}</span>` : '';
+    const coverHTML = rom.cover
+        ? `<img class="rom-cover-img" src="${escapeHtml(rom.cover)}" alt="${name}" loading="lazy">`
+        : CART_ICON_SVG;
     return `
-        <button type="button" class="rom-card" data-url="${rom.url}" data-name="${rom.name}">
+        <button type="button" class="rom-card" data-url="${url}" data-name="${name}">
             <span class="rom-cover">
-                ${CART_ICON_SVG}
-                <span class="rom-tag">${rom.tag}</span>
+                ${coverHTML}
+                ${tagHTML}
             </span>
             <span class="rom-info">
-                <span class="rom-title">${rom.name}</span>
+                <span class="rom-title">${name}</span>
             </span>
         </button>`;
 }
 
 function renderCarousel() {
-    const track  = document.getElementById('romTrack');
-    const dotsEl = document.getElementById('pageDots');
-    const prevBtn = document.getElementById('pagePrev');
-    const nextBtn = document.getElementById('pageNext');
+    const track       = document.getElementById('romTrack');
+    const dotsEl      = document.getElementById('pageDots');
+    const prevBtn     = document.getElementById('pagePrev');
+    const nextBtn     = document.getElementById('pageNext');
+    const paginationEl = document.querySelector('.rom-pagination');
     if (!track) return;
+
+    // Sin juegos (catálogo vacío o falló la carga) — mensaje, sin cards vacías.
+    if (!ROM_LIBRARY.length) {
+        track.innerHTML = `<div class="rom-page rom-empty-page"><p class="rom-empty">${escapeHtml(catalogErrorMsg || 'No hay ROMs en el catálogo.')}</p></div>`;
+        track.style.transform = 'translateX(0)';
+        if (paginationEl) paginationEl.style.display = 'none';
+        if (dotsEl) dotsEl.innerHTML = '';
+        return;
+    }
 
     carouselPages = buildCarouselPages();
     if (carouselPage >= carouselPages.length) carouselPage = carouselPages.length - 1;
     if (carouselPage < 0) carouselPage = 0;
 
+    // Cada página solo contiene las cards que existen — nunca se rellena
+    // con celdas vacías (si el último grupo tiene menos que columnas×2,
+    // el grid de esa página simplemente muestra menos cards).
     track.innerHTML = carouselPages.map(page => `<div class="rom-page">${page.map(romCardHTML).join('')}</div>`).join('');
     track.querySelectorAll('.rom-card').forEach(card => {
         card.addEventListener('click', () => loadPresetROM(card.dataset.url, card.dataset.name));
     });
+    // Si una portada real (rom.cover) no carga, caemos al ícono placeholder.
+    track.querySelectorAll('.rom-cover-img').forEach(img => {
+        img.addEventListener('error', () => { img.outerHTML = CART_ICON_SVG; }, { once: true });
+    });
+
+    const showPagination = carouselPages.length > 1;
+    if (paginationEl) paginationEl.style.display = showPagination ? '' : 'none';
 
     if (dotsEl) {
         dotsEl.innerHTML = '';
-        carouselPages.forEach((_, i) => {
-            const dot = document.createElement('span');
-            dot.className = 'dot' + (i === carouselPage ? ' active' : '');
-            dot.addEventListener('click', () => goToCarouselPage(i));
-            dotsEl.appendChild(dot);
-        });
+        if (showPagination) {
+            carouselPages.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.className = 'dot' + (i === carouselPage ? ' active' : '');
+                dot.addEventListener('click', () => goToCarouselPage(i));
+                dotsEl.appendChild(dot);
+            });
+        }
     }
 
     if (prevBtn) prevBtn.disabled = carouselPage <= 0;
@@ -519,7 +555,9 @@ document.getElementById('btnGPReset')?.addEventListener('click', () => {
 //  INICIO
 // ════════════════════════════════════════════
 (function init() {
-    renderCarousel();
+    const track = document.getElementById('romTrack');
+    if (track) track.innerHTML = `<div class="rom-page rom-empty-page"><p class="rom-empty">Cargando catálogo…</p></div>`;
+    loadGameLibrary();
     drawSplash();
     if (typeof embedGenesis === 'undefined') {
         setStatus('⚠ Missing js/Genesis.min.js — see README', 'err');
