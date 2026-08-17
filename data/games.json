@@ -5,5 +5,54 @@
     "region": "USA",
     "cover": null,
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/6-Pak.md"
+  },
+  {
+    "id": "aladdin",
+    "name": "Aladdin",
+    "region": "USA",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Aladdin.md"
+  },
+  {
+    "id": "alien3",
+    "name": "Alien 3",
+    "region": "USA",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Alien3.md"
+  }
+  {
+    "id": "animaniacs",
+    "name": "Animaniacs",
+    "region": "USA",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Animaniacs.md"
+  }
+  {
+    "id": "anotherworld",
+    "name": "Another Worls",
+    "region": "USA",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Another%20World.md"
+  }
+  {
+    "id": "arieltheLittleMermaid",
+    "name": "Ariel the Little Mermaid",
+    "region": "USA",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Ariel%20the%20Little%20Mermaid.md"
+  }
+  {
+    "id": "castlevaniabloodlines",
+    "name": "Castlevania Bloodlines",
+    "region": "USA",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Castlevania%20Bloodlines.md"
+  }
+  {
+    "id": "sonicthehedgehog",
+    "name": "Sonic The Hedgehog",
+    "region": "USA",
+    "cover": null,
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Sonic%20The%20Hedgehog.md"
   }
 ]
