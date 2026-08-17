@@ -23,7 +23,7 @@
   {
     "id": "animaniacs",
     "name": "Animaniacs",
-    "region": "USA",
+    "region": "ESP",
     "cover": null,
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Animaniacs.md"
   },
@@ -39,20 +39,20 @@
     "name": "Ariel the Little Mermaid",
     "region": "USA",
     "cover": null,
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Ariel%20the%20Little%20Mermaid.md"
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Ariel-the-Little-Mermaid.bin"
   },
   {
     "id": "castlevaniabloodlines",
     "name": "Castlevania Bloodlines",
     "region": "USA",
     "cover": null,
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Castlevania%20Bloodlines.md"
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Castlevania-Bloodlines.md"
   },
   {
     "id": "sonicthehedgehog",
     "name": "Sonic The Hedgehog",
     "region": "USA",
     "cover": null,
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Sonic%20The%20Hedgehog.md"
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Sonic-The-Hedgehog.md"
   }
 ]
