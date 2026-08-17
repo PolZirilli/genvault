@@ -181,23 +181,57 @@ window.addEventListener('resize', () => {
 });
 
 // ════════════════════════════════════════════
-//  GAMEPAD MAPPING
+//  MAPEO DE ACCIONES (teclado + gamepad)
 // ════════════════════════════════════════════
 const ACTIONS = [
-    { id: 'up',    label: 'D-Pad Up',    key: 'ArrowUp'    },
-    { id: 'down',  label: 'D-Pad Down',  key: 'ArrowDown'  },
-    { id: 'left',  label: 'D-Pad Left',  key: 'ArrowLeft'  },
-    { id: 'right', label: 'D-Pad Right', key: 'ArrowRight' },
-    { id: 'a',     label: 'Button A',    key: 'KeyA'       },
-    { id: 'b',     label: 'Button B',    key: 'KeyS'       },
-    { id: 'c',     label: 'Button C',    key: 'KeyD'       },
-    { id: 'x',     label: 'Button X',    key: 'KeyQ'       },
-    { id: 'y',     label: 'Button Y',    key: 'KeyW'       },
-    { id: 'z',     label: 'Button Z',    key: 'KeyE'       },
-    { id: 'start', label: 'Start',       key: 'Enter'      },
-    { id: 'mode',  label: 'Mode',        key: 'KeyZ'       },
+    { id: 'up',    label: 'D-Pad Up'    },
+    { id: 'down',  label: 'D-Pad Down'  },
+    { id: 'left',  label: 'D-Pad Left'  },
+    { id: 'right', label: 'D-Pad Right' },
+    { id: 'a',     label: 'Button A'    },
+    { id: 'b',     label: 'Button B'    },
+    { id: 'c',     label: 'Button C'    },
+    { id: 'x',     label: 'Button X'    },
+    { id: 'y',     label: 'Button Y'    },
+    { id: 'z',     label: 'Button Z'    },
+    { id: 'start', label: 'Start'       },
+    { id: 'mode',  label: 'Mode'        },
 ];
+const DPAD_IDS   = ['up', 'down', 'left', 'right'];
+const BUTTON_IDS = ['a', 'b', 'c', 'x', 'y', 'z'];
+const EXTRA_IDS  = ['start', 'mode'];
 
+// ── Teclado — editable por el usuario, se guarda en localStorage ──
+const DEFAULT_KEYMAP = {
+    up:'ArrowUp', down:'ArrowDown', left:'ArrowLeft', right:'ArrowRight',
+    a:'KeyA', b:'KeyS', c:'KeyD', x:'KeyQ', y:'KeyW', z:'KeyE',
+    start:'Enter', mode:'KeyZ',
+};
+let keymap = loadKeymap();
+function loadKeymap() {
+    try { const s = localStorage.getItem('genvault_keymap'); if (s) return { ...DEFAULT_KEYMAP, ...JSON.parse(s) }; } catch(_) {}
+    return { ...DEFAULT_KEYMAP };
+}
+function saveKeymap() {
+    try { localStorage.setItem('genvault_keymap', JSON.stringify(keymap)); } catch(_) {}
+}
+
+function keyLabel(code) {
+    if (!code) return '—';
+    const named = {
+        ArrowUp:'↑', ArrowDown:'↓', ArrowLeft:'←', ArrowRight:'→',
+        Enter:'↵', Space:'SPACE',
+        ControlLeft:'CTRL', ControlRight:'CTRL',
+        ShiftLeft:'SHIFT', ShiftRight:'SHIFT',
+        AltLeft:'ALT', AltRight:'ALT',
+    };
+    if (named[code]) return named[code];
+    if (code.startsWith('Key'))   return code.slice(3);
+    if (code.startsWith('Digit')) return code.slice(5);
+    return code;
+}
+
+// ── Gamepad ──
 const DEFAULT_GP_MAP = {
     0:'b', 1:'a', 2:'x', 3:'y', 4:'c', 5:'z',
     8:'mode', 9:'start',
@@ -285,7 +319,7 @@ function stopFPS() {
 // ════════════════════════════════════════════
 let gpPrev = {}, gpAxesPrev = { up:false, down:false, left:false, right:false };
 
-function actionToKey(id) { return ACTIONS.find(a => a.id === id)?.key || null; }
+function actionToKey(id) { return keymap[id] || null; }
 function fireKey(code, down) {
     document.dispatchEvent(new KeyboardEvent(down ? 'keydown' : 'keyup', { code, key:code, bubbles:true }));
 }
@@ -383,10 +417,11 @@ function mountEmulator(romBuffer, romName) {
             rom: romBuffer,
             soundEnabled: true,
             showMobileControls: false,
+            // Usa el keymap actual (editable desde ⌨ Keyboard en "Ver Controles").
             player1: {
-                up:'ArrowUp', down:'ArrowDown', left:'ArrowLeft', right:'ArrowRight',
-                start:'Enter', mode:'KeyZ',
-                a:'KeyA', b:'KeyS', c:'KeyD', x:'KeyQ', y:'KeyW', z:'KeyE',
+                up: keymap.up, down: keymap.down, left: keymap.left, right: keymap.right,
+                start: keymap.start, mode: keymap.mode,
+                a: keymap.a, b: keymap.b, c: keymap.c, x: keymap.x, y: keymap.y, z: keymap.z,
             },
             cbStarted: function() {
                 hideLoader();
@@ -471,18 +506,21 @@ const btnOpen  = document.getElementById('btnControls');
 const btnClose = document.getElementById('btnControlsClose');
 
 btnOpen.addEventListener('click', () => {
-    overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false'); renderGPMap();
+    overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false');
+    renderGPMap(); renderKeymapEditor();
 });
 btnClose.addEventListener('click', closeControls);
 overlay.addEventListener('click', e => { if (e.target===overlay) closeControls(); });
 document.addEventListener('keydown', e => {
     if (e.key==='Escape') {
+        if (listeningForKey) { cancelListenKeyboard(); return; }
         if (listeningFor) { cancelListen(); return; }
         if (overlay.classList.contains('open')) closeControls();
     }
 });
 function closeControls() {
     if (listeningFor) cancelListen();
+    if (listeningForKey) cancelListenKeyboard();
     overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true');
 }
 
@@ -521,6 +559,7 @@ function renderGPMap() {
 
 function startListen(actionId) {
     if (listeningFor) cancelListen();
+    if (listeningForKey) cancelListenKeyboard();
     listeningFor = actionId;
     const row    = document.getElementById('gprow-'+actionId);
     const btnEl  = document.getElementById('gpbtn-'+actionId);
@@ -551,6 +590,89 @@ document.getElementById('btnGPReset')?.addEventListener('click', () => {
     gpMap = { ...DEFAULT_GP_MAP }; saveGPMap(); renderGPMap();
 });
 
+// ── Editor de teclado — 2 columnas (D-Pad | Botones), editable ──
+let listeningForKey = null;
+
+function keymapRowHTML(action) {
+    return `
+        <div class="gpmap-row" id="kmrow-${action.id}">
+            <span class="gpmap-action">${action.label}</span>
+            <span class="gpmap-btn" id="kmbtn-${action.id}">${keyLabel(keymap[action.id])}</span>
+            <button class="gpmap-set" data-action="${action.id}">Set</button>
+        </div>`;
+}
+
+// Botones A/B/C/X/Y/Z — tarjeta compacta para la grilla de 3×2.
+function keymapButtonCardHTML(action) {
+    const shortLabel = action.id.toUpperCase();
+    return `
+        <div class="keymap-btn-card" id="kmrow-${action.id}">
+            <span class="keymap-btn-label">${shortLabel}</span>
+            <span class="gpmap-btn" id="kmbtn-${action.id}">${keyLabel(keymap[action.id])}</span>
+            <button class="gpmap-set" data-action="${action.id}">Set</button>
+        </div>`;
+}
+
+function renderKeymapEditor() {
+    const dpadList    = document.getElementById('keymapDpadList');
+    const buttonsList = document.getElementById('keymapButtonsList');
+    const extraList   = document.getElementById('keymapExtraList');
+    if (!dpadList || !buttonsList) return;
+
+    dpadList.innerHTML    = ACTIONS.filter(a => DPAD_IDS.includes(a.id)).map(keymapRowHTML).join('');
+    buttonsList.innerHTML = ACTIONS.filter(a => BUTTON_IDS.includes(a.id)).map(keymapButtonCardHTML).join('');
+    if (extraList) extraList.innerHTML = ACTIONS.filter(a => EXTRA_IDS.includes(a.id)).map(keymapRowHTML).join('');
+
+    [dpadList, buttonsList, extraList].forEach(list => {
+        if (!list) return;
+        list.querySelectorAll('.gpmap-set').forEach(btn =>
+            btn.addEventListener('click', () => startListenKeyboard(btn.dataset.action)));
+    });
+}
+
+function startListenKeyboard(actionId) {
+    if (listeningForKey) cancelListenKeyboard();
+    if (listeningFor) cancelListen();
+    listeningForKey = actionId;
+    const row     = document.getElementById('kmrow-'+actionId);
+    const btnEl   = document.getElementById('kmbtn-'+actionId);
+    const setBtn  = row?.querySelector('.gpmap-set');
+    const compact = row?.classList.contains('keymap-btn-card');
+    row?.classList.add('gpmap-listening');
+    if (btnEl)  btnEl.textContent  = compact ? '…' : 'Press a key...';
+    if (setBtn) { setBtn.textContent = 'Cancel'; setBtn.onclick = cancelListenKeyboard; }
+    document.addEventListener('keydown', keyCaptureHandler, true);
+}
+
+function keyCaptureHandler(e) {
+    if (!listeningForKey) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.key === 'Escape') { cancelListenKeyboard(); return; }
+    assignKeymapKey(listeningForKey, e.code);
+}
+
+function assignKeymapKey(actionId, code) {
+    // Si esa tecla ya estaba usada por otra acción, la deja sin asignar
+    // para evitar que dos acciones respondan a la misma tecla.
+    Object.keys(keymap).forEach(k => { if (k !== actionId && keymap[k] === code) keymap[k] = null; });
+    keymap[actionId] = code;
+    saveKeymap();
+    document.removeEventListener('keydown', keyCaptureHandler, true);
+    listeningForKey = null;
+    renderKeymapEditor();
+}
+
+function cancelListenKeyboard() {
+    document.removeEventListener('keydown', keyCaptureHandler, true);
+    listeningForKey = null;
+    renderKeymapEditor();
+}
+
+document.getElementById('btnKeymapReset')?.addEventListener('click', () => {
+    keymap = { ...DEFAULT_KEYMAP }; saveKeymap(); renderKeymapEditor();
+});
+
 // ════════════════════════════════════════════
 //  INICIO
 // ════════════════════════════════════════════
@@ -558,6 +680,7 @@ document.getElementById('btnGPReset')?.addEventListener('click', () => {
     const track = document.getElementById('romTrack');
     if (track) track.innerHTML = `<div class="rom-page rom-empty-page"><p class="rom-empty">Cargando catálogo…</p></div>`;
     loadGameLibrary();
+    renderKeymapEditor();
     drawSplash();
     if (typeof embedGenesis === 'undefined') {
         setStatus('⚠ Missing js/Genesis.min.js — see README', 'err');
