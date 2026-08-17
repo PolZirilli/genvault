@@ -1,5 +1,5 @@
 // ════════════════════════════════════════════
-//  TotoGEN — Emulador Sega Mega Drive / Genesis
+//  GENvault — Emulador Sega Mega Drive / Genesis
 //  Motor: Genesis.js (PicoDrive JS puro)
 // ════════════════════════════════════════════
 
@@ -25,6 +25,124 @@ let fpsLast     = performance.now();
 const TARGET_FPS     = 60;
 const FRAME_DURATION = 1000 / TARGET_FPS;
 const DEAD           = 0.45;
+
+// ════════════════════════════════════════════
+//  GALERÍA DE ROMs (mismos títulos que la versión anterior,
+//  ahora en un carousel de máx. 2 filas en vez de <select>)
+// ════════════════════════════════════════════
+const ROM_LIBRARY = [
+    { name: 'Castlevania - Bloodlines',                       tag: 'ESP', url: 'roms/Castlevania - Bloodlines (ESP).md' },
+    { name: 'Sonic The Hedgehog',                              tag: 'ESP', url: 'roms/Sonic The Hedgehog (ESP).md' },
+    { name: 'Taz in Escape from Mars',                         tag: 'ESP', url: 'roms/Taz in Escape from Mars (ESP).bin' },
+    { name: "TMNT - The Hyperstone Heist",                     tag: 'ESP', url: 'roms/Teenage Mutant Ninja Turtles - The Hyperstone Heist (ESP).bin' },
+    { name: "TMNT - Tournament Fighters",                      tag: 'ESP', url: 'roms/Teenage Mutant Ninja Turtles - Tournament Fighters (ESP).bin' },
+    { name: 'Terminator 2 - Judgment Day',                     tag: 'ESP', url: 'roms/Terminator 2 - Judgment Day (ESP).bin' },
+    { name: 'Tetris',                                          tag: 'ESP', url: 'roms/Tetris (ESP).bin' },
+    { name: 'The Addams Family',                               tag: 'ESP', url: 'roms/The Addams Family (ESP).bin' },
+    { name: 'The Death and Return of Superman',                tag: 'ESP', url: 'roms/The Death and Return of Superman (ESP).bin' },
+    { name: 'The Flintstones',                                 tag: 'ESP', url: 'roms/The Flintstones (ESP-Wave).md' },
+    { name: 'The Lion King',                                   tag: 'ESP', url: 'roms/The Lion King (ESP).bin' },
+    { name: 'The Terminator',                                  tag: 'ESP', url: 'roms/The Terminator (ESP).bin' },
+    { name: "Tiny Toon Adventures - Buster's Hidden Treasure", tag: 'ESP', url: "roms/Tiny Toon Adventures - Buster's Hidden Treasure (ESP).md" },
+    { name: 'Toejam & Earl',                                   tag: 'ESP', url: 'roms/Toejam & Earl (ESP).bin' },
+    { name: 'Toy Story',                                       tag: 'ESP', url: 'roms/Toy Story (ESP).bin' },
+    { name: 'Turbo Outrun',                                    tag: 'ESP', url: 'roms/Turbo Outrun (ESP).bin' },
+    { name: 'Venom - Spider-Man Separation Anxiety',           tag: 'ESP', url: 'roms/Venom - Spider-Man Separation Anxiety (ESP).gen' },
+];
+
+// Ícono de cartucho en pixel-art puro CSS/SVG — placeholder hasta tener
+// portadas reales (no usamos arte de tapa con copyright).
+const CART_ICON_SVG = `
+<svg class="cart-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+  <path d="M6 2h12v3h1v3h-1v11H6V8H5V5h1V2z m2 2v3h8V4H8z m-1 6v9h10v-9H7z m2 2h2v2H9v-2z m4 0h2v2h-2v-2z"/>
+</svg>`;
+
+// ════════════════════════════════════════════
+//  CAROUSEL DE ROMs — nunca más de 2 filas visibles.
+//  El número de columnas se adapta al ancho (4 / 3 / 2), y cada
+//  "página" del carousel siempre tiene columnas × 2 tarjetas.
+// ════════════════════════════════════════════
+let carouselPage = 0;
+let carouselPages = [];
+
+function getCarouselColumns() {
+    const w = window.innerWidth;
+    if (w <= 620) return 2;
+    if (w <= 1180) return 3;
+    return 4;
+}
+
+function buildCarouselPages() {
+    const perPage = getCarouselColumns() * 2;
+    const pages = [];
+    for (let i = 0; i < ROM_LIBRARY.length; i += perPage) {
+        pages.push(ROM_LIBRARY.slice(i, i + perPage));
+    }
+    return pages.length ? pages : [[]];
+}
+
+function romCardHTML(rom) {
+    return `
+        <button type="button" class="rom-card" data-url="${rom.url}" data-name="${rom.name}">
+            <span class="rom-cover">
+                ${CART_ICON_SVG}
+                <span class="rom-tag">${rom.tag}</span>
+            </span>
+            <span class="rom-info">
+                <span class="rom-title">${rom.name}</span>
+            </span>
+        </button>`;
+}
+
+function renderCarousel() {
+    const track  = document.getElementById('romTrack');
+    const dotsEl = document.getElementById('pageDots');
+    const prevBtn = document.getElementById('pagePrev');
+    const nextBtn = document.getElementById('pageNext');
+    if (!track) return;
+
+    carouselPages = buildCarouselPages();
+    if (carouselPage >= carouselPages.length) carouselPage = carouselPages.length - 1;
+    if (carouselPage < 0) carouselPage = 0;
+
+    track.innerHTML = carouselPages.map(page => `<div class="rom-page">${page.map(romCardHTML).join('')}</div>`).join('');
+    track.querySelectorAll('.rom-card').forEach(card => {
+        card.addEventListener('click', () => loadPresetROM(card.dataset.url, card.dataset.name));
+    });
+
+    if (dotsEl) {
+        dotsEl.innerHTML = '';
+        carouselPages.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.className = 'dot' + (i === carouselPage ? ' active' : '');
+            dot.addEventListener('click', () => goToCarouselPage(i));
+            dotsEl.appendChild(dot);
+        });
+    }
+
+    if (prevBtn) prevBtn.disabled = carouselPage <= 0;
+    if (nextBtn) nextBtn.disabled = carouselPage >= carouselPages.length - 1;
+
+    track.style.transform = `translateX(-${carouselPage * 100}%)`;
+}
+
+function goToCarouselPage(index) {
+    carouselPage = index;
+    renderCarousel();
+}
+
+document.getElementById('pagePrev')?.addEventListener('click', () => {
+    if (carouselPage > 0) goToCarouselPage(carouselPage - 1);
+});
+document.getElementById('pageNext')?.addEventListener('click', () => {
+    if (carouselPage < carouselPages.length - 1) goToCarouselPage(carouselPage + 1);
+});
+
+let carouselResizeTO = null;
+window.addEventListener('resize', () => {
+    clearTimeout(carouselResizeTO);
+    carouselResizeTO = setTimeout(renderCarousel, 200);
+});
 
 // ════════════════════════════════════════════
 //  GAMEPAD MAPPING
@@ -275,15 +393,14 @@ drop.addEventListener('dragover',  e => { e.preventDefault(); drop.classList.add
 drop.addEventListener('dragleave', () => drop.classList.remove('drag'));
 drop.addEventListener('drop', e => { e.preventDefault(); drop.classList.remove('drag'); handleROMFile(e.dataTransfer.files[0]); });
 
-document.getElementById('btnLoadPreset').addEventListener('click', () => {
-    const url = document.getElementById('romSelect').value;
+function loadPresetROM(url, displayName) {
     if (!url) return;
     hideError(); setStatus('Fetching ROM...', null);
     fetch(url)
         .then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.arrayBuffer(); })
-        .then(buf => mountEmulator(buf, url.split('/').pop()))
+        .then(buf => mountEmulator(buf, displayName || url.split('/').pop()))
         .catch(err => { showError('Could not load preset ROM.', err.message); setStatus('Load error','err'); });
-});
+}
 
 // ════════════════════════════════════════════
 //  BOTONES
@@ -402,6 +519,7 @@ document.getElementById('btnGPReset')?.addEventListener('click', () => {
 //  INICIO
 // ════════════════════════════════════════════
 (function init() {
+    renderCarousel();
     drawSplash();
     if (typeof embedGenesis === 'undefined') {
         setStatus('⚠ Missing js/Genesis.min.js — see README', 'err');
