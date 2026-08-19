@@ -953,7 +953,7 @@ footer {
 .rom-page {
     min-width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-auto-rows: 1fr;
     gap: 12px;
 }
