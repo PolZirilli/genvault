@@ -1,118 +1,118 @@
 [
   {
-    "id": "6-pak-usa",
+    "id": "6pak",
     "name": "6 Pak",
     "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/6-Pak%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/6-Pak.md"
   },
   {
-    "id": "aladdin-usa",
+    "id": "aladdin",
     "name": "Aladdin",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Aladdin%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Aladdin.md"
   },
   {
-    "id": "alien3-usa",
+    "id": "alien3",
     "name": "Alien3",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Alien%203%20(USA%2C%20Europe)%20(Rev%20A).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Alien3.md"
   },
   {
-    "id": "animaniacs-usa",
+    "id": "animaniacs",
     "name": "Animaniacs",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Animaniacs%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Animaniacs.md"
   },
   {
-    "id": "another-world-usa",
+    "id": "anotherworld",
     "name": "Another World",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Another%20World%20(Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Another%20World.md"
   },
   {
-    "id": "ariel-the-little-mermaid-usa",
+    "id": "arielthelittlemermaid",
     "name": "Ariel the Little Mermaid",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Ariel%20the%20Little%20Mermaid%20(USA%2C%20Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Ariel-the-Little-Mermaid.bin"
   },
   {
-    "id": "battletoads-double-dragon-usa",
+    "id": "battletoadsdoubledragon",
     "name": "Battletoads & Double Dragon",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Battletoads-Double%20Dragon%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Battletoads-&-Double-Dragon.bin"
   },
   {
-    "id": "castlevania-bloodlines-usa",
+    "id": "castlevaniabloodlines",
     "name": "Castlevania: Bloodlines",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Castlevania%20-%20Bloodlines%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Castlevania-Bloodlines.md"
   },
   {
-    "id": "comix-zone-usa",
+    "id": "comixzone",
     "name": "Comix Zone",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Comix%20Zone%20(USA)%20(Beta).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Comix-Zone.bin"
   },
   {
-    "id": "contra-hard-corps-usa",
+    "id": "contrahardcorps",
     "name": "Contra: Hard Corps",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Contra%20-%20Hard%20Corps%20(USA%2C%20Korea).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Contra-Hard-Corps.bin"
   },
   {
-    "id": "demolition-man-usa",
+    "id": "demolitionman",
     "name": "Demolition Man",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Demolition%20Man%20(USA)%20(Beta).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Demolition-Man.md"
   },
   {
-    "id": "desert-strike-return-to-the-gulf-usa",
+    "id": "desertstrikerefuntothelgulf",
     "name": "Desert Strike: Return to the Gulf",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Desert%20Strike%20-%20Return%20to%20the%20Gulf%20(USA%2C%20Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Desert-Strike-Return-to-the-Gulf.md"
   },
   {
-    "id": "earthworm-jim-2-usa",
+    "id": "earthwormjim2",
     "name": "Earthworm Jim 2",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Earthworm%20Jim%202%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Earthworm-Jim-2.md"
   },
   {
-    "id": "earthworm-jim-usa",
+    "id": "earthwormjim",
     "name": "Earthworm Jim",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Earthworm%20Jim%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Earthworm-Jim.bin"
   },
   {
-    "id": "golden-axe-ii-usa",
+    "id": "goldenaxeii",
     "name": "Golden Axe II",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Golden%20Axe%20II%20(World)%20(Beta).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Golden-Axe-II.bin"
   },
   {
-    "id": "golden-axe-iii-usa",
+    "id": "goldenaxeiii",
     "name": "Golden Axe III",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Golden%20Axe%20III%20(Japan).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Golden-Axe-III.md"
   },
   {
-    "id": "golden-axe-usa",
+    "id": "goldenaxe",
     "name": "Golden Axe",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Golden%20Axe%20(World)%20(v1.1).png",
@@ -133,63 +133,63 @@
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Prince-of-Persia-2-The-Shadow-and-The-Flame.bin"
   },
   {
-    "id": "prince-of-persia-usa",
+    "id": "princeofpersia",
     "name": "Prince of Persia",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Prince%20of%20Persia%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Prince-of-Persia.bin"
   },
   {
-    "id": "robocop-versus-the-terminator-usa",
+    "id": "robocopvsterminator",
     "name": "Robocop Versus The Terminator",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/RoboCop%20versus%20The%20Terminator%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Robocop-Versus-The-Terminator.bin"
   },
   {
-    "id": "sonic-the-hedgehog-usa",
+    "id": "sonicthehedgehog",
     "name": "Sonic the Hedgehog",
     "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Sonic%20The%20Hedgehog%20(Japan%2C%20Korea).png",
+    "cover": "",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Sonic-The-Hedgehog.md"
   },
   {
-    "id": "streets-of-rage-2-usa",
+    "id": "streetsofrage2",
     "name": "Streets of Rage 2",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Streets%20of%20Rage%202%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Streets-of-Rage-2.bin"
   },
   {
-    "id": "the-adventures-of-batman-and-robin-usa",
+    "id": "theadventuresofbatmanandrobin",
     "name": "The Adventures of Batman and Robin",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Adventures%20of%20Batman%20_%20Robin%2C%20The%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The-Adventures-of-Batman-and-Robin.bin"
   },
   {
-    "id": "world-of-illusion-starring-mickey-mouse-and-donald-duck-usa",
+    "id": "worldofillusion",
     "name": "World of Illusion Starring Mickey Mouse and Donald Duck",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/World%20of%20Illusion%20Starring%20Mickey%20Mouse%20and%20Donald%20Duck%20(Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/World-of-Illusion-Starring-Mickey-Mouse-and-Donald-Duck.md"
   },
   {
-    "id": "BeavisandButthead",
+    "id": "beavisandbutthead",
     "name": "Beavis and Butthead ",
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Beavis%20and%20Butt-Head%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/BeavisandButthead.bin"
   },
   {
-    "id": "SunsetRiders",
+    "id": "sunsetriders",
     "name": "Sunset Riders ",
     "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Sunset%20Riders%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/SunsetRiders.md"
   },
   {
-    "id": "Pulseman",
+    "id": "pulseman",
     "name": "Pulseman ",
     "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Pulseman%20(Japan).png",
@@ -210,11 +210,11 @@
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/GhoulsNGhosts.bin"
   },
   {
-    "id": "Flink",
-    "name": "Flink ",
+    "id": "",
+    "name": " ",
     "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Flink%20(Europe).png",
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Flink.gen"
+    "cover": "",
+    "url": ""
   },
   {
     "id": "FlashbackTheQuestforIdentity",
@@ -231,35 +231,35 @@
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/DonaldinMauiMallard.bin"
   },
   {
-    "id": "CoolSpot",
-    "name": "Cool Spot ",
+    "id": "",
+    "name": "",
     "region": "🇬🇧",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Cool%20Spot%20(USA)%20(Beta).png",
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/CoolSpot.gen"
+    "cover": "",
+    "url": ""
   },
   {
     "id": "Boogerman",
     "name": "Boogerman ",
     "region": "🇬🇧",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Boogerman%20-%20A%20Pick%20Your%20Nose%20Adventure%20(USA).png",
+    "cover": "",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Boogerman.gen"
   },
   {
-    "id": "TheFlintstones",
+    "id": "theflintstones",
     "name": "The Flintstones ",
     "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Flintstones%2C%20The%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/TheFlintstones.gen"
   },
   {
-    "id": "TinyToonAdventures",
+    "id": "tinytoonadventures",
     "name": "Tiny Toon Adventures ",
     "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Tiny%20Toon%20Adventures%20(Korea).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/TinyToonAdventures.gen"
   },
   {
-    "id": "XMen2CloneWars",
+    "id": "xmen2clonewars",
     "name": "X-Men 2 Clone Wars ",
     "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/X-Men%202%20-%20Clone%20Wars%20(USA%2C%20Europe).png",
