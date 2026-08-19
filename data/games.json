@@ -150,7 +150,7 @@
     "id": "sonicthehedgehog",
     "name": "Sonic the Hedgehog",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Sonic%20The%20Hedgehog%20(Japan%2C%20Korea).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Sonic-The-Hedgehog.md"
   },
   {
@@ -210,13 +210,6 @@
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/GhoulsNGhosts.bin"
   },
   {
-    "id": "",
-    "name": " ",
-    "region": "🇪🇦",
-    "cover": "",
-    "url": ""
-  },
-  {
     "id": "FlashbackTheQuestforIdentity",
     "name": "Flashback The Quest for Identity ",
     "region": "🇪🇦",
@@ -229,13 +222,6 @@
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Donald%20in%20Maui%20Mallard%20(Brazil).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/DonaldinMauiMallard.bin"
-  },
-  {
-    "id": "",
-    "name": "",
-    "region": "🇬🇧",
-    "cover": "",
-    "url": ""
   },
   {
     "id": "Boogerman",
