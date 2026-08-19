@@ -129,7 +129,7 @@
     "id": "princeofpersia2",
     "name": "Prince of Persia 2",
     "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Prince%20of%20Persia%20(USA).png",
+    "cover": "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Prince%20of%20Persia%202%20-%20The%20Shadow%20and%20the%20Flame%20(Europe)%20(Proto).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Prince-of-Persia-2-The-Shadow-and-The-Flame.bin"
   },
   {
@@ -150,7 +150,7 @@
     "id": "sonicthehedgehog",
     "name": "Sonic the Hedgehog",
     "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Sonic%20The%20Hedgehog%20(Japan%2C%20Korea).png",
+    "cover": "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Sonic%20The%20Hedgehog%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Sonic-The-Hedgehog.md"
   },
   {
@@ -227,7 +227,7 @@
     "id": "Boogerman",
     "name": "Boogerman ",
     "region": "🇬🇧",
-    "cover": "",
+    "cover": "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Boogerman%20-%20A%20Pick%20and%20Flick%20Adventure%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Boogerman.gen"
   },
   {
