@@ -4,27 +4,27 @@
 // ════════════════════════════════════════════
 
 // ══ REFS UI ══
-const splash       = document.getElementById('splashCanvas');
-let   emuContainer = document.getElementById('emuContainer');
-const loaderOvrl   = document.getElementById('loaderOverlay');
-const ledEl        = document.getElementById('led');
-const statusEl     = document.getElementById('statusText');
-const fpsEl        = document.getElementById('fpsCounter');
-const romNameEl    = document.getElementById('romName');
-const errorBox     = document.getElementById('errorBox');
-const screenWrap   = document.getElementById('screenWrap');
+const splash = document.getElementById('splashCanvas');
+let emuContainer = document.getElementById('emuContainer');
+const loaderOvrl = document.getElementById('loaderOverlay');
+const ledEl = document.getElementById('led');
+const statusEl = document.getElementById('statusText');
+const fpsEl = document.getElementById('fpsCounter');
+const romNameEl = document.getElementById('romName');
+const errorBox = document.getElementById('errorBox');
+const screenWrap = document.getElementById('screenWrap');
 
 // ══ ESTADO ══
-let emuRunning  = false;
-let paused      = false;
+let emuRunning = false;
+let paused = false;
 let lastROMName = '';
 let fpsInterval = null;
-let fpsFrames   = 0;
-let fpsLast     = performance.now();
+let fpsFrames = 0;
+let fpsLast = performance.now();
 
-const TARGET_FPS     = 60;
+const TARGET_FPS = 60;
 const FRAME_DURATION = 1000 / TARGET_FPS;
-const DEAD           = 0.45;
+const DEAD = 0.45;
 
 // ════════════════════════════════════════════
 //  GALERÍA DE ROMs — catálogo centralizado en data/games.json.
@@ -33,8 +33,8 @@ const DEAD           = 0.45;
 //  si no carga nada, muestra un estado vacío (nunca cards fantasma).
 // ════════════════════════════════════════════
 const GAMES_JSON_URL = 'data/games.json';
-let ROM_LIBRARY      = [];
-let catalogErrorMsg  = null;
+let ROM_LIBRARY = [];
+let catalogErrorMsg = null;
 
 function escapeHtml(str) {
     return String(str).replace(/[&<>"']/g, c => ({
@@ -78,7 +78,7 @@ function getCarouselColumns() {
     const w = window.innerWidth;
     if (w <= 620) return 2;
     if (w <= 1180) return 3;
-    return 4;
+    return 5;
 }
 
 // Filtra por nombre o región ("ESP", "USA", etc.) — sin distinguir mayúsculas/acentos exactos.
@@ -100,8 +100,8 @@ function buildCarouselPages(list) {
 }
 
 function romCardHTML(rom) {
-    const name    = escapeHtml(rom.name);
-    const url     = escapeHtml(rom.url);
+    const name = escapeHtml(rom.name);
+    const url = escapeHtml(rom.url);
     const tagHTML = rom.region ? `<span class="rom-tag">${escapeHtml(rom.region)}</span>` : '';
     const coverHTML = rom.cover
         ? `<img class="rom-cover-img" src="${escapeHtml(rom.cover)}" alt="${name}" loading="lazy">`
@@ -119,10 +119,10 @@ function romCardHTML(rom) {
 }
 
 function renderCarousel() {
-    const track       = document.getElementById('romTrack');
-    const dotsEl      = document.getElementById('pageDots');
-    const prevBtn     = document.getElementById('pagePrev');
-    const nextBtn     = document.getElementById('pageNext');
+    const track = document.getElementById('romTrack');
+    const dotsEl = document.getElementById('pageDots');
+    const prevBtn = document.getElementById('pagePrev');
+    const nextBtn = document.getElementById('pageNext');
     const paginationEl = document.querySelector('.rom-pagination');
     if (!track) return;
 
@@ -205,67 +205,67 @@ window.addEventListener('resize', () => {
 //  MAPEO DE ACCIONES (teclado + gamepad)
 // ════════════════════════════════════════════
 const ACTIONS = [
-    { id: 'up',    label: 'D-Pad Up'    },
-    { id: 'down',  label: 'D-Pad Down'  },
-    { id: 'left',  label: 'D-Pad Left'  },
+    { id: 'up', label: 'D-Pad Up' },
+    { id: 'down', label: 'D-Pad Down' },
+    { id: 'left', label: 'D-Pad Left' },
     { id: 'right', label: 'D-Pad Right' },
-    { id: 'a',     label: 'Button A'    },
-    { id: 'b',     label: 'Button B'    },
-    { id: 'c',     label: 'Button C'    },
-    { id: 'x',     label: 'Button X'    },
-    { id: 'y',     label: 'Button Y'    },
-    { id: 'z',     label: 'Button Z'    },
-    { id: 'start', label: 'Start'       },
-    { id: 'mode',  label: 'Mode'        },
+    { id: 'a', label: 'Button A' },
+    { id: 'b', label: 'Button B' },
+    { id: 'c', label: 'Button C' },
+    { id: 'x', label: 'Button X' },
+    { id: 'y', label: 'Button Y' },
+    { id: 'z', label: 'Button Z' },
+    { id: 'start', label: 'Start' },
+    { id: 'mode', label: 'Mode' },
 ];
-const DPAD_IDS   = ['up', 'down', 'left', 'right'];
+const DPAD_IDS = ['up', 'down', 'left', 'right'];
 const BUTTON_IDS = ['a', 'b', 'c', 'x', 'y', 'z'];
-const EXTRA_IDS  = ['start', 'mode'];
+const EXTRA_IDS = ['start', 'mode'];
 
 // ── Teclado — editable por el usuario, se guarda en localStorage ──
 const DEFAULT_KEYMAP = {
-    up:'ArrowUp', down:'ArrowDown', left:'ArrowLeft', right:'ArrowRight',
-    a:'KeyA', b:'KeyS', c:'KeyD', x:'KeyQ', y:'KeyW', z:'KeyE',
-    start:'Enter', mode:'KeyZ',
+    up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight',
+    a: 'KeyA', b: 'KeyS', c: 'KeyD', x: 'KeyQ', y: 'KeyW', z: 'KeyE',
+    start: 'Enter', mode: 'KeyZ',
 };
 let keymap = loadKeymap();
 function loadKeymap() {
-    try { const s = localStorage.getItem('genvault_keymap'); if (s) return { ...DEFAULT_KEYMAP, ...JSON.parse(s) }; } catch(_) {}
+    try { const s = localStorage.getItem('genvault_keymap'); if (s) return { ...DEFAULT_KEYMAP, ...JSON.parse(s) }; } catch (_) { }
     return { ...DEFAULT_KEYMAP };
 }
 function saveKeymap() {
-    try { localStorage.setItem('genvault_keymap', JSON.stringify(keymap)); } catch(_) {}
+    try { localStorage.setItem('genvault_keymap', JSON.stringify(keymap)); } catch (_) { }
 }
 
 function keyLabel(code) {
     if (!code) return '—';
     const named = {
-        ArrowUp:'↑', ArrowDown:'↓', ArrowLeft:'←', ArrowRight:'→',
-        Enter:'↵', Space:'SPACE',
-        ControlLeft:'CTRL', ControlRight:'CTRL',
-        ShiftLeft:'SHIFT', ShiftRight:'SHIFT',
-        AltLeft:'ALT', AltRight:'ALT',
+        ArrowUp: '↑', ArrowDown: '↓', ArrowLeft: '←', ArrowRight: '→',
+        Enter: '↵', Space: 'SPACE',
+        ControlLeft: 'CTRL', ControlRight: 'CTRL',
+        ShiftLeft: 'SHIFT', ShiftRight: 'SHIFT',
+        AltLeft: 'ALT', AltRight: 'ALT',
     };
     if (named[code]) return named[code];
-    if (code.startsWith('Key'))   return code.slice(3);
+    if (code.startsWith('Key')) return code.slice(3);
     if (code.startsWith('Digit')) return code.slice(5);
     return code;
 }
 
 // ── Gamepad ──
 const DEFAULT_GP_MAP = {
-    0:'b', 1:'a', 2:'x', 3:'y', 4:'c', 5:'z',
-    8:'mode', 9:'start',
-    12:'up', 13:'down', 14:'left', 15:'right',
+    0: 'b', 1: 'a', 2: 'x', 3: 'y', 4: 'c', 5: 'z',
+    8: 'mode', 9: 'start',
+    12: 'up', 13: 'down', 14: 'left', 15: 'right',
 };
 
 let gpMap = loadGPMap();
 function loadGPMap() {
-    try { const s = localStorage.getItem('totogen_gpmap'); if (s) return JSON.parse(s); } catch(_) {}
+    try { const s = localStorage.getItem('totogen_gpmap'); if (s) return JSON.parse(s); } catch (_) { }
     return { ...DEFAULT_GP_MAP };
 }
 function saveGPMap() {
-    try { localStorage.setItem('totogen_gpmap', JSON.stringify(gpMap)); } catch(_) {}
+    try { localStorage.setItem('totogen_gpmap', JSON.stringify(gpMap)); } catch (_) { }
 }
 
 // ════════════════════════════════════════════
@@ -273,7 +273,7 @@ function saveGPMap() {
 // ════════════════════════════════════════════
 window.addEventListener('keydown', e => {
     if (!emuRunning) return;
-    if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key)) e.preventDefault();
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) e.preventDefault();
 }, { passive: false });
 
 // ════════════════════════════════════════════
@@ -282,14 +282,14 @@ window.addEventListener('keydown', e => {
 function drawSplash() {
     const ctx = splash.getContext('2d');
     const w = splash.width, h = splash.height;
-    const g = ctx.createLinearGradient(0,0,w,h);
-    g.addColorStop(0,'#000d22'); g.addColorStop(1,'#001a44');
-    ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+    const g = ctx.createLinearGradient(0, 0, w, h);
+    g.addColorStop(0, '#000d22'); g.addColorStop(1, '#001a44');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
     ctx.strokeStyle = 'rgba(0,102,255,0.10)'; ctx.lineWidth = 1;
-    for (let y=0; y<h; y+=16) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
-    for (let x=0; x<w; x+=32) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
+    for (let y = 0; y < h; y += 16) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+    for (let x = 0; x < w; x += 32) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
     ctx.fillStyle = '#2a3a52'; ctx.font = '7px Orbitron, sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText('LOAD A ROM TO START', w/2, h/2);
+    ctx.fillText('LOAD A ROM TO START', w / 2, h / 2);
 }
 
 // ════════════════════════════════════════════
@@ -300,13 +300,13 @@ function setStatus(msg, ledState) {
     ledEl.className = 'led' + (ledState ? ' ' + ledState : '');
 }
 function enableButtons(play, pause, stop) {
-    document.getElementById('btnPlay').disabled  = !play;
+    document.getElementById('btnPlay').disabled = !play;
     document.getElementById('btnPause').disabled = !pause;
-    document.getElementById('btnStop').disabled  = !stop;
+    document.getElementById('btnStop').disabled = !stop;
 }
 function showError(msg, hint) {
     errorBox.style.display = 'block';
-    document.getElementById('errorMsg').textContent  = ' ' + msg;
+    document.getElementById('errorMsg').textContent = ' ' + msg;
     document.getElementById('errorHint').textContent = hint || '';
 }
 function hideError() { errorBox.style.display = 'none'; }
@@ -324,7 +324,7 @@ function startFPS() {
     fpsInterval = setInterval(() => {
         const now = performance.now(), delta = now - fpsLast;
         if (delta >= 1000) {
-            fpsEl.textContent = Math.min(Math.round((fpsFrames/delta)*1000),60) + ' FPS';
+            fpsEl.textContent = Math.min(Math.round((fpsFrames / delta) * 1000), 60) + ' FPS';
             fpsFrames = 0; fpsLast = now;
         }
         fpsFrames++;
@@ -338,11 +338,11 @@ function stopFPS() {
 // ════════════════════════════════════════════
 //  GAMEPAD POLLING
 // ════════════════════════════════════════════
-let gpPrev = {}, gpAxesPrev = { up:false, down:false, left:false, right:false };
+let gpPrev = {}, gpAxesPrev = { up: false, down: false, left: false, right: false };
 
 function actionToKey(id) { return keymap[id] || null; }
 function fireKey(code, down) {
-    document.dispatchEvent(new KeyboardEvent(down ? 'keydown' : 'keyup', { code, key:code, bubbles:true }));
+    document.dispatchEvent(new KeyboardEvent(down ? 'keydown' : 'keyup', { code, key: code, bubbles: true }));
 }
 
 function pollGamepad() {
@@ -354,33 +354,33 @@ function pollGamepad() {
         const pressed = btn.pressed || btn.value > 0.5;
         const code = actionToKey(gpMap[i]);
         if (!code) return;
-        if ( pressed && !gpPrev[i]) fireKey(code, true);
-        if (!pressed &&  gpPrev[i]) fireKey(code, false);
+        if (pressed && !gpPrev[i]) fireKey(code, true);
+        if (!pressed && gpPrev[i]) fireKey(code, false);
         gpPrev[i] = pressed;
     });
 
-    const ax = gp.axes[0]||0, ay = gp.axes[1]||0;
-    const axL=ax<-DEAD, axR=ax>DEAD, axU=ay<-DEAD, axD=ay>DEAD;
-    [[axL,gpAxesPrev.left,'left'],[axR,gpAxesPrev.right,'right'],
-     [axU,gpAxesPrev.up,'up'],[axD,gpAxesPrev.down,'down']].forEach(([c,p,aid]) => {
+    const ax = gp.axes[0] || 0, ay = gp.axes[1] || 0;
+    const axL = ax < -DEAD, axR = ax > DEAD, axU = ay < -DEAD, axD = ay > DEAD;
+    [[axL, gpAxesPrev.left, 'left'], [axR, gpAxesPrev.right, 'right'],
+    [axU, gpAxesPrev.up, 'up'], [axD, gpAxesPrev.down, 'down']].forEach(([c, p, aid]) => {
         const code = actionToKey(aid);
         if (!code) return;
-        if ( c && !p) fireKey(code, true);
-        if (!c &&  p) fireKey(code, false);
+        if (c && !p) fireKey(code, true);
+        if (!c && p) fireKey(code, false);
     });
-    gpAxesPrev = { left:axL, right:axR, up:axU, down:axD };
+    gpAxesPrev = { left: axL, right: axR, up: axU, down: axD };
 }
 
 let gpPollInterval = null;
 function startGPPoll() { stopGPPoll(); gpPollInterval = setInterval(pollGamepad, FRAME_DURATION); }
 function stopGPPoll() {
     if (gpPollInterval) { clearInterval(gpPollInterval); gpPollInterval = null; }
-    gpPrev = {}; gpAxesPrev = { up:false, down:false, left:false, right:false };
+    gpPrev = {}; gpAxesPrev = { up: false, down: false, left: false, right: false };
 }
 
 window.addEventListener('gamepadconnected', e => {
     const el = document.getElementById('gamepadStatus');
-    el.textContent = '🎮 Connected: ' + e.gamepad.id.substring(0,55);
+    el.textContent = '🎮 Connected: ' + e.gamepad.id.substring(0, 55);
     el.classList.add('connected');
     renderGPMap();
 });
@@ -396,7 +396,7 @@ window.addEventListener('gamepaddisconnected', () => {
 // ════════════════════════════════════════════
 const btnFullscreen = document.getElementById('btnFullscreen');
 btnFullscreen.addEventListener('click', toggleFullscreen);
-['fullscreenchange','webkitfullscreenchange','mozfullscreenchange'].forEach(ev =>
+['fullscreenchange', 'webkitfullscreenchange', 'mozfullscreenchange'].forEach(ev =>
     document.addEventListener(ev, updateFullscreenBtn));
 
 function toggleFullscreen() {
@@ -427,7 +427,7 @@ function mountEmulator(romBuffer, romName) {
     }
 
     lastROMName = romName;
-    splash.style.display       = 'none';
+    splash.style.display = 'none';
     emuContainer.style.display = 'block';
     showLoader('LOADING ROM...');
 
@@ -444,10 +444,10 @@ function mountEmulator(romBuffer, romName) {
                 start: keymap.start, mode: keymap.mode,
                 a: keymap.a, b: keymap.b, c: keymap.c, x: keymap.x, y: keymap.y, z: keymap.z,
             },
-            cbStarted: function() {
+            cbStarted: function () {
                 hideLoader();
                 emuRunning = true;
-                paused     = false;
+                paused = false;
                 romNameEl.textContent = '▸ ' + romName;
                 setStatus('Playing: ' + romName, 'on');
                 enableButtons(false, true, true);
@@ -455,9 +455,9 @@ function mountEmulator(romBuffer, romName) {
                 startGPPoll();
             }
         });
-    } catch(e) {
+    } catch (e) {
         hideLoader();
-        splash.style.display       = 'block';
+        splash.style.display = 'block';
         emuContainer.style.display = 'none';
         setStatus('Error loading ROM', 'err');
         showError('Could not start emulator: ' + e.message);
@@ -471,7 +471,7 @@ function handleROMFile(file) {
     if (!file) return;
     hideError();
     const reader = new FileReader();
-    reader.onload  = ev => mountEmulator(ev.target.result, file.name);
+    reader.onload = ev => mountEmulator(ev.target.result, file.name);
     reader.onerror = () => showError('Could not read the ROM file.');
     reader.readAsArrayBuffer(file);
 }
@@ -480,8 +480,8 @@ document.getElementById('romInput').addEventListener('change', e => {
     handleROMFile(e.target.files[0]); e.target.value = '';
 });
 const drop = document.getElementById('fileDrop');
-drop.addEventListener('click',    () => document.getElementById('romInput').click());
-drop.addEventListener('dragover',  e => { e.preventDefault(); drop.classList.add('drag'); });
+drop.addEventListener('click', () => document.getElementById('romInput').click());
+drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('drag'); });
 drop.addEventListener('dragleave', () => drop.classList.remove('drag'));
 drop.addEventListener('drop', e => { e.preventDefault(); drop.classList.remove('drag'); handleROMFile(e.dataTransfer.files[0]); });
 
@@ -489,9 +489,9 @@ function loadPresetROM(url, displayName) {
     if (!url) return;
     hideError(); setStatus('Fetching ROM...', null);
     fetch(url)
-        .then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.arrayBuffer(); })
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.arrayBuffer(); })
         .then(buf => mountEmulator(buf, displayName || url.split('/').pop()))
-        .catch(err => { showError('Could not load preset ROM.', err.message); setStatus('Load error','err'); });
+        .catch(err => { showError('Could not load preset ROM.', err.message); setStatus('Load error', 'err'); });
 }
 
 // ════════════════════════════════════════════
@@ -504,7 +504,7 @@ document.getElementById('btnPause').onclick = () => {
     setStatus('Paused — press ▶ PLAY to continue', null);
     document.getElementById('btnPause').textContent = '⏸ PAUSED';
     enableButtons(true, false, true);
-    try { emuContainer.querySelector('canvas')?.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true})); } catch(_) {}
+    try { emuContainer.querySelector('canvas')?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })); } catch (_) { }
 };
 
 document.getElementById('btnPlay').onclick = () => {
@@ -513,7 +513,7 @@ document.getElementById('btnPlay').onclick = () => {
     setStatus('Playing: ' + lastROMName, 'on');
     document.getElementById('btnPause').textContent = '⏸ PAUSE';
     enableButtons(false, true, true); startFPS(); startGPPoll();
-    try { emuContainer.querySelector('canvas')?.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true})); } catch(_) {}
+    try { emuContainer.querySelector('canvas')?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })); } catch (_) { }
 };
 
 // STOP — recargar la página mata todo sin excepción
@@ -522,18 +522,18 @@ document.getElementById('btnStop').onclick = () => location.reload();
 // ════════════════════════════════════════════
 //  POPUP DE CONTROLES
 // ════════════════════════════════════════════
-const overlay  = document.getElementById('controlsOverlay');
-const btnOpen  = document.getElementById('btnControls');
+const overlay = document.getElementById('controlsOverlay');
+const btnOpen = document.getElementById('btnControls');
 const btnClose = document.getElementById('btnControlsClose');
 
 btnOpen.addEventListener('click', () => {
-    overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false');
+    overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false');
     renderGPMap(); renderKeymapEditor();
 });
 btnClose.addEventListener('click', closeControls);
-overlay.addEventListener('click', e => { if (e.target===overlay) closeControls(); });
+overlay.addEventListener('click', e => { if (e.target === overlay) closeControls(); });
 document.addEventListener('keydown', e => {
-    if (e.key==='Escape') {
+    if (e.key === 'Escape') {
         if (listeningForKey) { cancelListenKeyboard(); return; }
         if (listeningFor) { cancelListen(); return; }
         if (overlay.classList.contains('open')) closeControls();
@@ -542,7 +542,7 @@ document.addEventListener('keydown', e => {
 function closeControls() {
     if (listeningFor) cancelListen();
     if (listeningForKey) cancelListenKeyboard();
-    overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true');
+    overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true');
 }
 
 // ── Tabs ──
@@ -561,7 +561,7 @@ let listeningFor = null, listenInterval = null;
 function renderGPMap() {
     const gp = [...(navigator.getGamepads ? navigator.getGamepads() : [])].find(g => g?.connected);
     const gpNameEl = document.getElementById('gpName');
-    if (gpNameEl) gpNameEl.textContent = gp ? gp.id.substring(0,60) : 'No gamepad connected';
+    if (gpNameEl) gpNameEl.textContent = gp ? gp.id.substring(0, 60) : 'No gamepad connected';
     const list = document.getElementById('gpMapList');
     if (!list) return;
     list.innerHTML = '';
@@ -571,7 +571,7 @@ function renderGPMap() {
         row.className = 'gpmap-row'; row.id = 'gprow-' + action.id;
         row.innerHTML = `
             <span class="gpmap-action">${action.label}</span>
-            <span class="gpmap-btn" id="gpbtn-${action.id}">${btnIndex !== undefined ? 'Button '+btnIndex : '—'}</span>
+            <span class="gpmap-btn" id="gpbtn-${action.id}">${btnIndex !== undefined ? 'Button ' + btnIndex : '—'}</span>
             <button class="gpmap-set" data-action="${action.id}">Set</button>`;
         list.appendChild(row);
     });
@@ -582,13 +582,13 @@ function startListen(actionId) {
     if (listeningFor) cancelListen();
     if (listeningForKey) cancelListenKeyboard();
     listeningFor = actionId;
-    const row    = document.getElementById('gprow-'+actionId);
-    const btnEl  = document.getElementById('gpbtn-'+actionId);
+    const row = document.getElementById('gprow-' + actionId);
+    const btnEl = document.getElementById('gpbtn-' + actionId);
     const setBtn = row.querySelector('.gpmap-set');
     row.classList.add('gpmap-listening');
-    btnEl.textContent  = 'Press button...';
+    btnEl.textContent = 'Press button...';
     setBtn.textContent = 'Cancel';
-    setBtn.onclick     = cancelListen;
+    setBtn.onclick = cancelListen;
     listenInterval = setInterval(() => {
         const gp = [...(navigator.getGamepads ? navigator.getGamepads() : [])].find(g => g?.connected);
         if (!gp) return;
@@ -635,12 +635,12 @@ function keymapButtonCardHTML(action) {
 }
 
 function renderKeymapEditor() {
-    const dpadList    = document.getElementById('keymapDpadList');
+    const dpadList = document.getElementById('keymapDpadList');
     const buttonsList = document.getElementById('keymapButtonsList');
-    const extraList   = document.getElementById('keymapExtraList');
+    const extraList = document.getElementById('keymapExtraList');
     if (!dpadList || !buttonsList) return;
 
-    dpadList.innerHTML    = ACTIONS.filter(a => DPAD_IDS.includes(a.id)).map(keymapRowHTML).join('');
+    dpadList.innerHTML = ACTIONS.filter(a => DPAD_IDS.includes(a.id)).map(keymapRowHTML).join('');
     buttonsList.innerHTML = ACTIONS.filter(a => BUTTON_IDS.includes(a.id)).map(keymapButtonCardHTML).join('');
     if (extraList) extraList.innerHTML = ACTIONS.filter(a => EXTRA_IDS.includes(a.id)).map(keymapRowHTML).join('');
 
@@ -655,12 +655,12 @@ function startListenKeyboard(actionId) {
     if (listeningForKey) cancelListenKeyboard();
     if (listeningFor) cancelListen();
     listeningForKey = actionId;
-    const row     = document.getElementById('kmrow-'+actionId);
-    const btnEl   = document.getElementById('kmbtn-'+actionId);
-    const setBtn  = row?.querySelector('.gpmap-set');
+    const row = document.getElementById('kmrow-' + actionId);
+    const btnEl = document.getElementById('kmbtn-' + actionId);
+    const setBtn = row?.querySelector('.gpmap-set');
     const compact = row?.classList.contains('keymap-btn-card');
     row?.classList.add('gpmap-listening');
-    if (btnEl)  btnEl.textContent  = compact ? '…' : 'Press a key...';
+    if (btnEl) btnEl.textContent = compact ? '…' : 'Press a key...';
     if (setBtn) { setBtn.textContent = 'Cancel'; setBtn.onclick = cancelListenKeyboard; }
     document.addEventListener('keydown', keyCaptureHandler, true);
 }
