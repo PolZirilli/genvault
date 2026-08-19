@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GENvault — Actualizar Portadas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap">
   <style>
     :root {
       --bg: #0a0c10;
@@ -367,8 +368,8 @@
 
     async function fetchGamesJson() {
       setStatus('Leyendo data/games.json…');
-      const res = await fetch('../data/games.json', { cache: 'no-store' });
-      if (!res.ok) throw new Error(`No pude leer ../data/games.json (${res.status}). ¿Estás sirviendo el sitio desde la raíz del proyecto?`);
+      const res = await fetch('data/games.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`No pude leer data/games.json (${res.status}). ¿Estás sirviendo el sitio desde la raíz del proyecto?`);
       return res.json();
     }
 
