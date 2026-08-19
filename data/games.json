@@ -184,14 +184,14 @@
   {
     "id": "SunsetRiders",
     "name": "Sunset Riders ",
-    "region": "🇪🇦",
+    "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Sunset%20Riders%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/SunsetRiders.md"
   },
   {
     "id": "Pulseman",
     "name": "Pulseman ",
-    "region": "🇪🇦",
+    "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Pulseman%20(Japan).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Pulseman.gen"
   },
@@ -233,35 +233,35 @@
   {
     "id": "CoolSpot",
     "name": "Cool Spot ",
-    "region": "🇪🇦",
+    "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Cool%20Spot%20(USA)%20(Beta).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/CoolSpot.gen"
   },
   {
     "id": "Boogerman",
     "name": "Boogerman ",
-    "region": "🇪🇦",
-    "cover": "",
+    "region": "🇬🇧",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Boogerman%20-%20A%20Pick%20Your%20Nose%20Adventure%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Boogerman.gen"
   },
   {
     "id": "TheFlintstones",
     "name": "The Flintstones ",
-    "region": "🇪🇦",
+    "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Flintstones%2C%20The%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/TheFlintstones.gen"
   },
   {
     "id": "TinyToonAdventures",
     "name": "Tiny Toon Adventures ",
-    "region": "🇪🇦",
+    "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Tiny%20Toon%20Adventures%20(Korea).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/TinyToonAdventures.gen"
   },
   {
     "id": "XMen2CloneWars",
     "name": "X-Men 2 Clone Wars ",
-    "region": "🇪🇦",
+    "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/X-Men%202%20-%20Clone%20Wars%20(USA%2C%20Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/XMen2CloneWars.md"
   }
