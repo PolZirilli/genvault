@@ -150,7 +150,7 @@ header {
 .screen-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 320/224;
+    aspect-ratio: 320/260;
     background: #000;
     overflow: hidden;
 }
