@@ -182,13 +182,6 @@
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/SunsetRiders.md"
   },
   {
-    "id": "pulseman",
-    "name": "Pulseman ",
-    "region": "🇬🇧",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Pulseman%20(Japan).png",
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Pulseman.gen"
-  },
-  {
     "id": "OutRunners",
     "name": "OutRunners ",
     "region": "🇪🇦",
@@ -208,13 +201,6 @@
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Flashback%20-%20The%20Quest%20for%20Identity%20(USA)%20(Alt%201).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/FlashbackTheQuestforIdentity.bin"
-  },
-  {
-    "id": "DonaldInMauiMallard",
-    "name": "Donald in Maui Mallard ",
-    "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Donald%20in%20Maui%20Mallard%20(Brazil).png",
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/DonaldinMauiMallard.bin"
   },
   {
     "id": "Boogerman",
@@ -250,20 +236,6 @@
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Dinosaur's%20Tale%2C%20A%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/A%20Dinosaur's%20Tale.md"
-  },
-  {
-    "id": "aaaahh-real-monsters",
-    "name": "Aaahh!!! Real Monsters",
-    "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Aaahh!!!%20Real%20Monsters%20(USA).png",
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Aaahh!!!%20Real%20Monsters.md"
-  },
-  {
-    "id": "beauty-and-the-beast-roar-of-the-beast",
-    "name": "Beauty and the Beast - Roar of the Beast",
-    "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Beauty%20and%20the%20Beast%20-%20Roar%20of%20the%20Beast%20(USA).png",
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Beauty%20and%20the%20Beast%20-%20Roar%20of%20the%20Beast.bin"
   },
   {
     "id": "fifa-98-road-to-the-world-cup",
