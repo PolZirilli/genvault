@@ -243,5 +243,201 @@
     "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/X-Men%202%20-%20Clone%20Wars%20(USA%2C%20Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/XMen2CloneWars.md"
+  },
+  {
+    "id": "dinosaurs-tale",
+    "name": "A Dinosaur's Tale",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/A%20Dinosaur's%20Tale.bin"
+  },
+  {
+    "id": "aaaahh-real-monsters",
+    "name": "Aaahh!!! Real Monsters",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Aaahh!!!%20Real%20Monsters.bin"
+  },
+  {
+    "id": "beauty-and-the-beast-roar-of-the-beast",
+    "name": "Beauty and the Beast - Roar of the Beast",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Beauty%20and%20the%20Beast%20-%20Roar%20of%20the%20Beast.bin"
+  },
+  {
+    "id": "fifa-98-road-to-the-world-cup",
+    "name": "FIFA Soccer 98 - Road to the World Cup",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/FIFA%20Soccer%2098%20-%20Road%20to%20the%20World%20Cup.bin"
+  },
+  {
+    "id": "fantasia",
+    "name": "Fantasia",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Fantasia.bin"
+  },
+  {
+    "id": "international-superstar-soccer-deluxe",
+    "name": "International Superstar Soccer Deluxe",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/International%20Superstar%20Soccer%20Deluxe.bin"
+  },
+  {
+    "id": "tmnt-shredders-re-revenge",
+    "name": "TMNT - Shredder's Re-Revenge",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/TMNT%20%20-%20%20Shredder's%20Re-Revenge.bin"
+  },
+  {
+    "id": "chaos-engine",
+    "name": "The Chaos Engine",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Chaos%20Engine.bin"
+  },
+  {
+    "id": "lost-world-jurassic-park",
+    "name": "The Lost World - Jurassic Park",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Lost%20World%20-%20Jurassic%20Park.bin"
+  },
+  {
+    "id": "super-shinobi-ii",
+    "name": "The Super Shinobi II",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Super%20Shinobi%20II.bin"
+  },
+  {
+    "id": "super-shinobi",
+    "name": "The Super Shinobi",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Super%20Shinobi.bin"
+  },
+  {
+    "id": "tiny-toon-adventures-acme-all-stars",
+    "name": "Tiny Toon Adventures - Acme All-Stars",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Tiny%20Toon%20Adventures%20-%20Acme%20All-Stars%20(USA%2C%20Korea).bin"
+  },
+  {
+    "id": "toxic-crusaders",
+    "name": "Toxic Crusaders",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Toxic%20Crusaders.bin"
+  },
+  {
+    "id": "true-lies",
+    "name": "True Lies",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/True%20Lies.bin"
+  },
+  {
+    "id": "two-crude-dudes",
+    "name": "Two Crude Dudes",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Two%20Crude%20Dudes.bin"
+  },
+  {
+    "id": "virtual-bart",
+    "name": "Virtual Bart",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Virtual%20Bart.md"
+  },
+  {
+    "id": "tmnt-shredders-re-revenge",
+    "name": "TMNT - Shredder's Re-Revenge",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/TMNT%20%20-%20%20Shredder's%20Re-Revenge.md"
+  },
+  {
+    "id": "chaos-engine",
+    "name": "The Chaos Engine",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Chaos%20Engine.md"
+  },
+  {
+    "id": "lost-world-jurassic-park",
+    "name": "The Lost World - Jurassic Park",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Lost%20World%20-%20Jurassic%20Park.md"
+  },
+  {
+    "id": "super-shinobi-ii",
+    "name": "The Super Shinobi II",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Super%20Shinobi%20II.md"
+  },
+  {
+    "id": "super-shinobi",
+    "name": "The Super Shinobi",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Super%20Shinobi.md"
+  },
+  {
+    "id": "tiny-toon-adventures-acme-all-stars",
+    "name": "Tiny Toon Adventures - Acme All-Stars (USA, Korea)",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Tiny%20Toon%20Adventures%20-%20Acme%20All-Stars%20(USA%2C%20Korea).md"
+  },
+  {
+    "id": "toxic-crusaders",
+    "name": "Toxic Crusaders",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Toxic%20Crusaders.bin"
+  },
+  {
+    "id": "true-lies",
+    "name": "True Lies",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/True%20Lies.md"
+  },
+  {
+    "id": "two-crude-dudes",
+    "name": "Two Crude Dudes",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Two%20Crude%20Dudes.bin"
+  },
+  {
+    "id": "virtual-bart",
+    "name": "Virtual Bart",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Virtual%20Bart.md"
+  },
+  {
+    "id": "wolverine",
+    "name": "Wolverine - Adamantium Redux",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Wolverine%20%20-%20Adamantium%20Redux.md"
+  },
+  {
+    "id": "x-men",
+    "name": "X-Men",
+    "region": "🇪🇦",
+    "cover": "",
+    "bundle": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/X-Men.md"
   }
 ]
