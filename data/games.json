@@ -122,7 +122,7 @@
     "id": "princeofpersia2",
     "name": "Prince of Persia 2",
     "region": "🇪🇦",
-    "cover": "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Prince%20of%20Persia%202%20-%20The%20Shadow%20and%20the%20Flame%20(Europe)%20(Proto).png",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Prince%20of%20Persia%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Prince-of-Persia-2-The-Shadow-and-The-Flame.bin"
   },
   {
@@ -143,7 +143,7 @@
     "id": "sonicthehedgehog",
     "name": "Sonic the Hedgehog",
     "region": "🇪🇦",
-    "cover": "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Sonic%20The%20Hedgehog%20(USA).png",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Sonic%20The%20Hedgehog%20(Japan%2C%20Korea).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Sonic-The-Hedgehog.md"
   },
   {
@@ -199,7 +199,7 @@
     "id": "GhoulsNGhosts",
     "name": "Ghouls N Ghosts ",
     "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/fa297306ef552f00b0a5b0f2569a8df883d7aea6/Named_Boxarts/Ghouls'n%20Ghosts%20(Japan%2C%20USA)%20(En).png",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Ghouls'n%20Ghosts%20(USA%2C%20Europe)%20(Rev%20A).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/GhoulsNGhosts.bin"
   },
   {
@@ -248,196 +248,196 @@
     "id": "dinosaurs-tale",
     "name": "A Dinosaur's Tale",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Dinosaur's%20Tale%2C%20A%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/A%20Dinosaur's%20Tale.bin"
   },
   {
     "id": "aaaahh-real-monsters",
     "name": "Aaahh!!! Real Monsters",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Aaahh!!!%20Real%20Monsters%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Aaahh!!!%20Real%20Monsters.bin"
   },
   {
     "id": "beauty-and-the-beast-roar-of-the-beast",
     "name": "Beauty and the Beast - Roar of the Beast",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Beauty%20and%20the%20Beast%20-%20Roar%20of%20the%20Beast%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Beauty%20and%20the%20Beast%20-%20Roar%20of%20the%20Beast.bin"
   },
   {
     "id": "fifa-98-road-to-the-world-cup",
     "name": "FIFA Soccer 98 - Road to the World Cup",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/fa297306ef552f00b0a5b0f2569a8df883d7aea6/Named_Boxarts/FIFA%2098%20-%20Road%20to%20World%20Cup%20(Europe)%20(En%2CFr%2CEs%2CIt%2CSv).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/FIFA%20Soccer%2098%20-%20Road%20to%20the%20World%20Cup.bin"
   },
   {
     "id": "fantasia",
     "name": "Fantasia",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Fantasia%20(World)%20(Rev%20A).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Fantasia.bin"
   },
   {
     "id": "international-superstar-soccer-deluxe",
     "name": "International Superstar Soccer Deluxe",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/International%20Superstar%20Soccer%20Deluxe%20(Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/International%20Superstar%20Soccer%20Deluxe.bin"
   },
   {
     "id": "tmnt-shredders-re-revenge",
     "name": "TMNT - Shredder's Re-Revenge",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://images.launchbox-app.com/e6658541-afed-4fe6-aeb9-ff8e7677ca59.png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/TMNT%20%20-%20%20Shredder's%20Re-Revenge.bin"
   },
   {
     "id": "chaos-engine",
     "name": "The Chaos Engine",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Chaos%20Engine%2C%20The%20(Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Chaos%20Engine.bin"
   },
   {
     "id": "lost-world-jurassic-park",
     "name": "The Lost World - Jurassic Park",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Lost%20World%2C%20The%20-%20Jurassic%20Park%20(USA%2C%20Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Lost%20World%20-%20Jurassic%20Park.bin"
   },
   {
     "id": "super-shinobi-ii",
     "name": "The Super Shinobi II",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Super%20Shinobi%20II%2C%20The%20(Japan)%20(Beta)%20(Earlier).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Super%20Shinobi%20II.bin"
   },
   {
     "id": "super-shinobi",
     "name": "The Super Shinobi",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Super%20Shinobi%2C%20The%20(Japan).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Super%20Shinobi.bin"
   },
   {
     "id": "tiny-toon-adventures-acme-all-stars",
     "name": "Tiny Toon Adventures - Acme All-Stars",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Tiny%20Toon%20Adventures%20-%20Acme%20All-Stars%20(Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Tiny%20Toon%20Adventures%20-%20Acme%20All-Stars%20(USA%2C%20Korea).bin"
   },
   {
     "id": "toxic-crusaders",
     "name": "Toxic Crusaders",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Toxic%20Crusaders%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Toxic%20Crusaders.bin"
   },
   {
     "id": "true-lies",
     "name": "True Lies",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/True%20Lies%20(World).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/True%20Lies.bin"
   },
   {
     "id": "two-crude-dudes",
     "name": "Two Crude Dudes",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Two%20Crude%20Dudes%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Two%20Crude%20Dudes.bin"
   },
   {
     "id": "virtual-bart",
     "name": "Virtual Bart",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Virtual%20Bart%20(World).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Virtual%20Bart.md"
   },
   {
     "id": "tmnt-shredders-re-revenge",
     "name": "TMNT - Shredder's Re-Revenge",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://images.launchbox-app.com/e6658541-afed-4fe6-aeb9-ff8e7677ca59.png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/TMNT%20%20-%20%20Shredder's%20Re-Revenge.md"
   },
   {
     "id": "chaos-engine",
     "name": "The Chaos Engine",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Chaos%20Engine%2C%20The%20(Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Chaos%20Engine.md"
   },
   {
     "id": "lost-world-jurassic-park",
     "name": "The Lost World - Jurassic Park",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Lost%20World%2C%20The%20-%20Jurassic%20Park%20(USA%2C%20Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Lost%20World%20-%20Jurassic%20Park.md"
   },
   {
     "id": "super-shinobi-ii",
     "name": "The Super Shinobi II",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Super%20Shinobi%20II%2C%20The%20(Japan)%20(Beta)%20(Earlier).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Super%20Shinobi%20II.md"
   },
   {
     "id": "super-shinobi",
     "name": "The Super Shinobi",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Super%20Shinobi%2C%20The%20(Japan).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Super%20Shinobi.md"
   },
   {
     "id": "tiny-toon-adventures-acme-all-stars",
     "name": "Tiny Toon Adventures - Acme All-Stars (USA, Korea)",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Tiny%20Toon%20Adventures%20-%20Acme%20All-Stars%20(Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Tiny%20Toon%20Adventures%20-%20Acme%20All-Stars%20(USA%2C%20Korea).md"
   },
   {
     "id": "toxic-crusaders",
     "name": "Toxic Crusaders",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Toxic%20Crusaders%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Toxic%20Crusaders.bin"
   },
   {
     "id": "true-lies",
     "name": "True Lies",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/True%20Lies%20(World).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/True%20Lies.md"
   },
   {
     "id": "two-crude-dudes",
     "name": "Two Crude Dudes",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Two%20Crude%20Dudes%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Two%20Crude%20Dudes.bin"
   },
   {
     "id": "virtual-bart",
     "name": "Virtual Bart",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Virtual%20Bart%20(World).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Virtual%20Bart.md"
   },
   {
     "id": "wolverine",
     "name": "Wolverine - Adamantium Redux",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/fa297306ef552f00b0a5b0f2569a8df883d7aea6/Named_Boxarts/Wolverine%20-%20Adamantium%20Rage%20(Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Wolverine%20%20-%20Adamantium%20Redux.md"
   },
   {
     "id": "x-men",
     "name": "X-Men",
     "region": "🇪🇦",
-    "cover": "",
+    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/X-Men%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/X-Men.md"
   }
 ]
