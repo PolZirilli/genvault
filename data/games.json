@@ -289,7 +289,7 @@
   {
     "id": "tiny-toon-adventures-acme-all-stars",
     "name": "Tiny Toon Adventures - Acme All-Stars",
-    "region": "🇪🇦",
+    "region": "🇬🇧",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Tiny%20Toon%20Adventures%20-%20Acme%20All-Stars%20(Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Tiny%20Toon%20Adventures%20-%20Acme%20All-Stars%20(USA%2C%20Korea).md"
   },
@@ -299,13 +299,6 @@
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Toxic%20Crusaders%20(USA).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Toxic%20Crusaders.bin"
-  },
-  {
-    "id": "true-lies",
-    "name": "True Lies",
-    "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/True%20Lies%20(World).png",
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/True%20Lies.md"
   },
   {
     "id": "two-crude-dudes",
