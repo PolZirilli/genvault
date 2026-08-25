@@ -80,12 +80,10 @@ select {
     flex: none;
     width: 190px;
     filter: drop-shadow(3px 3px 0 var(--blue-glow));
-    transition: transform .12s ease;
+    transition: transform 0.1s ease;
 }
 
-.brand-logo:hover {
-    transform: translateY(-2px);
-}
+
 
 .brand-logo img {
     display: block;
@@ -97,7 +95,7 @@ select {
     display: flex;
     flex: none;
     align-items: center;
-    gap: 10px;
+    gap: 0.6rem;
 }
 
 .vault-nav-icon {
@@ -107,7 +105,7 @@ select {
     width: 110px;
     height: 110px;
     padding: 4px 0px;
-    transition: all .12s;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
 
 .vault-nav-icon img {
@@ -117,12 +115,11 @@ select {
 }
 
 .vault-nav-icon:hover {
-    transform: translateY(-2px);
+    transform: translate(-2px, -2px);
 }
 
 .vault-nav-icon:active {
-    transform: translateY(1px);
-    box-shadow: 0 1px 0 #001a44;
+    transform: translate(1px, 1px);
 }
 
 @media (max-width: 560px) {
