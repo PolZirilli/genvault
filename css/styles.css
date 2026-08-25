@@ -60,38 +60,90 @@ select {
     font-size: var(--fs-min);
 }
 
-/* ══ HEADER — igual que la versión actual, solo centrado arriba de las 2 columnas ══ */
-header {
-    text-align: center;
-    margin-bottom: 18px;
+/* ══ HEADER — logo-ícono a la izquierda (control de esta consola) +
+   navbar de íconos a la derecha (controles de los otros emuladores
+   de la familia Vault, cada uno linkea al sitio hermano). Mismo
+   concepto y misma estructura que NESvault/SNESvault, con el logo
+   propio de cada uno a la izquierda. ══ */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
     max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 18px;
 }
 
-.logo {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 900;
-    font-size: clamp(22px, 5vw, 38px);
-    color: var(--white);
-    letter-spacing: 6px;
-    text-shadow:
-        0 0 24px var(--blue-glow),
-        0 0 60px rgba(0, 102, 255, 0.25),
-        2px 2px 0 #001a44,
-        4px 4px 0 #000d22;
+.brand-logo {
+    display: block;
+    flex: none;
+    width: 190px;
+    filter: drop-shadow(0 0 16px var(--blue-glow)) drop-shadow(2px 2px 0 #001a44);
+    transition: transform .12s ease;
 }
 
-.logo span {
-    color: var(--blue2);
+.brand-logo:hover {
+    transform: translateY(-2px);
 }
 
-.subtitle {
-    font-size: var(--fs-sm);
-    color: var(--chrome-dk);
-    letter-spacing: 1px;
-    margin-top: 2px;
-    text-transform: uppercase;
+.brand-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.vault-nav {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 10px;
+}
+
+.vault-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 62px;
+    padding: 6px 8px;
+    background: var(--panel2);
+    border: 1px solid var(--border2);
+    box-shadow: 0 3px 0 #001a44;
+    transition: all .12s;
+}
+
+.vault-nav-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.vault-nav-icon:hover {
+    border-color: var(--blue);
+    box-shadow: 0 4px 0 #001a44, 0 0 18px var(--blue-glow);
+    transform: translateY(-2px);
+}
+
+.vault-nav-icon:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 0 #001a44;
+}
+
+@media (max-width: 560px) {
+    .site-header {
+        justify-content: center;
+    }
+
+    .brand-logo {
+        width: 138px;
+    }
+
+    .vault-nav-icon {
+        width: 72px;
+        height: 48px;
+        padding: 4px 6px;
+    }
 }
 
 /* ══════════════════════════════════════════
