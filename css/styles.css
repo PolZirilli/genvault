@@ -71,7 +71,7 @@ select {
     flex-wrap: wrap;
     gap: 0.85rem;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 1.25rem auto;
     padding: 0rem 1.25rem;
 }
 
