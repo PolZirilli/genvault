@@ -119,20 +119,6 @@
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Mortal-Kombat-2-Unlimited.bin"
   },
   {
-    "id": "princeofpersia2",
-    "name": "Prince of Persia 2",
-    "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Prince%20of%20Persia%20(USA).png",
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Prince-of-Persia-2-The-Shadow-and-The-Flame.bin"
-  },
-  {
-    "id": "princeofpersia",
-    "name": "Prince of Persia",
-    "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Prince%20of%20Persia%20(USA).png",
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Prince-of-Persia.bin"
-  },
-  {
     "id": "robocopvsterminator",
     "name": "Robocop Versus The Terminator",
     "region": "🇪🇦",
@@ -257,13 +243,6 @@
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Lost%20World%2C%20The%20-%20Jurassic%20Park%20(USA%2C%20Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/The%20Lost%20World%20-%20Jurassic%20Park.md"
-  },
-  {
-    "id": "virtual-bart",
-    "name": "Virtual Bart",
-    "region": "🇪🇦",
-    "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Virtual%20Bart%20(World).png",
-    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Virtual%20Bart.md"
   },
   {
     "id": "tmnt-shredders-re-revenge",
