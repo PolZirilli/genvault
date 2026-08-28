@@ -516,8 +516,8 @@
       authError.textContent = '';
       try {
         const { hasAdmin } = await api('/api/status');
-        formLogin.hidden = hasAdmin;
-        formBootstrap.hidden = !hasAdmin ? false : true;
+        formLogin.hidden = !hasAdmin;
+        formBootstrap.hidden = hasAdmin;
         authDesc.textContent = hasAdmin
           ? 'Iniciá sesión para subir juegos.'
           : 'Primera vez acá: creá la cuenta de administrador.';
