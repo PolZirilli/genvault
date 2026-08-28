@@ -1,1 +1,681 @@
 
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vault — Panel de Subida de Juegos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap">
+  <style>
+    :root {
+      --bg: #0a0c10;
+      --panel: #10141c;
+      --panel2: #161b26;
+      --border: #1e2a3a;
+      --border2: #2a3a52;
+      --blue: #0066ff;
+      --blue2: #3388ff;
+      --blue-glow: rgba(0, 102, 255, 0.55);
+      --green: #22cc66;
+      --yellow: #ffcc00;
+      --red: #cc2200;
+      --text2: #c8d8e8;
+      --white: #ffffff;
+      --fs-min: 1rem;
+      --fs-sm: 1.02rem;
+      --fs-base: 1.04rem;
+      --fs-md: 1.20rem;
+      --fs-lg: 1.40rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text2);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: var(--fs-base);
+      min-height: 100vh;
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--blue2);
+      text-shadow: 0 0 12px var(--blue-glow);
+    }
+
+    .subtitle {
+      color: var(--text2);
+      font-size: var(--fs-sm);
+      margin-top: 0.4rem;
+      opacity: 0.85;
+    }
+
+    main {
+      width: 100%;
+      max-width: 720px;
+      background: var(--panel);
+      border: 1px solid var(--border2);
+      border-radius: 6px;
+      box-shadow: 0 0 0 1px var(--border), 0 8px 30px rgba(0, 0, 0, 0.5);
+      padding: 1.75rem;
+    }
+
+    .desc {
+      font-size: var(--fs-sm);
+      line-height: 1.6;
+      color: var(--text2);
+      margin-bottom: 1.5rem;
+    }
+
+    .desc code {
+      background: var(--panel2);
+      border: 1px solid var(--border);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.95em;
+      color: var(--blue2);
+    }
+
+    label {
+      display: block;
+      font-size: var(--fs-sm);
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+
+    .field {
+      margin-bottom: 1.1rem;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    select {
+      width: 100%;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: var(--fs-base);
+      color: var(--white);
+      background: var(--panel2);
+      border: 1px solid var(--border2);
+      border-radius: 4px;
+      padding: 0.7rem 0.85rem;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--blue2);
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      color: var(--text2);
+      opacity: 0.7;
+      margin-top: 0.3rem;
+    }
+
+    .dropzone {
+      border: 2px dashed var(--border2);
+      border-radius: 6px;
+      padding: 1.4rem;
+      text-align: center;
+      cursor: pointer;
+      background: var(--panel2);
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .dropzone.drag {
+      border-color: var(--blue2);
+      background: rgba(0, 102, 255, 0.08);
+    }
+
+    .dropzone input[type="file"] {
+      display: none;
+    }
+
+    .dropzone-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .dropzone-filename {
+      margin-top: 0.6rem;
+      color: var(--blue2);
+      font-weight: bold;
+      word-break: break-all;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    button {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: var(--fs-min);
+      letter-spacing: 1px;
+      padding: 0.9rem 1.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 2px solid var(--blue);
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: 0 4px 0 #003d99;
+      transition: transform 0.05s ease;
+    }
+
+    button:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #003d99;
+    }
+
+    button:disabled {
+      background: var(--panel2);
+      border-color: var(--border2);
+      color: var(--text2);
+      opacity: 0.6;
+      cursor: not-allowed;
+      box-shadow: 0 4px 0 var(--border);
+    }
+
+    button.secondary {
+      background: var(--panel2);
+      border-color: var(--border2);
+      box-shadow: 0 4px 0 var(--border);
+    }
+
+    button.link {
+      background: none;
+      border: none;
+      box-shadow: none;
+      color: var(--blue2);
+      text-decoration: underline;
+      padding: 0.4rem 0;
+      font-family: 'Share Tech Mono', monospace;
+      font-weight: normal;
+      letter-spacing: normal;
+      font-size: var(--fs-sm);
+    }
+
+    .status-line {
+      margin-top: 1.1rem;
+      font-size: var(--fs-sm);
+      color: var(--blue2);
+      min-height: 1.4em;
+    }
+
+    .error-line {
+      margin-top: 1.1rem;
+      font-size: var(--fs-sm);
+      color: var(--red);
+      min-height: 1.4em;
+    }
+
+    .summary {
+      margin-top: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: var(--fs-md);
+      color: var(--white);
+      display: none;
+    }
+
+    .summary.visible {
+      display: block;
+    }
+
+    .summary a {
+      color: var(--blue2);
+    }
+
+    #log {
+      margin-top: 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      max-height: 420px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    #log.visible {
+      display: block;
+    }
+
+    .log-row {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0.55rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--fs-sm);
+      line-height: 1.4;
+      align-items: baseline;
+    }
+
+    .log-row:last-child {
+      border-bottom: none;
+    }
+
+    .log-icon {
+      flex-shrink: 0;
+    }
+
+    .log-row.ok .log-icon {
+      color: var(--green);
+    }
+
+    .log-row.fuzzy .log-icon {
+      color: var(--blue2);
+    }
+
+    .log-row.miss .log-icon,
+    .log-row.warn .log-icon {
+      color: var(--yellow);
+    }
+
+    .log-row.err .log-icon {
+      color: var(--red);
+    }
+
+    .topbar {
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 0.75rem;
+    }
+
+    footer {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.5;
+      text-align: center;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">VAULT<span>admin</span></div>
+    <div class="subtitle">◈ Panel de Subida de Juegos — GENvault · SNESvault · NESvault</div>
+  </header>
+
+  <div class="topbar">
+    <button id="btnLogout" class="link" hidden>Cerrar sesión</button>
+  </div>
+
+  <!-- ============ LOGIN / BOOTSTRAP ============ -->
+  <main id="viewAuth">
+    <p class="desc" id="authDesc">Iniciá sesión para subir juegos.</p>
+
+    <form id="formLogin">
+      <div class="field">
+        <label for="loginUser">Usuario</label>
+        <input type="text" id="loginUser" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="loginPass">Contraseña</label>
+        <input type="password" id="loginPass" autocomplete="current-password" required>
+      </div>
+      <div class="btn-row">
+        <button type="submit" id="btnLogin">🔐 INICIAR SESIÓN</button>
+      </div>
+    </form>
+
+    <form id="formBootstrap" hidden>
+      <p class="desc">No hay ninguna cuenta de administrador todavía — creá la primera con la clave de arranque
+        (<code>BOOTSTRAP_KEY</code>) que configuraste en el Worker.</p>
+      <div class="field">
+        <label for="bsKey">Clave de arranque</label>
+        <input type="password" id="bsKey" required>
+      </div>
+      <div class="field">
+        <label for="bsUser">Usuario nuevo</label>
+        <input type="text" id="bsUser" required>
+      </div>
+      <div class="field">
+        <label for="bsPass">Contraseña nueva</label>
+        <input type="password" id="bsPass" required minlength="8">
+        <div class="hint">Mínimo 8 caracteres.</div>
+      </div>
+      <div class="btn-row">
+        <button type="submit" id="btnBootstrap">✅ CREAR CUENTA</button>
+      </div>
+    </form>
+
+    <div class="error-line" id="authError"></div>
+  </main>
+
+  <!-- ============ PANEL DE SUBIDA ============ -->
+  <main id="viewPanel" hidden>
+    <p class="desc">
+      Subí un ROM y el panel se encarga de todo: lo sube al bucket de Cloudflare R2 en la carpeta que
+      corresponde, busca la portada en <code>libretro-thumbnails</code> (repo público, mismo algoritmo que ya
+      usaba <code>actualizar-portadas.html</code>) y commitea el <code>data/games.json</code> del sitio
+      correspondiente en GitHub.
+    </p>
+
+    <form id="formUpload">
+      <div class="field">
+        <label for="platform">Plataforma</label>
+        <select id="platform" required></select>
+      </div>
+
+      <div class="field">
+        <label>Archivo ROM</label>
+        <div class="dropzone" id="dropzone">
+          <div class="dropzone-icon">📁</div>
+          <div>Arrastrá el archivo acá o hacé click para elegirlo</div>
+          <div class="hint" id="extHint"></div>
+          <div class="dropzone-filename" id="filename"></div>
+          <input type="file" id="romFile">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="gameName">Nombre del juego</label>
+        <input type="text" id="gameName" placeholder='Ej. "Super Mario World"' required>
+      </div>
+
+      <div class="field">
+        <label for="gameId">ID interno (opcional)</label>
+        <input type="text" id="gameId" placeholder="Se autogenera del nombre si lo dejás vacío">
+        <div class="hint">Si ya existe un juego con este ID en el catálogo, se sobreescribe (útil para corregir uno
+          existente).</div>
+      </div>
+
+      <div class="field">
+        <label for="gameRegion">Región</label>
+        <input type="text" id="gameRegion" placeholder='Ej. "🇺🇸" o "USA"'>
+      </div>
+
+      <div class="btn-row">
+        <button type="submit" id="btnUpload">⬆ SUBIR JUEGO</button>
+      </div>
+    </form>
+
+    <div class="status-line" id="statusLine"></div>
+    <div class="summary" id="summary"></div>
+    <div id="log"></div>
+  </main>
+
+  <footer>Vault Admin Panel · Sube ROMs a R2 y commitea games.json en GitHub automáticamente</footer>
+
+  <script>
+    // ⚠️ EDITAR ESTO después de deployar el Worker con `wrangler deploy`:
+    const WORKER_URL = 'https://vault-admin.pablozirilli.workers.dev/';
+
+    const TOKEN_KEY = 'vaultadmin_token';
+
+    const viewAuth = document.getElementById('viewAuth');
+    const viewPanel = document.getElementById('viewPanel');
+    const authDesc = document.getElementById('authDesc');
+    const formLogin = document.getElementById('formLogin');
+    const formBootstrap = document.getElementById('formBootstrap');
+    const authError = document.getElementById('authError');
+    const btnLogout = document.getElementById('btnLogout');
+
+    const platformSelect = document.getElementById('platform');
+    const dropzone = document.getElementById('dropzone');
+    const romFile = document.getElementById('romFile');
+    const filenameEl = document.getElementById('filename');
+    const extHint = document.getElementById('extHint');
+    const gameName = document.getElementById('gameName');
+    const gameId = document.getElementById('gameId');
+    const gameRegion = document.getElementById('gameRegion');
+    const formUpload = document.getElementById('formUpload');
+    const btnUpload = document.getElementById('btnUpload');
+    const statusLine = document.getElementById('statusLine');
+    const summaryEl = document.getElementById('summary');
+    const logEl = document.getElementById('log');
+
+    let platforms = {};
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    function getToken() {
+      try {
+        const raw = localStorage.getItem(TOKEN_KEY);
+        if (!raw) return null;
+        const data = JSON.parse(raw);
+        if (data.expiresAt && Date.now() > data.expiresAt) { localStorage.removeItem(TOKEN_KEY); return null; }
+        return data.token;
+      } catch { return null; }
+    }
+    function setToken(token, expiresIn) {
+      localStorage.setItem(TOKEN_KEY, JSON.stringify({ token, expiresAt: Date.now() + expiresIn * 1000 }));
+    }
+    function clearToken() { localStorage.removeItem(TOKEN_KEY); }
+
+    async function api(path, opts = {}) {
+      const res = await fetch(WORKER_URL + path, opts);
+      let data = null;
+      try { data = await res.json(); } catch { /* respuesta vacía */ }
+      if (!res.ok) throw new Error((data && data.error) || `Error ${res.status}`);
+      return data;
+    }
+
+    async function loadPlatforms() {
+      platforms = await api('/api/platforms');
+      platformSelect.innerHTML = Object.entries(platforms)
+        .map(([key, cfg]) => `<option value="${key}">${escapeHtml(cfg.label)}</option>`)
+        .join('');
+      updateExtHint();
+    }
+
+    function updateExtHint() {
+      const cfg = platforms[platformSelect.value];
+      if (!cfg) return;
+      extHint.textContent = `Formatos: ${cfg.extensions.join(', ')}`;
+      romFile.setAttribute('accept', cfg.extensions.join(','));
+    }
+
+    async function showPanel() {
+      viewAuth.hidden = true;
+      viewPanel.hidden = false;
+      btnLogout.hidden = false;
+      await loadPlatforms();
+    }
+
+    async function showAuth() {
+      viewPanel.hidden = true;
+      viewAuth.hidden = false;
+      btnLogout.hidden = true;
+      authError.textContent = '';
+      try {
+        const { hasAdmin } = await api('/api/status');
+        formLogin.hidden = hasAdmin;
+        formBootstrap.hidden = !hasAdmin ? false : true;
+        authDesc.textContent = hasAdmin
+          ? 'Iniciá sesión para subir juegos.'
+          : 'Primera vez acá: creá la cuenta de administrador.';
+      } catch (e) {
+        authError.textContent = `No pude conectar con el Worker (${WORKER_URL}). ¿Ya lo deployaste y editaste WORKER_URL en este archivo? Detalle: ${e.message}`;
+      }
+    }
+
+    formBootstrap.addEventListener('submit', async e => {
+      e.preventDefault();
+      authError.textContent = '';
+      const btn = document.getElementById('btnBootstrap');
+      btn.disabled = true;
+      try {
+        await api('/api/bootstrap', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-Bootstrap-Key': document.getElementById('bsKey').value },
+          body: JSON.stringify({ username: document.getElementById('bsUser').value, password: document.getElementById('bsPass').value }),
+        });
+        formBootstrap.reset();
+        await showAuth();
+      } catch (e) {
+        authError.textContent = e.message;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    formLogin.addEventListener('submit', async e => {
+      e.preventDefault();
+      authError.textContent = '';
+      const btn = document.getElementById('btnLogin');
+      btn.disabled = true;
+      try {
+        const data = await api('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: document.getElementById('loginUser').value,
+            password: document.getElementById('loginPass').value,
+          }),
+        });
+        setToken(data.token, data.expiresIn);
+        formLogin.reset();
+        await showPanel();
+      } catch (e) {
+        authError.textContent = e.message;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    btnLogout.addEventListener('click', () => { clearToken(); showAuth(); });
+
+    platformSelect.addEventListener('change', updateExtHint);
+
+    dropzone.addEventListener('click', () => romFile.click());
+    dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag'));
+    dropzone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropzone.classList.remove('drag');
+      if (e.dataTransfer.files.length) { romFile.files = e.dataTransfer.files; onFileChosen(); }
+    });
+    romFile.addEventListener('change', onFileChosen);
+
+    function onFileChosen() {
+      const f = romFile.files[0];
+      filenameEl.textContent = f ? f.name : '';
+      if (f && !gameName.value) {
+        const base = f.name.replace(/\.[^.]+$/, '');
+        gameName.value = base;
+      }
+    }
+
+    gameName.addEventListener('input', () => {
+      if (!gameId.dataset.touched) {
+        gameId.value = gameName.value
+          .replace(/\([^)]*\)/g, '')
+          .split(/[^a-zA-Z0-9]+/)
+          .filter(Boolean)
+          .map(w => w[0].toUpperCase() + w.slice(1))
+          .join('');
+      }
+    });
+    gameId.addEventListener('input', () => { gameId.dataset.touched = '1'; });
+
+    function addLogRow(kind, icon, msg) {
+      const row = document.createElement('div');
+      row.className = 'log-row ' + kind;
+      row.innerHTML = `<span class="log-icon">${icon}</span><span>${escapeHtml(msg)}</span>`;
+      logEl.appendChild(row);
+    }
+    const ICONS = { ok: '✅', fuzzy: '🟦', miss: '⚠️', warn: '⚠️', err: '✖' };
+
+    formUpload.addEventListener('submit', async e => {
+      e.preventDefault();
+      const token = getToken();
+      if (!token) { await showAuth(); return; }
+
+      logEl.innerHTML = '';
+      logEl.classList.add('visible');
+      summaryEl.classList.remove('visible');
+      statusLine.textContent = '';
+
+      const f = romFile.files[0];
+      if (!f) { statusLine.textContent = 'Elegí un archivo de ROM primero.'; return; }
+
+      btnUpload.disabled = true;
+      statusLine.textContent = 'Subiendo y procesando…';
+
+      const fd = new FormData();
+      fd.append('platform', platformSelect.value);
+      fd.append('rom', f);
+      fd.append('name', gameName.value.trim());
+      fd.append('id', gameId.value.trim());
+      fd.append('region', gameRegion.value.trim());
+
+      try {
+        const res = await fetch(WORKER_URL + '/api/upload', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}` },
+          body: fd,
+        });
+        const data = await res.json();
+
+        (data.log || []).forEach(row => addLogRow(row.kind, ICONS[row.kind] || '•', row.msg));
+
+        if (!res.ok || !data.ok) {
+          statusLine.textContent = 'Falló la subida — mirá el detalle abajo.';
+          if (res.status === 401) { clearToken(); }
+          return;
+        }
+
+        statusLine.textContent = 'Listo.';
+        summaryEl.innerHTML = `<span style="color:var(--green)">✔ ${escapeHtml(data.entry.name)}</span> agregado/actualizado en el catálogo.` +
+          (data.commitUrl ? ` <a href="${data.commitUrl}" target="_blank" rel="noopener">Ver commit en GitHub ↗</a>` : '');
+        summaryEl.classList.add('visible');
+
+        formUpload.reset();
+        gameId.dataset.touched = '';
+        filenameEl.textContent = '';
+      } catch (e) {
+        addLogRow('err', '✖', e.message);
+        statusLine.textContent = 'Falló la subida — mirá el detalle abajo.';
+      } finally {
+        btnUpload.disabled = false;
+      }
+    });
+
+    // Arranque
+    (async () => {
+      const token = getToken();
+      if (token) await showPanel();
+      else await showAuth();
+    })();
+  </script>
+</body>
+
+</html>
