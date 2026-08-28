@@ -1,0 +1,34 @@
+name = "vault-admin"
+main = "src/index.js"
+compatibility_date = "2026-08-27"
+
+# Bucket R2 compartido que ya usan GENvault/SNESvault/NESvault (público, mismo
+# que "pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev"). El binding le da al Worker
+# acceso de escritura directo, sin necesitar claves S3 por separado.
+[[r2_buckets]]
+binding = "ASSETS_BUCKET"
+bucket_name = "assets"
+
+# Base de datos D1 ya creada (nombre "vault-admin"). Solo guarda la tabla
+# admin_users — nada de datos de juegos ni de sesiones.
+[[d1_databases]]
+binding = "DB"
+database_name = "vault-admin"
+database_id = "ba3b1e3a-6bfb-4945-a065-e911a338ab78"
+
+[vars]
+# URL pública del bucket R2 (la misma que ya usan los 3 sitios).
+R2_PUBLIC_BASE_URL = "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev"
+# Orígenes desde los que se puede llamar a este Worker. Agregá acá cualquier
+# dominio nuevo donde termines alojando el panel (sin barra final — ese bug
+# ya se pisó dos veces en este proyecto, ver snesvault-status.md).
+ALLOWED_ORIGINS = "https://genvaultapp.netlify.app,https://snesvault.netlify.app,https://nesvault.netlify.app,http://localhost:8000,http://127.0.0.1:8000"
+# Duración de la sesión del panel, en segundos (43200 = 12hs).
+SESSION_TTL_SECONDS = "43200"
+
+# Secretos — NO van acá, se configuran con `wrangler secret put <NOMBRE>`:
+#   GITHUB_TOKEN    Personal Access Token (fine-grained) con Contents: Read & Write
+#                   sobre los repos nesvault, snesvault y genvault.
+#   SESSION_SECRET  String aleatorio largo (ej. `openssl rand -hex 32`).
+#   BOOTSTRAP_KEY   Clave temporal de un solo uso para crear la primera cuenta
+#                   de administrador. Se puede borrar después de usarla.
