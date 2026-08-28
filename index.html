@@ -11,27 +11,33 @@
 <body>
 
   <header class="site-header">
-    <a class="brand-logo" href="#" title="GENvault" aria-label="GENvault — inicio">
+    <a class="brand-logo" href="#" title="GENvault" aria-label="GENvault — inicio" data-i18n-aria-label="aria_home">
       <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/sega.png" alt="GENvault" width="520"
         height="375">
     </a>
-    <nav class="vault-nav" aria-label="Familia de emuladores Vault">
-      <a class="vault-nav-icon" href="https://nesvault.netlify.app/" target="_blank" rel="noopener" title="NESvault"
-        aria-label="Ir a NESvault">
-        <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/famicom.png" alt="NESvault" width="520"
-          height="299">
-      </a>
-      <a class="vault-nav-icon" href="https://snesvault.netlify.app/" target="_blank" rel="noopener" title="SNESvault"
-        aria-label="Ir a SNESvault">
-        <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/snes.png" alt="SNESvault" width="520"
-          height="332">
-      </a>
-      <a class="vault-nav-icon" href="https://dosvault.netlify.app/" target="_blank" rel="noopener" title="DOSVault"
-        aria-label="Ir a DOSVault">
-        <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/pc.png" alt="DOSVault" width="520"
-          height="296">
-      </a>
-    </nav>
+    <div class="header-right">
+      <nav class="vault-nav" aria-label="Familia de emuladores Vault">
+        <a class="vault-nav-icon" href="https://nesvault.netlify.app/" target="_blank" rel="noopener" title="NESvault"
+          aria-label="Ir a NESvault" data-i18n-aria-label="aria_nav_nes">
+          <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/famicom.png" alt="NESvault" width="520"
+            height="299">
+        </a>
+        <a class="vault-nav-icon" href="https://snesvault.netlify.app/" target="_blank" rel="noopener" title="SNESvault"
+          aria-label="Ir a SNESvault" data-i18n-aria-label="aria_nav_snes">
+          <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/snes.png" alt="SNESvault" width="520"
+            height="332">
+        </a>
+        <a class="vault-nav-icon" href="https://dosvault.netlify.app/" target="_blank" rel="noopener" title="DOSVault"
+          aria-label="Ir a DOSVault" data-i18n-aria-label="aria_nav_dos">
+          <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/pc.png" alt="DOSVault" width="520"
+            height="296">
+        </a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Idioma / Language" data-i18n-aria-label="lang_toggle_aria">
+        <button type="button" class="lang-opt" data-lang="es">ES</button>
+        <button type="button" class="lang-opt" data-lang="en">EN</button>
+      </div>
+    </div>
   </header>
 
   <main class="layout">
@@ -46,9 +52,9 @@
             <div id="emuContainer"></div>
             <div id="loaderOverlay">
               <div class="spin"></div>
-              <p id="loaderText">CARGANDO JUEGO...</p>
+              <p id="loaderText" data-i18n="loader_default">CARGANDO JUEGO...</p>
             </div>
-            <button class="btn-fullscreen" id="btnFullscreen" title="Fullscreen">⛶</button>
+            <button class="btn-fullscreen" id="btnFullscreen" title="Fullscreen" data-i18n-title="fullscreen_title">⛶</button>
           </div>
           <div class="screen-label">MEGA DRIVE / GENESIS · 60Hz · NTSC</div>
         </div>
@@ -67,27 +73,27 @@
 
         <div class="gamepad-bar">
           <span>🕹️</span>
-          <span id="gamepadStatus">Control no detectado - Conecte un control y presione cualquier boton</span>
+          <span id="gamepadStatus" data-i18n="gamepad_not_detected">Control no detectado - Conecte un control y presione cualquier boton</span>
         </div>
 
         <div class="btn-row">
-          <button class="btn btn-primary" id="btnPlay" disabled>▶ COMENZAR</button>
-          <button class="btn btn-secondary" id="btnPause" disabled>⏸ PAUSAR</button>
-          <button class="btn btn-danger" id="btnStop" disabled>⏹ DETENER</button>
+          <button class="btn btn-primary" id="btnPlay" disabled data-i18n="btn_play">▶ COMENZAR</button>
+          <button class="btn btn-secondary" id="btnPause" disabled data-i18n="btn_pause">⏸ PAUSAR</button>
+          <button class="btn btn-danger" id="btnStop" disabled data-i18n="btn_stop">⏹ DETENER</button>
         </div>
 
-        <button class="btn-controls-toggle" id="btnControls">◈ Ver Controles</button>
+        <button class="btn-controls-toggle" id="btnControls" data-i18n="btn_view_controls">◈ Ver Controles</button>
 
       </div>
     </section>
 
     <!-- ══ COLUMNA ROMS — buscador + carousel (máx. 2 filas) + carga ══ -->
     <aside class="roms-col">
-      <h2 class="roms-heading">◈ Catálogo</h2>
+      <h2 class="roms-heading" data-i18n="catalog_heading">◈ Catálogo</h2>
 
       <div class="rom-search">
         <span class="rom-search-icon">🔍</span>
-        <input type="text" id="romSearch" placeholder="Buscar juego...">
+        <input type="text" id="romSearch" placeholder="Buscar juego..." data-i18n-placeholder="search_placeholder">
       </div>
 
       <div class="rom-carousel">
@@ -104,8 +110,8 @@
 
       <div class="file-drop" id="fileDrop">
         <span class="drop-icon">⬆</span>
-        <span class="drop-title">CARGAR JUEGO</span>
-        <span class="drop-sub">Arrastrá y soltá tu archivo acá<br>.md / .bin / .gen / .32x</span>
+        <span class="drop-title" data-i18n="drop_title">CARGAR JUEGO</span>
+        <span class="drop-sub" data-i18n-html="drop_sub_html">Arrastrá y soltá tu archivo acá<br>.md / .bin / .gen / .32x</span>
         <span class="rom-name" id="romName"></span>
         <input type="file" id="romInput" accept=".md,.bin,.gen,.smd,.32x,.rom">
       </div>
@@ -118,21 +124,21 @@
     <div class="controls-popup">
 
       <div class="controls-popup-header">
-        <span>◈ CONTROLES</span>
+        <span data-i18n="controls_title">◈ CONTROLES</span>
         <button class="controls-close" id="btnControlsClose">✕</button>
       </div>
 
       <div class="ctrl-tabs">
-        <button class="ctrl-tab active" data-panel="panelKeyboard">⌨ TECLADO</button>
-        <button class="ctrl-tab" data-panel="panelGamepad">🎮 CONTROL</button>
+        <button class="ctrl-tab active" data-panel="panelKeyboard" data-i18n="tab_keyboard">⌨ TECLADO</button>
+        <button class="ctrl-tab" data-panel="panelGamepad" data-i18n="tab_gamepad">🎮 CONTROL</button>
       </div>
 
       <div class="ctrl-panel active" id="panelKeyboard">
         <div class="gpmap-header">
-          <span class="gpmap-device">Editá las teclas a tu gusto</span>
-          <button class="gpmap-reset-btn" id="btnKeymapReset">↺ Reset defaults</button>
+          <span class="gpmap-device" data-i18n="keyboard_edit_hint">Editá las teclas a tu gusto</span>
+          <button class="gpmap-reset-btn" id="btnKeymapReset" data-i18n="reset_defaults">↺ Reset defaults</button>
         </div>
-        <div class="gpmap-hint">Presiona <strong>Set</strong> junto a una acción, y luego presiona la tecla que querés
+        <div class="gpmap-hint" data-i18n-html="keyboard_hint_html">Presiona <strong>Set</strong> junto a una acción, y luego presiona la tecla que querés
           usar. Se aplica la próxima vez que cargues un ROM.</div>
 
         <div class="keymap-columns">
@@ -141,7 +147,7 @@
             <div class="gpmap-list" id="keymapDpadList"></div>
           </div>
           <div class="keymap-col">
-            <div class="keymap-col-title">Botones</div>
+            <div class="keymap-col-title" data-i18n="col_buttons">Botones</div>
             <div class="keymap-buttons-grid" id="keymapButtonsList"></div>
           </div>
         </div>
@@ -150,17 +156,17 @@
         <div class="gpmap-list keymap-extra" id="keymapExtraList"></div>
 
         <div class="controls-shortcuts">
-          <div class="shortcut-title">Atajos internos (Genesis.js)</div>
+          <div class="shortcut-title" data-i18n="shortcuts_title">Atajos internos (Genesis.js)</div>
           <div class="shortcut-inline">
-            <span class="shortcut-chip"><span class="shortcut-label">Guardar estado</span><span
+            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_save_state">Guardar estado</span><span
                 class="shortcut-key">Ctrl/Cmd+1</span></span>
-            <span class="shortcut-chip"><span class="shortcut-label">Cargar estado</span><span
+            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_load_state">Cargar estado</span><span
                 class="shortcut-key">Ctrl/Cmd+2</span></span>
-            <span class="shortcut-chip"><span class="shortcut-label">Silenciar</span><span
+            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_mute">Silenciar</span><span
                 class="shortcut-key">Ctrl/Cmd+3</span></span>
-            <span class="shortcut-chip"><span class="shortcut-label">Pantalla completa</span><span
+            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_fullscreen">Pantalla completa</span><span
                 class="shortcut-key">Ctrl/Cmd+F</span></span>
-            <span class="shortcut-chip"><span class="shortcut-label">Reiniciar</span><span
+            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_restart">Reiniciar</span><span
                 class="shortcut-key">Ctrl/Cmd+R</span></span>
           </div>
         </div>
@@ -168,10 +174,10 @@
 
       <div class="ctrl-panel" id="panelGamepad">
         <div class="gpmap-header">
-          <span id="gpName" class="gpmap-device">No gamepad connected</span>
-          <button class="gpmap-reset-btn" id="btnGPReset">↺ Reset defaults</button>
+          <span id="gpName" class="gpmap-device" data-i18n="gamepad_no_connected">No gamepad connected</span>
+          <button class="gpmap-reset-btn" id="btnGPReset" data-i18n="reset_defaults">↺ Reset defaults</button>
         </div>
-        <div class="gpmap-hint">Presiona <strong>Set</strong> junto a una acción, y luego presiona el botón físico de tu
+        <div class="gpmap-hint" data-i18n-html="gamepad_hint_html">Presiona <strong>Set</strong> junto a una acción, y luego presiona el botón físico de tu
           gamepad. Se aplica la próxima vez que cargues un ROM.</div>
         <div id="gpMapList" class="gpmap-list"></div>
       </div>
@@ -179,8 +185,9 @@
     </div>
   </div>
 
-  <footer>GENvault · Sega Mega Drive / Genesis Emulator · Genesis.js (PicoDrive) · Gamepad API</footer>
+  <footer data-i18n="footer_text">GENvault · Sega Mega Drive / Genesis Emulator · Genesis.js (PicoDrive) · Gamepad API</footer>
 
+  <script src="js/i18n.js"></script>
   <script src="js/Genesis.min.js"></script>
   <script src="js/gamepad-mappings.js"></script>
   <script src="js/app.js"></script>
