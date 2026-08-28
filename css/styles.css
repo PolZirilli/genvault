@@ -91,11 +91,55 @@ select {
     height: auto;
 }
 
+.header-right {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+}
+
 .vault-nav {
     display: flex;
     flex: none;
     align-items: center;
     gap: 0.6rem;
+}
+
+/* ══ SELECTOR DE IDIOMA — pill ES/EN, mismo criterio visual (borde +
+   transform diagonal) que .vault-nav-icon ══ */
+.lang-toggle {
+    display: flex;
+    flex: none;
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.lang-opt {
+    font-family: 'Orbitron', sans-serif;
+    font-size: var(--fs-xxmin);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 0.7rem;
+    background: var(--panel2);
+    color: var(--text2);
+    border: none;
+    cursor: pointer;
+    transition: background 0.08s ease, color 0.08s ease;
+}
+
+.lang-opt+.lang-opt {
+    border-left: 1px solid var(--border2);
+}
+
+.lang-opt:hover:not(.active) {
+    background: var(--panel3, var(--panel));
+}
+
+.lang-opt.active {
+    background: var(--border2);
+    color: var(--white);
 }
 
 .vault-nav-icon {
@@ -135,6 +179,14 @@ select {
         width: 72px;
         height: 48px;
         padding: 4px 6px;
+    }
+
+    .header-right {
+        justify-content: center;
+    }
+
+    .lang-opt {
+        padding: 0.4rem 0.55rem;
     }
 }
 
