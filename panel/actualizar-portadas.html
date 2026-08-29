@@ -30,7 +30,11 @@
       --fs-lg: 1.40rem;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       background: var(--bg);
@@ -44,7 +48,10 @@
       align-items: center;
     }
 
-    header { text-align: center; margin-bottom: 2rem; }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
     .logo {
       font-family: 'Orbitron', sans-serif;
@@ -54,9 +61,17 @@
       letter-spacing: 2px;
     }
 
-    .logo span { color: var(--blue2); text-shadow: 0 0 12px var(--blue-glow); }
+    .logo span {
+      color: var(--blue2);
+      text-shadow: 0 0 12px var(--blue-glow);
+    }
 
-    .subtitle { color: var(--text2); font-size: var(--fs-sm); margin-top: 0.4rem; opacity: 0.85; }
+    .subtitle {
+      color: var(--text2);
+      font-size: var(--fs-sm);
+      margin-top: 0.4rem;
+      opacity: 0.85;
+    }
 
     main {
       width: 100%;
@@ -68,7 +83,12 @@
       padding: 1.75rem;
     }
 
-    .desc { font-size: var(--fs-sm); line-height: 1.6; color: var(--text2); margin-bottom: 1.5rem; }
+    .desc {
+      font-size: var(--fs-sm);
+      line-height: 1.6;
+      color: var(--text2);
+      margin-bottom: 1.5rem;
+    }
 
     .desc code {
       background: var(--panel2);
@@ -79,9 +99,16 @@
       color: var(--blue2);
     }
 
-    label { display: block; font-size: var(--fs-sm); color: var(--white); margin-bottom: 0.35rem; }
+    label {
+      display: block;
+      font-size: var(--fs-sm);
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
 
-    .field { margin-bottom: 1.1rem; }
+    .field {
+      margin-bottom: 1.1rem;
+    }
 
     input[type="text"],
     input[type="password"],
@@ -98,9 +125,17 @@
 
     input[type="text"]:focus,
     input[type="password"]:focus,
-    select:focus { outline: none; border-color: var(--blue2); }
+    select:focus {
+      outline: none;
+      border-color: var(--blue2);
+    }
 
-    .hint { font-size: 0.85rem; color: var(--text2); opacity: 0.7; margin-top: 0.3rem; }
+    .hint {
+      font-size: 0.85rem;
+      color: var(--text2);
+      opacity: 0.7;
+      margin-top: 0.3rem;
+    }
 
     .dropzone {
       border: 2px dashed var(--border2);
@@ -112,12 +147,33 @@
       transition: border-color 0.15s ease, background 0.15s ease;
     }
 
-    .dropzone.drag { border-color: var(--blue2); background: rgba(0, 102, 255, 0.08); }
-    .dropzone input[type="file"] { display: none; }
-    .dropzone-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
-    .dropzone-filename { margin-top: 0.6rem; color: var(--blue2); font-weight: bold; word-break: break-all; }
+    .dropzone.drag {
+      border-color: var(--blue2);
+      background: rgba(0, 102, 255, 0.08);
+    }
 
-    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .dropzone input[type="file"] {
+      display: none;
+    }
+
+    .dropzone-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .dropzone-filename {
+      margin-top: 0.6rem;
+      color: var(--blue2);
+      font-weight: bold;
+      word-break: break-all;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
 
     button {
       font-family: 'Orbitron', sans-serif;
@@ -134,7 +190,10 @@
       transition: transform 0.05s ease;
     }
 
-    button:active { transform: translateY(3px); box-shadow: 0 1px 0 #003d99; }
+    button:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #003d99;
+    }
 
     button:disabled {
       background: var(--panel2);
@@ -164,8 +223,19 @@
       font-size: var(--fs-sm);
     }
 
-    .status-line { margin-top: 1.1rem; font-size: var(--fs-sm); color: var(--blue2); min-height: 1.4em; }
-    .error-line { margin-top: 1.1rem; font-size: var(--fs-sm); color: var(--red); min-height: 1.4em; }
+    .status-line {
+      margin-top: 1.1rem;
+      font-size: var(--fs-sm);
+      color: var(--blue2);
+      min-height: 1.4em;
+    }
+
+    .error-line {
+      margin-top: 1.1rem;
+      font-size: var(--fs-sm);
+      color: var(--red);
+      min-height: 1.4em;
+    }
 
     .summary {
       margin-top: 1rem;
@@ -174,8 +244,14 @@
       color: var(--white);
       display: none;
     }
-    .summary.visible { display: block; }
-    .summary a { color: var(--blue2); }
+
+    .summary.visible {
+      display: block;
+    }
+
+    .summary a {
+      color: var(--blue2);
+    }
 
     #log {
       margin-top: 1rem;
@@ -186,7 +262,10 @@
       overflow-y: auto;
       display: none;
     }
-    #log.visible { display: block; }
+
+    #log.visible {
+      display: block;
+    }
 
     .log-row {
       display: flex;
@@ -197,12 +276,31 @@
       line-height: 1.4;
       align-items: baseline;
     }
-    .log-row:last-child { border-bottom: none; }
-    .log-icon { flex-shrink: 0; }
-    .log-row.ok .log-icon { color: var(--green); }
-    .log-row.fuzzy .log-icon { color: var(--blue2); }
-    .log-row.miss .log-icon, .log-row.warn .log-icon { color: var(--yellow); }
-    .log-row.err .log-icon { color: var(--red); }
+
+    .log-row:last-child {
+      border-bottom: none;
+    }
+
+    .log-icon {
+      flex-shrink: 0;
+    }
+
+    .log-row.ok .log-icon {
+      color: var(--green);
+    }
+
+    .log-row.fuzzy .log-icon {
+      color: var(--blue2);
+    }
+
+    .log-row.miss .log-icon,
+    .log-row.warn .log-icon {
+      color: var(--yellow);
+    }
+
+    .log-row.err .log-icon {
+      color: var(--red);
+    }
 
     .topbar {
       width: 100%;
@@ -214,9 +312,20 @@
       margin-bottom: 0.75rem;
     }
 
-    .picon { width: 1.1em; height: 1.1em; fill: currentColor; flex-shrink: 0; vertical-align: -0.15em; }
+    .picon {
+      width: 1.1em;
+      height: 1.1em;
+      fill: currentColor;
+      flex-shrink: 0;
+      vertical-align: -0.15em;
+    }
 
-    button .picon { width: 1em; height: 1em; margin-right: 0.55rem; vertical-align: -0.1em; }
+    button .picon {
+      width: 1em;
+      height: 1em;
+      margin-right: 0.55rem;
+      vertical-align: -0.1em;
+    }
 
     .topbar-btn {
       display: inline-flex;
@@ -233,12 +342,29 @@
       padding: 0.45rem 0.75rem;
       transition: border-color 0.1s ease, color 0.1s ease;
     }
-    .topbar-btn .picon { margin-right: 0; }
-    .topbar-btn:hover { border-color: var(--blue2); color: var(--white); }
-    .topbar-btn:active { transform: none; box-shadow: none; }
-    #btnLogout.topbar-btn .picon { margin-right: 0.4rem; }
 
-    .emoji-select { font-size: 1.3rem; text-align: center; }
+    .topbar-btn .picon {
+      margin-right: 0;
+    }
+
+    .topbar-btn:hover {
+      border-color: var(--blue2);
+      color: var(--white);
+    }
+
+    .topbar-btn:active {
+      transform: none;
+      box-shadow: none;
+    }
+
+    #btnLogout.topbar-btn .picon {
+      margin-right: 0.4rem;
+    }
+
+    .emoji-select {
+      font-size: 1.3rem;
+      text-align: left;
+    }
 
     .modal-overlay {
       position: fixed;
@@ -250,6 +376,7 @@
       padding: 1.5rem;
       z-index: 10;
     }
+
     .modal-box {
       background: var(--panel);
       border: 1px solid var(--border2);
@@ -259,6 +386,7 @@
       max-width: 520px;
       width: 100%;
     }
+
     .modal-box h2 {
       font-family: 'Orbitron', sans-serif;
       font-size: var(--fs-md);
@@ -268,7 +396,13 @@
       align-items: center;
       gap: 0.5rem;
     }
-    .modal-box p { font-size: var(--fs-sm); line-height: 1.6; margin-bottom: 1rem; }
+
+    .modal-box p {
+      font-size: var(--fs-sm);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
     .modal-box code {
       background: var(--panel2);
       border: 1px solid var(--border);
@@ -278,9 +412,16 @@
       color: var(--blue2);
     }
 
-    footer { margin-top: 1.5rem; font-size: 0.85rem; opacity: 0.5; text-align: center; }
+    footer {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.5;
+      text-align: center;
+    }
 
-    [hidden] { display: none !important; }
+    [hidden] {
+      display: none !important;
+    }
   </style>
 </head>
 
@@ -293,10 +434,19 @@
 
   <div class="topbar">
     <button id="btnInfo" class="topbar-btn" title="Cómo funciona este panel" hidden>
-      <svg class="picon" viewBox="0 0 24 24"><polygon points="14 15 14 17 10 17 10 15 11 15 11 10 10 10 10 9 13 9 13 15 14 15"/><rect x="11" y="6" width="2" height="2"/><path d="m22,9v-2h-1v-2h-1v-1h-1v-1h-2v-1h-2v-1h-6v1h-2v1h-2v1h-1v1h-1v2h-1v2h-1v6h1v2h1v2h1v1h1v1h2v1h2v1h6v-1h2v-1h2v-1h1v-1h1v-2h1v-2h1v-6h-1Zm-1,6h-1v2h-1v1h-1v1h-1v1h-2v1h-6v-1h-2v-1h-1v-1h-1v-1h-1v-2h-1v-6h1v-2h1v-1h1v-1h1v-1h2v-1h6v1h2v1h1v1h1v1h1v2h1v6Z"/></svg>
+      <svg class="picon" viewBox="0 0 24 24">
+        <polygon points="14 15 14 17 10 17 10 15 11 15 11 10 10 10 10 9 13 9 13 15 14 15" />
+        <rect x="11" y="6" width="2" height="2" />
+        <path
+          d="m22,9v-2h-1v-2h-1v-1h-1v-1h-2v-1h-2v-1h-6v1h-2v1h-2v1h-1v1h-1v2h-1v2h-1v6h1v2h1v2h1v1h1v1h2v1h2v1h6v-1h2v-1h2v-1h1v-1h1v-2h1v-2h1v-6h-1Zm-1,6h-1v2h-1v1h-1v1h-1v1h-2v1h-6v-1h-2v-1h-1v-1h-1v-1h-1v-2h-1v-6h1v-2h1v-1h1v-1h1v-1h2v-1h6v1h2v1h1v1h1v1h1v2h1v6Z" />
+      </svg>
     </button>
     <button id="btnLogout" class="topbar-btn" hidden>
-      <svg class="picon" viewBox="0 0 24 24"><polygon points="14 4 16 4 16 5 17 5 17 6 18 6 18 7 19 7 19 8 20 8 20 9 21 9 21 10 22 10 22 11 23 11 23 13 22 13 22 14 21 14 21 15 20 15 20 16 19 16 19 17 18 17 18 18 17 18 17 19 16 19 16 20 14 20 14 18 15 18 15 17 16 17 16 16 17 16 17 15 18 15 18 14 19 14 19 13 7 13 7 11 19 11 19 10 18 10 18 9 17 9 17 8 16 8 16 7 15 7 15 6 14 6 14 4"/><rect x="1" y="2" width="2" height="20"/></svg>
+      <svg class="picon" viewBox="0 0 24 24">
+        <polygon
+          points="14 4 16 4 16 5 17 5 17 6 18 6 18 7 19 7 19 8 20 8 20 9 21 9 21 10 22 10 22 11 23 11 23 13 22 13 22 14 21 14 21 15 20 15 20 16 19 16 19 17 18 17 18 18 17 18 17 19 16 19 16 20 14 20 14 18 15 18 15 17 16 17 16 16 17 16 17 15 18 15 18 14 19 14 19 13 7 13 7 11 19 11 19 10 18 10 18 9 17 9 17 8 16 8 16 7 15 7 15 6 14 6 14 4" />
+        <rect x="1" y="2" width="2" height="20" />
+      </svg>
       Cerrar sesión
     </button>
   </div>
@@ -304,7 +454,12 @@
   <div class="modal-overlay" id="infoModal" hidden>
     <div class="modal-box">
       <h2>
-        <svg class="picon" viewBox="0 0 24 24"><polygon points="14 15 14 17 10 17 10 15 11 15 11 10 10 10 10 9 13 9 13 15 14 15"/><rect x="11" y="6" width="2" height="2"/><path d="m22,9v-2h-1v-2h-1v-1h-1v-1h-2v-1h-2v-1h-6v1h-2v1h-2v1h-1v1h-1v2h-1v2h-1v6h1v2h1v2h1v1h1v1h2v1h2v1h6v-1h2v-1h2v-1h1v-1h1v-2h1v-2h1v-6h-1Zm-1,6h-1v2h-1v1h-1v1h-1v1h-2v1h-6v-1h-2v-1h-1v-1h-1v-1h-1v-2h-1v-6h1v-2h1v-1h1v-1h1v-1h2v-1h6v1h2v1h1v1h1v1h1v2h1v6Z"/></svg>
+        <svg class="picon" viewBox="0 0 24 24">
+          <polygon points="14 15 14 17 10 17 10 15 11 15 11 10 10 10 10 9 13 9 13 15 14 15" />
+          <rect x="11" y="6" width="2" height="2" />
+          <path
+            d="m22,9v-2h-1v-2h-1v-1h-1v-1h-2v-1h-2v-1h-6v1h-2v1h-2v1h-1v1h-1v2h-1v2h-1v6h1v2h1v2h1v1h1v1h2v1h2v1h6v-1h2v-1h2v-1h1v-1h1v-2h1v-2h1v-6h-1Zm-1,6h-1v2h-1v1h-1v1h-1v1h-2v1h-6v-1h-2v-1h-1v-1h-1v-1h-1v-2h-1v-6h1v-2h1v-1h1v-1h1v-1h2v-1h6v1h2v1h1v1h1v1h1v2h1v6Z" />
+        </svg>
         Cómo funciona
       </h2>
       <p>
@@ -334,7 +489,10 @@
       </div>
       <div class="btn-row">
         <button type="submit" id="btnLogin">
-          <svg class="picon" viewBox="0 0 24 24"><path d="m21,12v-1h-3v-6h-1v-2h-1v-1h-2v-1h-4v1h-2v1h-1v2h-1v6h-3v1h-1v10h1v1h18v-1h1v-10h-1Zm-1,1v8H4v-8h16ZM9,5v-1h1v-1h4v1h1v1h1v6h-8v-6h1Z"/></svg>
+          <svg class="picon" viewBox="0 0 24 24">
+            <path
+              d="m21,12v-1h-3v-6h-1v-2h-1v-1h-2v-1h-4v1h-2v1h-1v2h-1v6h-3v1h-1v10h1v1h18v-1h1v-10h-1Zm-1,1v8H4v-8h16ZM9,5v-1h1v-1h4v1h1v1h1v6h-8v-6h1Z" />
+          </svg>
           INICIAR SESIÓN
         </button>
       </div>
@@ -358,7 +516,12 @@
       </div>
       <div class="btn-row">
         <button type="submit" id="btnBootstrap">
-          <svg class="picon" viewBox="0 0 24 24"><polygon points="19 9 19 10 18 10 18 11 17 11 17 12 16 12 16 13 15 13 15 14 14 14 14 15 13 15 13 16 12 16 12 17 10 17 10 16 9 16 9 15 8 15 8 14 7 14 7 13 6 13 6 12 7 12 7 11 8 11 8 12 9 12 9 13 10 13 10 14 12 14 12 13 13 13 13 12 14 12 14 11 15 11 15 10 16 10 16 9 17 9 17 8 18 8 18 9 19 9"/><path d="m22,9v-2h-1v-2h-1v-1h-1v-1h-2v-1h-2v-1h-6v1h-2v1h-2v1h-1v1h-1v2h-1v2h-1v6h1v2h1v2h1v1h1v1h2v1h2v1h6v-1h2v-1h2v-1h1v-1h1v-2h1v-2h1v-6h-1Zm-2,6v2h-1v2h-2v1h-2v1h-6v-1h-2v-1h-2v-2h-1v-2h-1v-6h1v-2h1v-2h2v-1h2v-1h6v1h2v1h2v2h1v2h1v6h-1Z"/></svg>
+          <svg class="picon" viewBox="0 0 24 24">
+            <polygon
+              points="19 9 19 10 18 10 18 11 17 11 17 12 16 12 16 13 15 13 15 14 14 14 14 15 13 15 13 16 12 16 12 17 10 17 10 16 9 16 9 15 8 15 8 14 7 14 7 13 6 13 6 12 7 12 7 11 8 11 8 12 9 12 9 13 10 13 10 14 12 14 12 13 13 13 13 12 14 12 14 11 15 11 15 10 16 10 16 9 17 9 17 8 18 8 18 9 19 9" />
+            <path
+              d="m22,9v-2h-1v-2h-1v-1h-1v-1h-2v-1h-2v-1h-6v1h-2v1h-2v1h-1v1h-1v2h-1v2h-1v6h1v2h1v2h1v1h1v1h2v1h2v1h6v-1h2v-1h2v-1h1v-1h1v-2h1v-2h1v-6h-1Zm-2,6v2h-1v2h-2v1h-2v1h-6v-1h-2v-1h-2v-2h-1v-2h-1v-6h1v-2h1v-2h2v-1h2v-1h6v1h2v1h2v2h1v2h1v6h-1Z" />
+          </svg>
           CREAR CUENTA
         </button>
       </div>
@@ -381,7 +544,12 @@
         <label>Archivo ROM</label>
         <div class="dropzone" id="dropzone">
           <div class="dropzone-icon">
-            <svg class="picon" style="width:1.8rem;height:1.8rem;margin-right:0" viewBox="0 0 24 24"><path d="m6,10v2h-1v2h-1v2h-1v2h-1v3h1v1h15v-1h1v-3h1v-2h1v-2h1v-2h1v-2H6Zm14,4h-1v2h-1v2h-1v2H4v-2h1v-2h1v-2h1v-2h13v2Z"/><polygon points="20 5 20 9 18 9 18 6 9 6 9 5 8 5 8 4 3 4 3 14 2 14 2 16 1 16 1 3 2 3 2 2 9 2 9 3 10 3 10 4 19 4 19 5 20 5"/></svg>
+            <svg class="picon" style="width:1.8rem;height:1.8rem;margin-right:0" viewBox="0 0 24 24">
+              <path
+                d="m6,10v2h-1v2h-1v2h-1v2h-1v3h1v1h15v-1h1v-3h1v-2h1v-2h1v-2h1v-2H6Zm14,4h-1v2h-1v2h-1v2H4v-2h1v-2h1v-2h1v-2h13v2Z" />
+              <polygon
+                points="20 5 20 9 18 9 18 6 9 6 9 5 8 5 8 4 3 4 3 14 2 14 2 16 1 16 1 3 2 3 2 2 9 2 9 3 10 3 10 4 19 4 19 5 20 5" />
+            </svg>
           </div>
           <div>Arrastrá el archivo acá o hacé click para elegirlo</div>
           <div class="hint" id="extHint"></div>
@@ -413,11 +581,18 @@
 
       <div class="btn-row">
         <button type="submit" id="btnUpload">
-          <svg class="picon" viewBox="0 0 24 24"><polygon points="4 10 4 8 5 8 5 7 6 7 6 6 7 6 7 5 8 5 8 4 9 4 9 3 10 3 10 2 11 2 11 1 13 1 13 2 14 2 14 3 15 3 15 4 16 4 16 5 17 5 17 6 18 6 18 7 19 7 19 8 20 8 20 10 18 10 18 9 17 9 17 8 16 8 16 7 15 7 15 6 14 6 14 5 13 5 13 17 11 17 11 5 10 5 10 6 9 6 9 7 8 7 8 8 7 8 7 9 6 9 6 10 4 10"/><rect x="2" y="20" width="20" height="3"/></svg>
+          <svg class="picon" viewBox="0 0 24 24">
+            <polygon
+              points="4 10 4 8 5 8 5 7 6 7 6 6 7 6 7 5 8 5 8 4 9 4 9 3 10 3 10 2 11 2 11 1 13 1 13 2 14 2 14 3 15 3 15 4 16 4 16 5 17 5 17 6 18 6 18 7 19 7 19 8 20 8 20 10 18 10 18 9 17 9 17 8 16 8 16 7 15 7 15 6 14 6 14 5 13 5 13 17 11 17 11 5 10 5 10 6 9 6 9 7 8 7 8 8 7 8 7 9 6 9 6 10 4 10" />
+            <rect x="2" y="20" width="20" height="3" />
+          </svg>
           SUBIR JUEGO
         </button>
         <button type="button" id="btnClear" class="secondary">
-          <svg class="picon" viewBox="0 0 24 24"><path d="M21,1V2H20V3H19V4H18V5H17V6H16V7H15V8H10V9H8v1H6v1H4v1H2v1H1v2H2v1H3v1H4v1H5v1H6v1H7v1H8v1H9v1h2V22h1V20h1V18h1V16h1V14h1V9h1V8h1V7h1V6h1V5h1V4h1V3h1V1ZM13,16H12v2H11v2H9V19H8V18H7V17H6V16H7V15H8V14H6v1H4V13H6V12H8V11H9v1h1v1h1v1h1v1h1Zm1-3H13V12H12V11H11V10h2v1h1Z"/></svg>
+          <svg class="picon" viewBox="0 0 24 24">
+            <path
+              d="M21,1V2H20V3H19V4H18V5H17V6H16V7H15V8H10V9H8v1H6v1H4v1H2v1H1v2H2v1H3v1H4v1H5v1H6v1H7v1H8v1H9v1h2V22h1V20h1V18h1V16h1V14h1V9h1V8h1V7h1V6h1V5h1V4h1V3h1V1ZM13,16H12v2H11v2H9V19H8V18H7V17H6V16H7V15H8V14H6v1H4V13H6V12H8V11H9v1h1v1h1v1h1v1h1Zm1-3H13V12H12V11H11V10h2v1h1Z" />
+          </svg>
           LIMPIAR
         </button>
       </div>
