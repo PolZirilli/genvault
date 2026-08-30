@@ -214,31 +214,9 @@
     // LOOP PRINCIPAL
     // ============================================================
 
-    let lastDebugDump = 0;
     let lastSnapshot = "";
 
-    function debugDumpAllGamepads() {
-        const now = performance.now();
-        if (now - lastDebugDump < 2000) {
-            return;
-        }
-        lastDebugDump = now;
-
-        const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
-
-        console.log("[GENvault][DEBUG] === TODOS los gamepads conectados ===");
-        for (const gp of gamepads) {
-            if (!gp) continue;
-            console.log(
-                `[GENvault][DEBUG] index=${gp.index} id="${gp.id}" mapping="${gp.mapping}" axes.length=${gp.axes.length} buttons.length=${gp.buttons.length}`
-            );
-        }
-        console.log("[GENvault][DEBUG] === fin de la lista ===");
-    }
-
     function pollGamepad() {
-        debugDumpAllGamepads();
-
         const gamepad = findM30();
 
         if (!gamepad) {
@@ -285,11 +263,6 @@
         // ----------------------------------------------------------
         // D-Pad
         // ----------------------------------------------------------
-
-        // --- DEBUG TEMPORAL: borrar esto una vez identificado el eje/bot\u00f3n correcto ---
-        console.log("[GENvault][DEBUG] axes:", gamepad.axes.map((v, i) => `${i}:${v.toFixed(2)}`).join(" "));
-        console.log("[GENvault][DEBUG] buttons:", gamepad.buttons.map((b, i) => b.pressed ? i : null).filter(i => i !== null));
-        // --- FIN DEBUG ---
 
         // ----------------------------------------------------------
         // DEBUG TEMPORAL: solo loguea cuando algo CAMBIA, para poder
