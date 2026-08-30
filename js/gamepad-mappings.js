@@ -180,20 +180,64 @@
             ? navigator.getGamepads()
             : [];
 
+        const matches = [];
+
         for (const gamepad of gamepads) {
             if (gamepad && isM30(gamepad)) {
-                return gamepad;
+                matches.push(gamepad);
             }
         }
 
-        return null;
+        if (matches.length === 0) {
+            return null;
+        }
+
+        if (matches.length > 1) {
+            console.warn(
+                `[GENvault][DEBUG] Se encontraron ${matches.length} entradas para el M30. Eligiendo la que tiene más botones/ejes.`
+            );
+        }
+
+        // Si hay varias entradas con el mismo vendor/product (interfaces
+        // HID duplicadas), preferimos la que tiene más botones, ya que
+        // suele ser la interfaz "real" de entrada.
+        matches.sort((a, b) => {
+            const scoreA = a.buttons.length + a.axes.length;
+            const scoreB = b.buttons.length + b.axes.length;
+            return scoreB - scoreA;
+        });
+
+        return matches[0];
     }
 
     // ============================================================
     // LOOP PRINCIPAL
     // ============================================================
 
+    let lastDebugDump = 0;
+
+    function debugDumpAllGamepads() {
+        const now = performance.now();
+        if (now - lastDebugDump < 2000) {
+            return;
+        }
+        lastDebugDump = now;
+
+        const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
+
+        console.log("[GENvault][DEBUG] === TODOS los gamepads conectados ===");
+        for (const gp of gamepads) {
+            if (!gp) continue;
+            console.log(
+                `[GENvault][DEBUG] index=${gp.index} id="${gp.id}" mapping="${gp.mapping}" axes.length=${gp.axes.length} buttons.length=${gp.buttons.length}`
+            );
+        }
+        console.log("[GENvault][DEBUG] === fin de la lista ===");
+    }
+
     function pollGamepad() {
+        debugDumpAllGamepads();
+
         const gamepad = findM30();
 
         if (!gamepad) {
