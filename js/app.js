@@ -572,17 +572,33 @@ function renderGPMap() {
     const list = document.getElementById('gpMapList');
     if (!list) return;
     list.innerHTML = '';
+
+    const noteEl = document.getElementById('gpDpadNote');
+    if (noteEl) noteEl.textContent = t('gamepad_dpad_fixed_note');
+
     ACTIONS.forEach(action => {
-        const btnIndex = Object.keys(gpMap).find(k => gpMap[k] === action.id);
+        const isDpad = DPAD_IDS.includes(action.id);
         const row = document.createElement('div');
-        row.className = 'gpmap-row'; row.id = 'gprow-' + action.id;
+        row.className = 'gpmap-row' + (isDpad ? ' gpmap-row-fixed' : '');
+        row.id = 'gprow-' + action.id;
+
+        if (isDpad) {
+            row.innerHTML = `
+                <span class="gpmap-action">${t(action.labelKey)}</span>
+                <span class="gpmap-btn gpmap-btn-fixed" id="gpbtn-${action.id}">${t('gamepad_dpad_fixed')}</span>
+                <button class="gpmap-set" disabled>${t('btn_set')}</button>`;
+            list.appendChild(row);
+            return;
+        }
+
+        const btnIndex = Object.keys(gpMap).find(k => gpMap[k] === action.id);
         row.innerHTML = `
             <span class="gpmap-action">${t(action.labelKey)}</span>
             <span class="gpmap-btn" id="gpbtn-${action.id}">${btnIndex !== undefined ? t('gpmap_button_prefix') + btnIndex : '—'}</span>
             <button class="gpmap-set" data-action="${action.id}">${t('btn_set')}</button>`;
         list.appendChild(row);
     });
-    list.querySelectorAll('.gpmap-set').forEach(btn => btn.addEventListener('click', () => startListen(btn.dataset.action)));
+    list.querySelectorAll('.gpmap-set:not([disabled])').forEach(btn => btn.addEventListener('click', () => startListen(btn.dataset.action)));
 }
 
 function startListen(actionId) {
