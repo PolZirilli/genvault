@@ -1,6 +1,6 @@
 // ════════════════════════════════════════════
-//  SNESvault — Emulador Super Nintendo
-//  Motor: SuperNintendo.js (Snes9x 2005, JS puro)
+//  GENvault — Emulador Sega Mega Drive / Genesis
+//  Motor: Genesis.js (PicoDrive JS puro)
 // ════════════════════════════════════════════
 
 // ══ REFS UI ══
@@ -72,7 +72,7 @@ const CART_ICON_SVG = `
 
 // ════════════════════════════════════════════
 //  CAROUSEL DE ROMs — nunca más de 2 filas visibles.
-//  El número de columnas se adapta al ancho (5 / 3 / 2), y cada
+//  El número de columnas se adapta al ancho (4 / 3 / 2), y cada
 //  "página" del carousel siempre tiene columnas × 2 tarjetas.
 // ════════════════════════════════════════════
 let carouselPage = 0;
@@ -86,7 +86,7 @@ function getCarouselColumns() {
     return 5;
 }
 
-// Filtra por nombre o región ("USA", "JPN", etc.) — sin distinguir mayúsculas.
+// Filtra por nombre o región ("ESP", "USA", etc.) — sin distinguir mayúsculas/acentos exactos.
 function getVisibleLibrary() {
     if (!searchQuery) return ROM_LIBRARY;
     const q = searchQuery.toLowerCase();
@@ -208,8 +208,9 @@ window.addEventListener('resize', () => {
 
 // ════════════════════════════════════════════
 //  MAPEO DE ACCIONES (teclado + gamepad)
-//  SNES: D-Pad + A/B/X/Y + L/R (hombros) + Start/Select
 // ════════════════════════════════════════════
+// labelKey en vez de un label fijo — el texto real sale de i18n.js (t())
+// para poder mostrarlo en ES o EN sin duplicar este array.
 const ACTIONS = [
     { id: 'up', labelKey: 'action_up' },
     { id: 'down', labelKey: 'action_down' },
@@ -217,31 +218,45 @@ const ACTIONS = [
     { id: 'right', labelKey: 'action_right' },
     { id: 'a', labelKey: 'action_a' },
     { id: 'b', labelKey: 'action_b' },
+    { id: 'c', labelKey: 'action_c' },
     { id: 'x', labelKey: 'action_x' },
     { id: 'y', labelKey: 'action_y' },
-    { id: 'l', labelKey: 'action_l' },
-    { id: 'r', labelKey: 'action_r' },
+    { id: 'z', labelKey: 'action_z' },
     { id: 'start', labelKey: 'action_start' },
-    { id: 'select', labelKey: 'action_select' },
+    { id: 'mode', labelKey: 'action_mode' },
 ];
 const DPAD_IDS = ['up', 'down', 'left', 'right'];
-const BUTTON_IDS = ['a', 'b', 'x', 'y', 'l', 'r'];
-const EXTRA_IDS = ['start', 'select'];
+const BUTTON_IDS = ['a', 'b', 'c', 'x', 'y', 'z'];
+const EXTRA_IDS = ['start', 'mode'];
 
 // ── Teclado — editable por el usuario, se guarda en localStorage ──
-// Coincide con el default del propio motor (SuperNintendo.js).
 const DEFAULT_KEYMAP = {
     up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight',
-    a: 'KeyW', b: 'KeyQ', x: 'KeyS', y: 'KeyA', l: 'KeyZ', r: 'KeyX',
-    start: 'Enter', select: 'ShiftRight',
+    a: 'KeyA', b: 'KeyS', c: 'KeyD', x: 'KeyQ', y: 'KeyW', z: 'KeyE',
+    start: 'Enter', mode: 'KeyZ',
 };
 let keymap = loadKeymap();
 function loadKeymap() {
-    try { const s = localStorage.getItem('snesvault_keymap'); if (s) return { ...DEFAULT_KEYMAP, ...JSON.parse(s) }; } catch (_) { }
+    try { const s = localStorage.getItem('genvault_keymap'); if (s) return { ...DEFAULT_KEYMAP, ...JSON.parse(s) }; } catch (_) { }
     return { ...DEFAULT_KEYMAP };
 }
 function saveKeymap() {
-    try { localStorage.setItem('snesvault_keymap', JSON.stringify(keymap)); } catch (_) { }
+    try { localStorage.setItem('genvault_keymap', JSON.stringify(keymap)); } catch (_) { }
+}
+
+// ── Teclado del Jugador 2 — mismos defaults que documenta embedGenesis() ──
+const DEFAULT_KEYMAP2 = {
+    up: 'KeyI', down: 'KeyK', left: 'KeyJ', right: 'KeyL',
+    a: 'KeyB', b: 'KeyN', c: 'KeyM', x: 'KeyU', y: 'KeyO', z: 'KeyP',
+    start: 'KeyH', mode: 'KeyV',
+};
+let keymap2 = loadKeymap2();
+function loadKeymap2() {
+    try { const s = localStorage.getItem('genvault_keymap2'); if (s) return { ...DEFAULT_KEYMAP2, ...JSON.parse(s) }; } catch (_) { }
+    return { ...DEFAULT_KEYMAP2 };
+}
+function saveKeymap2() {
+    try { localStorage.setItem('genvault_keymap2', JSON.stringify(keymap2)); } catch (_) { }
 }
 
 function keyLabel(code) {
@@ -259,22 +274,30 @@ function keyLabel(code) {
     return code;
 }
 
-// ── Gamepad — mapeo estándar (Standard Gamepad): caras A/B/X/Y del
-// control moderno rotadas a la posición equivalente del diamante SNES,
-// hombros a L/R, back/select y start tal cual. ──
+// ── Gamepad ──
 const DEFAULT_GP_MAP = {
-    0: 'b', 1: 'a', 2: 'y', 3: 'x', 4: 'l', 5: 'r',
-    8: 'select', 9: 'start',
+    0: 'b', 1: 'a', 2: 'x', 3: 'y', 4: 'c', 5: 'z',
+    8: 'mode', 9: 'start',
     12: 'up', 13: 'down', 14: 'left', 15: 'right',
 };
 
 let gpMap = loadGPMap();
 function loadGPMap() {
-    try { const s = localStorage.getItem('snesvault_gpmap'); if (s) return JSON.parse(s); } catch (_) { }
+    try { const s = localStorage.getItem('totogen_gpmap'); if (s) return JSON.parse(s); } catch (_) { }
     return { ...DEFAULT_GP_MAP };
 }
 function saveGPMap() {
-    try { localStorage.setItem('snesvault_gpmap', JSON.stringify(gpMap)); } catch (_) { }
+    try { localStorage.setItem('totogen_gpmap', JSON.stringify(gpMap)); } catch (_) { }
+}
+
+// ── Gamepad del Jugador 2 — mismo layout por defecto que el del jugador 1 ──
+let gpMap2 = loadGPMap2();
+function loadGPMap2() {
+    try { const s = localStorage.getItem('totogen_gpmap2'); if (s) return JSON.parse(s); } catch (_) { }
+    return { ...DEFAULT_GP_MAP };
+}
+function saveGPMap2() {
+    try { localStorage.setItem('totogen_gpmap2', JSON.stringify(gpMap2)); } catch (_) { }
 }
 
 // ════════════════════════════════════════════
@@ -292,12 +315,12 @@ function drawSplash() {
     const ctx = splash.getContext('2d');
     const w = splash.width, h = splash.height;
     const g = ctx.createLinearGradient(0, 0, w, h);
-    g.addColorStop(0, '#140a26'); g.addColorStop(1, '#1f0f3d');
+    g.addColorStop(0, '#000d22'); g.addColorStop(1, '#001a44');
     ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
-    ctx.strokeStyle = 'rgba(124,58,237,0.10)'; ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(0,102,255,0.10)'; ctx.lineWidth = 1;
     for (let y = 0; y < h; y += 16) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
     for (let x = 0; x < w; x += 32) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
-    ctx.fillStyle = '#3a3255'; ctx.font = '7px Orbitron, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = '#2a3a52'; ctx.font = '7px Orbitron, sans-serif'; ctx.textAlign = 'center';
     ctx.fillText(t('splash_text'), w / 2, h / 2);
 }
 
@@ -347,57 +370,82 @@ function stopFPS() {
 // ════════════════════════════════════════════
 //  GAMEPAD POLLING
 // ════════════════════════════════════════════
-let gpPrev = {}, gpAxesPrev = { up: false, down: false, left: false, right: false };
+let gpPrev = [{}, {}];
+let gpAxesPrev = [
+    { up: false, down: false, left: false, right: false },
+    { up: false, down: false, left: false, right: false },
+];
 
-function actionToKey(id) { return keymap[id] || null; }
+function actionToKey(id, playerIdx) { return (playerIdx === 1 ? keymap2 : keymap)[id] || null; }
 function fireKey(code, down) {
     document.dispatchEvent(new KeyboardEvent(down ? 'keydown' : 'keyup', { code, key: code, bubbles: true }));
 }
 
-function pollGamepad() {
-    if (!emuRunning || paused) return;
-    const gp = [...(navigator.getGamepads ? navigator.getGamepads() : [])].find(g => g?.connected);
+function pollGamepadForPlayer(gp, playerIdx) {
     if (!gp) return;
+    const map = playerIdx === 1 ? gpMap2 : gpMap;
+    const prevButtons = gpPrev[playerIdx];
 
     gp.buttons.forEach((btn, i) => {
         const pressed = btn.pressed || btn.value > 0.5;
-        const code = actionToKey(gpMap[i]);
+        const code = actionToKey(map[i], playerIdx);
         if (!code) return;
-        if (pressed && !gpPrev[i]) fireKey(code, true);
-        if (!pressed && gpPrev[i]) fireKey(code, false);
-        gpPrev[i] = pressed;
+        if (pressed && !prevButtons[i]) fireKey(code, true);
+        if (!pressed && prevButtons[i]) fireKey(code, false);
+        prevButtons[i] = pressed;
     });
 
     const ax = gp.axes[0] || 0, ay = gp.axes[1] || 0;
     const axL = ax < -DEAD, axR = ax > DEAD, axU = ay < -DEAD, axD = ay > DEAD;
-    [[axL, gpAxesPrev.left, 'left'], [axR, gpAxesPrev.right, 'right'],
-    [axU, gpAxesPrev.up, 'up'], [axD, gpAxesPrev.down, 'down']].forEach(([c, p, aid]) => {
-        const code = actionToKey(aid);
+    const prevAxes = gpAxesPrev[playerIdx];
+    [[axL, prevAxes.left, 'left'], [axR, prevAxes.right, 'right'],
+    [axU, prevAxes.up, 'up'], [axD, prevAxes.down, 'down']].forEach(([c, p, aid]) => {
+        const code = actionToKey(aid, playerIdx);
         if (!code) return;
         if (c && !p) fireKey(code, true);
         if (!c && p) fireKey(code, false);
     });
-    gpAxesPrev = { left: axL, right: axR, up: axU, down: axD };
+    gpAxesPrev[playerIdx] = { left: axL, right: axR, up: axU, down: axD };
+}
+
+function pollGamepad() {
+    if (!emuRunning || paused) return;
+    const pads = [...(navigator.getGamepads ? navigator.getGamepads() : [])].filter(g => g?.connected);
+    pollGamepadForPlayer(pads[0], 0);
+    pollGamepadForPlayer(pads[1], 1);
 }
 
 let gpPollInterval = null;
 function startGPPoll() { stopGPPoll(); gpPollInterval = setInterval(pollGamepad, FRAME_DURATION); }
 function stopGPPoll() {
     if (gpPollInterval) { clearInterval(gpPollInterval); gpPollInterval = null; }
-    gpPrev = {}; gpAxesPrev = { up: false, down: false, left: false, right: false };
+    gpPrev = [{}, {}];
+    gpAxesPrev = [
+        { up: false, down: false, left: false, right: false },
+        { up: false, down: false, left: false, right: false },
+    ];
 }
 
 window.addEventListener('gamepadconnected', e => {
     const el = document.getElementById('gamepadStatus');
-    el.textContent = t('gamepad_connected_prefix') + e.gamepad.id.substring(0, 55);
+    const pads = [...(navigator.getGamepads ? navigator.getGamepads() : [])].filter(g => g?.connected);
+    el.textContent = pads.length > 1
+        ? t('gamepad_connected_prefix') + `${pads.length} controles`
+        : t('gamepad_connected_prefix') + e.gamepad.id.substring(0, 55);
     el.classList.add('connected');
     renderGPMap();
 });
 window.addEventListener('gamepaddisconnected', () => {
     const el = document.getElementById('gamepadStatus');
-    el.textContent = t('gamepad_disconnected');
-    el.classList.remove('connected');
-    stopGPPoll();
+    const pads = [...(navigator.getGamepads ? navigator.getGamepads() : [])].filter(g => g?.connected);
+    if (pads.length === 0) {
+        el.textContent = t('gamepad_disconnected');
+        el.classList.remove('connected');
+        stopGPPoll();
+    } else {
+        el.textContent = t('gamepad_connected_prefix') + (pads.length > 1 ? `${pads.length} controles` : pads[0].id.substring(0, 55));
+    }
+    renderGPMap();
 });
 
 // ════════════════════════════════════════════
@@ -429,9 +477,9 @@ function updateFullscreenBtn() {
 // ════════════════════════════════════════════
 function mountEmulator(romBuffer, romName) {
     hideError();
-    if (typeof embedSuperNintendo === 'undefined') {
-        showError('Engine not found: js/SuperNintendo.min.js',
-            '→ Download from: https://github.com/lrusso/SuperNintendo/raw/main/SuperNintendo.min.js');
+    if (typeof embedGenesis === 'undefined') {
+        showError('Engine not found: js/Genesis.min.js',
+            '→ Download from: https://github.com/lrusso/Genesis/raw/main/Genesis.min.js');
         setStatus(t('status_engine_not_found'), 'err'); return;
     }
 
@@ -441,7 +489,7 @@ function mountEmulator(romBuffer, romName) {
     showLoader(t('loader_loading_rom'));
 
     try {
-        embedSuperNintendo({
+        embedGenesis({
             container: 'emuContainer',
             name: romName,
             rom: romBuffer,
@@ -450,8 +498,13 @@ function mountEmulator(romBuffer, romName) {
             // Usa el keymap actual (editable desde ⌨ Keyboard en "Ver Controles").
             player1: {
                 up: keymap.up, down: keymap.down, left: keymap.left, right: keymap.right,
-                start: keymap.start, select: keymap.select,
-                a: keymap.a, b: keymap.b, x: keymap.x, y: keymap.y, l: keymap.l, r: keymap.r,
+                start: keymap.start, mode: keymap.mode,
+                a: keymap.a, b: keymap.b, c: keymap.c, x: keymap.x, y: keymap.y, z: keymap.z,
+            },
+            player2: {
+                up: keymap2.up, down: keymap2.down, left: keymap2.left, right: keymap2.right,
+                start: keymap2.start, mode: keymap2.mode,
+                a: keymap2.a, b: keymap2.b, c: keymap2.c, x: keymap2.x, y: keymap2.y, z: keymap2.z,
             },
             cbStarted: function () {
                 hideLoader();
@@ -574,17 +627,33 @@ function renderGPMap() {
     const list = document.getElementById('gpMapList');
     if (!list) return;
     list.innerHTML = '';
+
+    const noteEl = document.getElementById('gpDpadNote');
+    if (noteEl) noteEl.textContent = t('gamepad_dpad_fixed_note');
+
     ACTIONS.forEach(action => {
-        const btnIndex = Object.keys(gpMap).find(k => gpMap[k] === action.id);
+        const isDpad = DPAD_IDS.includes(action.id);
         const row = document.createElement('div');
-        row.className = 'gpmap-row'; row.id = 'gprow-' + action.id;
+        row.className = 'gpmap-row' + (isDpad ? ' gpmap-row-fixed' : '');
+        row.id = 'gprow-' + action.id;
+
+        if (isDpad) {
+            row.innerHTML = `
+                <span class="gpmap-action">${t(action.labelKey)}</span>
+                <span class="gpmap-btn gpmap-btn-fixed" id="gpbtn-${action.id}">${t('gamepad_dpad_fixed')}</span>
+                <button class="gpmap-set" disabled>${t('btn_set')}</button>`;
+            list.appendChild(row);
+            return;
+        }
+
+        const btnIndex = Object.keys(gpMap).find(k => gpMap[k] === action.id);
         row.innerHTML = `
             <span class="gpmap-action">${t(action.labelKey)}</span>
             <span class="gpmap-btn" id="gpbtn-${action.id}">${btnIndex !== undefined ? t('gpmap_button_prefix') + btnIndex : '—'}</span>
             <button class="gpmap-set" data-action="${action.id}">${t('btn_set')}</button>`;
         list.appendChild(row);
     });
-    list.querySelectorAll('.gpmap-set').forEach(btn => btn.addEventListener('click', () => startListen(btn.dataset.action)));
+    list.querySelectorAll('.gpmap-set:not([disabled])').forEach(btn => btn.addEventListener('click', () => startListen(btn.dataset.action)));
 }
 
 function startListen(actionId) {
@@ -632,7 +701,7 @@ function keymapRowHTML(action) {
         </div>`;
 }
 
-// Botones A/B/X/Y/L/R — tarjeta compacta para la grilla de 3×2.
+// Botones A/B/C/X/Y/Z — tarjeta compacta para la grilla de 3×2.
 function keymapButtonCardHTML(action) {
     const shortLabel = action.id.toUpperCase();
     return `
@@ -712,10 +781,10 @@ document.getElementById('btnKeymapReset')?.addEventListener('click', () => {
     loadGameLibrary();
     renderKeymapEditor();
     drawSplash();
-    if (typeof embedSuperNintendo === 'undefined') {
-        setStatus('⚠ Missing js/SuperNintendo.min.js — see README', 'err');
-        showError('SuperNintendo.min.js not found in js/ folder.',
-            '→ Download: https://github.com/lrusso/SuperNintendo/raw/main/SuperNintendo.min.js');
+    if (typeof embedGenesis === 'undefined') {
+        setStatus('⚠ Missing js/Genesis.min.js — see README', 'err');
+        showError('Genesis.min.js not found in js/ folder.',
+            '→ Download: https://github.com/lrusso/Genesis/raw/main/Genesis.min.js');
     }
     enableButtons(false, false, false);
 })();
