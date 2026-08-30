@@ -96,7 +96,7 @@ function getVisibleLibrary() {
 }
 
 function buildCarouselPages(list) {
-    const perPage = getCarouselColumns() * 2;
+    const perPage = getCarouselColumns() * 4;
     const pages = [];
     for (let i = 0; i < list.length; i += perPage) {
         pages.push(list.slice(i, i + perPage));
