@@ -241,6 +241,11 @@
         // D-Pad
         // ----------------------------------------------------------
 
+        // --- DEBUG TEMPORAL: borrar esto una vez identificado el eje/bot\u00f3n correcto ---
+        console.log("[GENvault][DEBUG] axes:", gamepad.axes.map((v, i) => `${i}:${v.toFixed(2)}`).join(" "));
+        console.log("[GENvault][DEBUG] buttons:", gamepad.buttons.map((b, i) => b.pressed ? i : null).filter(i => i !== null));
+        // --- FIN DEBUG ---
+
         const axisX = gamepad.axes[0] || 0;
         const axisY = gamepad.axes[1] || 0;
 
