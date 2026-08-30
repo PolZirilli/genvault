@@ -991,6 +991,29 @@ footer {
     border-color: var(--red);
 }
 
+.gpmap-hint-secondary {
+    font-size: var(--fs-sm);
+    color: var(--text2);
+    opacity: .75;
+    margin-top: -8px;
+    margin-bottom: 14px;
+    font-style: italic;
+}
+
+.gpmap-row-fixed {
+    opacity: .6;
+}
+
+.gpmap-btn-fixed {
+    color: var(--text2);
+}
+
+.gpmap-set[disabled] {
+    cursor: default;
+    opacity: .4;
+    pointer-events: none;
+}
+
 /* ══════════════════════════════════════════
    COLUMNA DE ROMS — buscador + carousel + carga
    ══════════════════════════════════════════ */
