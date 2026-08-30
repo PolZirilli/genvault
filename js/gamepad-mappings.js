@@ -215,6 +215,7 @@
     // ============================================================
 
     let lastDebugDump = 0;
+    let lastSnapshot = "";
 
     function debugDumpAllGamepads() {
         const now = performance.now();
@@ -289,6 +290,22 @@
         console.log("[GENvault][DEBUG] axes:", gamepad.axes.map((v, i) => `${i}:${v.toFixed(2)}`).join(" "));
         console.log("[GENvault][DEBUG] buttons:", gamepad.buttons.map((b, i) => b.pressed ? i : null).filter(i => i !== null));
         // --- FIN DEBUG ---
+
+        // ----------------------------------------------------------
+        // DEBUG TEMPORAL: solo loguea cuando algo CAMBIA, para poder
+        // aislar qu\u00e9 \u00edndice reacciona a cada direcci\u00f3n de la cruceta.
+        // ----------------------------------------------------------
+        const axesSnapshot = gamepad.axes.map(v => v.toFixed(2)).join(",");
+        const buttonsSnapshot = gamepad.buttons.map(b => b.pressed ? 1 : 0).join(",");
+        const fullSnapshot = axesSnapshot + "|" + buttonsSnapshot;
+
+        if (fullSnapshot !== lastSnapshot) {
+            lastSnapshot = fullSnapshot;
+            console.log(
+                `[GENvault][DEBUG] CAMBIO -> axes=[${axesSnapshot}] buttons=[${buttonsSnapshot}]`
+            );
+        }
+        // ---- FIN DEBUG ----
 
         const axisX = gamepad.axes[0] || 0;
         const axisY = gamepad.axes[1] || 0;
