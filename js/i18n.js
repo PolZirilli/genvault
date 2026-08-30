@@ -79,6 +79,8 @@
             shortcut_restart: 'Reiniciar',
             gamepad_no_connected: 'Sin gamepad conectado',
             gamepad_hint_html: 'Presioná <strong>Set</strong> junto a una acción, y luego presioná el botón físico de tu gamepad. Se aplica la próxima vez que cargues un ROM.',
+            gamepad_dpad_fixed: 'Fijo (D-pad)',
+            gamepad_dpad_fixed_note: 'Arriba, abajo, izquierda y derecha usan siempre los ejes del D-pad del control y no se pueden reasignar a un botón desde acá.',
 
             btn_set: 'Asignar',
             btn_cancel: 'Cancelar',
@@ -155,6 +157,8 @@
             shortcut_restart: 'Restart',
             gamepad_no_connected: 'No gamepad connected',
             gamepad_hint_html: 'Press <strong>Set</strong> next to an action, then press the physical button on your gamepad. It applies the next time you load a ROM.',
+            gamepad_dpad_fixed: 'Fixed (D-pad)',
+            gamepad_dpad_fixed_note: 'Up, down, left and right always use the controller\'s D-pad axes and can\'t be reassigned to a button here.',
 
             btn_set: 'Set',
             btn_cancel: 'Cancel',
