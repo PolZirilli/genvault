@@ -1036,7 +1036,7 @@ footer {
     color: var(--chrome-dk);
 }
 
-/* Carousel — nunca más de 2 filas visibles; se pagina con las flechas */
+/* Carousel — nunca más de 4 filas visibles; se pagina con las flechas */
 .rom-carousel {
     overflow: hidden;
 }
