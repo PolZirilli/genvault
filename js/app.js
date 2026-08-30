@@ -244,6 +244,21 @@ function saveKeymap() {
     try { localStorage.setItem('genvault_keymap', JSON.stringify(keymap)); } catch (_) { }
 }
 
+// ── Teclado del Jugador 2 — mismos defaults que documenta embedGenesis() ──
+const DEFAULT_KEYMAP2 = {
+    up: 'KeyI', down: 'KeyK', left: 'KeyJ', right: 'KeyL',
+    a: 'KeyB', b: 'KeyN', c: 'KeyM', x: 'KeyU', y: 'KeyO', z: 'KeyP',
+    start: 'KeyH', mode: 'KeyV',
+};
+let keymap2 = loadKeymap2();
+function loadKeymap2() {
+    try { const s = localStorage.getItem('genvault_keymap2'); if (s) return { ...DEFAULT_KEYMAP2, ...JSON.parse(s) }; } catch (_) { }
+    return { ...DEFAULT_KEYMAP2 };
+}
+function saveKeymap2() {
+    try { localStorage.setItem('genvault_keymap2', JSON.stringify(keymap2)); } catch (_) { }
+}
+
 function keyLabel(code) {
     if (!code) return '—';
     const named = {
@@ -273,6 +288,16 @@ function loadGPMap() {
 }
 function saveGPMap() {
     try { localStorage.setItem('totogen_gpmap', JSON.stringify(gpMap)); } catch (_) { }
+}
+
+// ── Gamepad del Jugador 2 — mismo layout por defecto que el del jugador 1 ──
+let gpMap2 = loadGPMap2();
+function loadGPMap2() {
+    try { const s = localStorage.getItem('totogen_gpmap2'); if (s) return JSON.parse(s); } catch (_) { }
+    return { ...DEFAULT_GP_MAP };
+}
+function saveGPMap2() {
+    try { localStorage.setItem('totogen_gpmap2', JSON.stringify(gpMap2)); } catch (_) { }
 }
 
 // ════════════════════════════════════════════
@@ -345,57 +370,82 @@ function stopFPS() {
 // ════════════════════════════════════════════
 //  GAMEPAD POLLING
 // ════════════════════════════════════════════
-let gpPrev = {}, gpAxesPrev = { up: false, down: false, left: false, right: false };
+let gpPrev = [{}, {}];
+let gpAxesPrev = [
+    { up: false, down: false, left: false, right: false },
+    { up: false, down: false, left: false, right: false },
+];
 
-function actionToKey(id) { return keymap[id] || null; }
+function actionToKey(id, playerIdx) { return (playerIdx === 1 ? keymap2 : keymap)[id] || null; }
 function fireKey(code, down) {
     document.dispatchEvent(new KeyboardEvent(down ? 'keydown' : 'keyup', { code, key: code, bubbles: true }));
 }
 
-function pollGamepad() {
-    if (!emuRunning || paused) return;
-    const gp = [...(navigator.getGamepads ? navigator.getGamepads() : [])].find(g => g?.connected);
+function pollGamepadForPlayer(gp, playerIdx) {
     if (!gp) return;
+    const map = playerIdx === 1 ? gpMap2 : gpMap;
+    const prevButtons = gpPrev[playerIdx];
 
     gp.buttons.forEach((btn, i) => {
         const pressed = btn.pressed || btn.value > 0.5;
-        const code = actionToKey(gpMap[i]);
+        const code = actionToKey(map[i], playerIdx);
         if (!code) return;
-        if (pressed && !gpPrev[i]) fireKey(code, true);
-        if (!pressed && gpPrev[i]) fireKey(code, false);
-        gpPrev[i] = pressed;
+        if (pressed && !prevButtons[i]) fireKey(code, true);
+        if (!pressed && prevButtons[i]) fireKey(code, false);
+        prevButtons[i] = pressed;
     });
 
     const ax = gp.axes[0] || 0, ay = gp.axes[1] || 0;
     const axL = ax < -DEAD, axR = ax > DEAD, axU = ay < -DEAD, axD = ay > DEAD;
-    [[axL, gpAxesPrev.left, 'left'], [axR, gpAxesPrev.right, 'right'],
-    [axU, gpAxesPrev.up, 'up'], [axD, gpAxesPrev.down, 'down']].forEach(([c, p, aid]) => {
-        const code = actionToKey(aid);
+    const prevAxes = gpAxesPrev[playerIdx];
+    [[axL, prevAxes.left, 'left'], [axR, prevAxes.right, 'right'],
+    [axU, prevAxes.up, 'up'], [axD, prevAxes.down, 'down']].forEach(([c, p, aid]) => {
+        const code = actionToKey(aid, playerIdx);
         if (!code) return;
         if (c && !p) fireKey(code, true);
         if (!c && p) fireKey(code, false);
     });
-    gpAxesPrev = { left: axL, right: axR, up: axU, down: axD };
+    gpAxesPrev[playerIdx] = { left: axL, right: axR, up: axU, down: axD };
+}
+
+function pollGamepad() {
+    if (!emuRunning || paused) return;
+    const pads = [...(navigator.getGamepads ? navigator.getGamepads() : [])].filter(g => g?.connected);
+    pollGamepadForPlayer(pads[0], 0);
+    pollGamepadForPlayer(pads[1], 1);
 }
 
 let gpPollInterval = null;
 function startGPPoll() { stopGPPoll(); gpPollInterval = setInterval(pollGamepad, FRAME_DURATION); }
 function stopGPPoll() {
     if (gpPollInterval) { clearInterval(gpPollInterval); gpPollInterval = null; }
-    gpPrev = {}; gpAxesPrev = { up: false, down: false, left: false, right: false };
+    gpPrev = [{}, {}];
+    gpAxesPrev = [
+        { up: false, down: false, left: false, right: false },
+        { up: false, down: false, left: false, right: false },
+    ];
 }
 
 window.addEventListener('gamepadconnected', e => {
     const el = document.getElementById('gamepadStatus');
-    el.textContent = t('gamepad_connected_prefix') + e.gamepad.id.substring(0, 55);
+    const pads = [...(navigator.getGamepads ? navigator.getGamepads() : [])].filter(g => g?.connected);
+    el.textContent = pads.length > 1
+        ? t('gamepad_connected_prefix') + `${pads.length} controles`
+        : t('gamepad_connected_prefix') + e.gamepad.id.substring(0, 55);
     el.classList.add('connected');
     renderGPMap();
 });
 window.addEventListener('gamepaddisconnected', () => {
     const el = document.getElementById('gamepadStatus');
-    el.textContent = t('gamepad_disconnected');
-    el.classList.remove('connected');
-    stopGPPoll();
+    const pads = [...(navigator.getGamepads ? navigator.getGamepads() : [])].filter(g => g?.connected);
+    if (pads.length === 0) {
+        el.textContent = t('gamepad_disconnected');
+        el.classList.remove('connected');
+        stopGPPoll();
+    } else {
+        el.textContent = t('gamepad_connected_prefix') + (pads.length > 1 ? `${pads.length} controles` : pads[0].id.substring(0, 55));
+    }
+    renderGPMap();
 });
 
 // ════════════════════════════════════════════
@@ -450,6 +500,11 @@ function mountEmulator(romBuffer, romName) {
                 up: keymap.up, down: keymap.down, left: keymap.left, right: keymap.right,
                 start: keymap.start, mode: keymap.mode,
                 a: keymap.a, b: keymap.b, c: keymap.c, x: keymap.x, y: keymap.y, z: keymap.z,
+            },
+            player2: {
+                up: keymap2.up, down: keymap2.down, left: keymap2.left, right: keymap2.right,
+                start: keymap2.start, mode: keymap2.mode,
+                a: keymap2.a, b: keymap2.b, c: keymap2.c, x: keymap2.x, y: keymap2.y, z: keymap2.z,
             },
             cbStarted: function () {
                 hideLoader();
