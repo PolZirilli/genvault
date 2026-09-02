@@ -363,7 +363,7 @@
 
     .emoji-select {
       font-size: 1.3rem;
-      text-align: left;
+      text-align: center;
     }
 
     .modal-overlay {
@@ -564,10 +564,10 @@
       </div>
 
       <div class="field">
-        <label for="gameId">ID interno (opcional)</label>
-        <input type="text" id="gameId" placeholder="Se autogenera del nombre si lo dejás vacío">
-        <div class="hint">Si ya existe un juego con este ID en el catálogo, se sobreescribe (útil para corregir uno
-          existente).</div>
+        <label for="gameId">ID interno (autogenerado)</label>
+        <input type="text" id="gameId" placeholder="Se completa solo al elegir el ROM o escribir el nombre">
+        <div class="hint">Se autogenera y podés editarlo si querés otro. Si ya existe un juego con este ID en el
+          catálogo, se sobreescribe (útil para corregir uno existente).</div>
       </div>
 
       <div class="field">
@@ -768,6 +768,23 @@
     });
     romFile.addEventListener('change', onFileChosen);
 
+    function slugifyClient(name) {
+      return String(name)
+        .replace(/\([^)]*\)/g, '')
+        .split(/[^a-zA-Z0-9]+/)
+        .filter(Boolean)
+        .map(w => w[0].toUpperCase() + w.slice(1))
+        .join('');
+    }
+
+    // El ID siempre se autogenera y se coloca en el form apenas hay nombre
+    // (por archivo elegido o por tipeo) — si el usuario lo tocó a mano, se
+    // respeta lo que escribió y no se vuelve a pisar.
+    function suggestId() {
+      if (gameId.dataset.touched) return;
+      gameId.value = slugifyClient(gameName.value);
+    }
+
     function onFileChosen() {
       const f = romFile.files[0];
       filenameEl.textContent = f ? f.name : '';
@@ -775,18 +792,10 @@
         const base = f.name.replace(/\.[^.]+$/, '');
         gameName.value = base;
       }
+      suggestId();
     }
 
-    gameName.addEventListener('input', () => {
-      if (!gameId.dataset.touched) {
-        gameId.value = gameName.value
-          .replace(/\([^)]*\)/g, '')
-          .split(/[^a-zA-Z0-9]+/)
-          .filter(Boolean)
-          .map(w => w[0].toUpperCase() + w.slice(1))
-          .join('');
-      }
-    });
+    gameName.addEventListener('input', suggestId);
     gameId.addEventListener('input', () => { gameId.dataset.touched = '1'; });
 
     function svgIcon(inner) {
@@ -854,6 +863,9 @@
         (data.log || []).forEach(row => addLogRow(row.kind, row.msg));
 
         if (!res.ok || !data.ok) {
+          // Algunos rechazos (ej. nombre duplicado) cortan antes de armar el
+          // log paso a paso — si no hay filas, mostramos igual el motivo.
+          if (!(data.log && data.log.length) && data.error) addLogRow('err', data.error);
           statusLine.textContent = 'Falló la subida — mirá el detalle abajo.';
           if (res.status === 401) { clearToken(); }
           return;
