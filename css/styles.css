@@ -151,6 +151,12 @@ select {
     padding: 4px 0px;
     transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
+.vault-nav-icon:nth-child(3) {
+    filter: opacity(0.5);
+}
+.vault-nav-icon:nth-child(3):hover, .vault-nav-icon:nth-child(3):active {
+    transform: none!important;
+}
 
 .vault-nav-icon img {
     width: 100%;
