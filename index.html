@@ -17,20 +17,20 @@
     </a>
     <div class="header-right">
       <nav class="vault-nav" aria-label="Familia de emuladores Vault">
-        <a class="vault-nav-icon" href="https://nesvault.netlify.app/" target="_blank" rel="noopener" title="NESvault"
-          aria-label="Ir a NESvault" data-i18n-aria-label="aria_nav_nes">
-          <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/famicom.png" alt="NESvault" width="520"
+        <a class="vault-nav-icon" href="https://nesvault.netlify.app/" target="_blank" rel="noopener" title="nes"
+          aria-label="nes" data-i18n-aria-label="aria_nav_nes">
+          <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/famicom.png" alt="nes" width="520"
             height="299">
         </a>
-        <a class="vault-nav-icon" href="https://snesvault.netlify.app/" target="_blank" rel="noopener" title="SNESvault"
-          aria-label="Ir a SNESvault" data-i18n-aria-label="aria_nav_snes">
-          <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/snes.png" alt="SNESvault" width="520"
+        <a class="vault-nav-icon" href="https://snesvault.netlify.app/" target="_blank" rel="noopener" title="snes"
+          aria-label="snes" data-i18n-aria-label="aria_nav_snes">
+          <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/snes.png" alt="snes" width="520"
             height="332">
         </a>
-        <a class="vault-nav-icon" href="https://dosvault.netlify.app/" target="_blank" rel="noopener" title="DOSVault"
-          aria-label="Ir a DOSVault" data-i18n-aria-label="aria_nav_dos">
-          <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/pc.png" alt="DOSVault" width="520"
-            height="296">
+        <a class="vault-nav-icon" href="#" target="_blank" rel="noopener" title="arcade" aria-label="arcade"
+          data-i18n-aria-label="aria_nav_arcade">
+          <img src="https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/images/arcade.png" alt="arcade" width="520"
+            height="332">
         </a>
       </nav>
       <div class="lang-toggle" role="group" aria-label="Idioma / Language" data-i18n-aria-label="lang_toggle_aria">
@@ -54,7 +54,8 @@
               <div class="spin"></div>
               <p id="loaderText" data-i18n="loader_default">CARGANDO JUEGO...</p>
             </div>
-            <button class="btn-fullscreen" id="btnFullscreen" title="Fullscreen" data-i18n-title="fullscreen_title">⛶</button>
+            <button class="btn-fullscreen" id="btnFullscreen" title="Fullscreen"
+              data-i18n-title="fullscreen_title">⛶</button>
           </div>
           <div class="screen-label">MEGA DRIVE / GENESIS · 60Hz · NTSC</div>
         </div>
@@ -73,7 +74,8 @@
 
         <div class="gamepad-bar">
           <span>🕹️</span>
-          <span id="gamepadStatus" data-i18n="gamepad_not_detected">Control no detectado - Conecte un control y presione cualquier boton</span>
+          <span id="gamepadStatus" data-i18n="gamepad_not_detected">Control no detectado - Conecte un control y presione
+            cualquier boton</span>
         </div>
 
         <div class="btn-row">
@@ -87,7 +89,7 @@
       </div>
     </section>
 
-    <!-- ══ COLUMNA ROMS — buscador + carousel (máx. 3 filas) + carga ══ -->
+    <!-- ══ COLUMNA ROMS — buscador + carousel (máx. 2 filas) + carga ══ -->
     <aside class="roms-col">
       <h2 class="roms-heading" data-i18n="catalog_heading">◈ Catálogo</h2>
 
@@ -111,7 +113,8 @@
       <div class="file-drop" id="fileDrop">
         <span class="drop-icon">⬆</span>
         <span class="drop-title" data-i18n="drop_title">CARGAR JUEGO</span>
-        <span class="drop-sub" data-i18n-html="drop_sub_html">Arrastrá y soltá tu archivo acá<br>.md / .bin / .gen / .32x</span>
+        <span class="drop-sub" data-i18n-html="drop_sub_html">Arrastrá y soltá tu archivo acá<br>.md / .bin / .gen /
+          .32x</span>
         <span class="rom-name" id="romName"></span>
         <input type="file" id="romInput" accept=".md,.bin,.gen,.smd,.32x,.rom">
       </div>
@@ -138,7 +141,8 @@
           <span class="gpmap-device" data-i18n="keyboard_edit_hint">Editá las teclas a tu gusto</span>
           <button class="gpmap-reset-btn" id="btnKeymapReset" data-i18n="reset_defaults">↺ Reset defaults</button>
         </div>
-        <div class="gpmap-hint" data-i18n-html="keyboard_hint_html">Presiona <strong>Set</strong> junto a una acción, y luego presiona la tecla que querés
+        <div class="gpmap-hint" data-i18n-html="keyboard_hint_html">Presiona <strong>Set</strong> junto a una acción, y
+          luego presiona la tecla que querés
           usar. Se aplica la próxima vez que cargues un ROM.</div>
 
         <div class="keymap-columns">
@@ -158,14 +162,14 @@
         <div class="controls-shortcuts">
           <div class="shortcut-title" data-i18n="shortcuts_title">Atajos internos (Genesis.js)</div>
           <div class="shortcut-inline">
-            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_save_state">Guardar estado</span><span
-                class="shortcut-key">Ctrl/Cmd+1</span></span>
-            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_load_state">Cargar estado</span><span
-                class="shortcut-key">Ctrl/Cmd+2</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_save_state">Guardar
+                estado</span><span class="shortcut-key">Ctrl/Cmd+1</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_load_state">Cargar
+                estado</span><span class="shortcut-key">Ctrl/Cmd+2</span></span>
             <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_mute">Silenciar</span><span
                 class="shortcut-key">Ctrl/Cmd+3</span></span>
-            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_fullscreen">Pantalla completa</span><span
-                class="shortcut-key">Ctrl/Cmd+F</span></span>
+            <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_fullscreen">Pantalla
+                completa</span><span class="shortcut-key">Ctrl/Cmd+F</span></span>
             <span class="shortcut-chip"><span class="shortcut-label" data-i18n="shortcut_restart">Reiniciar</span><span
                 class="shortcut-key">Ctrl/Cmd+R</span></span>
           </div>
@@ -177,19 +181,21 @@
           <span id="gpName" class="gpmap-device" data-i18n="gamepad_no_connected">No gamepad connected</span>
           <button class="gpmap-reset-btn" id="btnGPReset" data-i18n="reset_defaults">↺ Reset defaults</button>
         </div>
-        <div class="gpmap-hint" data-i18n-html="gamepad_hint_html">Presiona <strong>Set</strong> junto a una acción, y luego presiona el botón físico de tu
+        <div class="gpmap-hint" data-i18n-html="gamepad_hint_html">Presiona <strong>Set</strong> junto a una acción, y
+          luego presiona el botón físico de tu
           gamepad. Se aplica la próxima vez que cargues un ROM.</div>
-        <div class="gpmap-hint gpmap-hint-secondary" id="gpDpadNote"></div>
         <div id="gpMapList" class="gpmap-list"></div>
       </div>
 
     </div>
   </div>
 
-  <footer data-i18n="footer_text">GENvault · Sega Mega Drive / Genesis Emulator · Genesis.js (PicoDrive) · Gamepad API</footer>
+  <footer data-i18n="footer_text">GENvault · Sega Mega Drive / Genesis Emulator · Genesis.js (PicoDrive) · Gamepad API
+  </footer>
 
   <script src="js/i18n.js"></script>
   <script src="js/Genesis.min.js"></script>
+  <script src="js/gamepad-mappings.js"></script>
   <script src="js/app.js"></script>
 </body>
 
