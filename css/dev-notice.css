@@ -1,0 +1,151 @@
+/* ════════════════════════════════════════════
+   Modal "Plataforma en desarrollo" — Vault family
+   (NESvault / GENvault / SNESvault)
+   Archivo independiente: guardar como css/dev-notice.css
+   Se linkea aparte en <head>, no toca styles.css.
+   ════════════════════════════════════════════ */
+
+.dev-notice-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(2px);
+    animation: devNoticeFadeIn .18s ease-out;
+}
+
+.dev-notice-overlay.dev-notice-hidden {
+    display: none;
+}
+
+.dev-notice-card {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    max-height: 88vh;
+    overflow-y: auto;
+    background: var(--panel, #181c22);
+    color: var(--text, #f2f2f2);
+    border: 1px solid var(--border2, #444);
+    border-top: 4px solid var(--red, #c62828);
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    padding: 24px 24px 20px;
+    animation: devNoticePopIn .22s ease-out;
+}
+
+.dev-notice-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+    padding-right: 28px;
+    color: var(--red2, var(--red, #e14434));
+    letter-spacing: .02em;
+}
+
+.dev-notice-body {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--text2, var(--text, #dcdcdc));
+}
+
+.dev-notice-body p {
+    margin: 0 0 12px;
+}
+
+.dev-notice-body ul {
+    margin: 0 0 14px;
+    padding-left: 1.2em;
+}
+
+.dev-notice-body li {
+    margin: 0 0 6px;
+}
+
+.dev-notice-date {
+    display: inline-block;
+    margin: 2px 0 14px;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 6px;
+    background: var(--red-dim, rgba(198, 40, 40, 0.12));
+    color: var(--red2, var(--red, #e14434));
+    border: 1px solid var(--red-glow, rgba(198, 40, 40, 0.3));
+}
+
+.dev-notice-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 4px;
+    padding: 11px 18px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: #fff;
+    background: var(--red, #c62828);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: filter .15s ease, transform .1s ease;
+}
+
+.dev-notice-close-btn:hover {
+    filter: brightness(1.12);
+}
+
+.dev-notice-close-btn:active {
+    transform: scale(0.98);
+}
+
+.dev-notice-x {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text2, var(--text, #ccc));
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.dev-notice-x:hover {
+    background: rgba(128, 128, 128, 0.18);
+}
+
+@keyframes devNoticeFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes devNoticePopIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
