@@ -278,5 +278,40 @@
     "region": "🇪🇦",
     "cover": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega_Drive_-_Genesis/master/Named_Boxarts/Tiny%20Toon%20Adventures%20-%20Acme%20All-Stars%20(Europe).png",
     "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Tiny%20Toon%20Adventures%20-%20Acme%20All-Stars%20(USA%2C%20Korea).md"
+  },
+  {
+    "id": "shadowrun",
+    "name": "Shadowrun",
+    "region": "🇬🇧",
+    "cover": "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Shadowrun%20(USA).png",
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Shadowrun.md"
+  },
+  {
+    "id": "sonic-the-hedgehog-2",
+    "name": "Sonic the Hedgehog 2",
+    "region": "🇬🇧",
+    "cover": "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Sonic%20The%20Hedgehog%202%20(USA).png",
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Sonic%20The%20Hedgehog%202.md"
+  },
+  {
+    "id": "sonic-the-hedgehog-3",
+    "name": "Sonic the Hedgehog 3",
+    "region": "🇬🇧",
+    "cover": "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Sonic%20The%20Hedgehog%203%20(USA).png",
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Sonic%20The%20Hedgehog%203.md"
+  },
+  {
+    "id": "streets-of-rage-3",
+    "name": "Streets of Rage 3",
+    "region": "🇬🇧",
+    "cover": "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Streets%20of%20Rage%203%20(USA).png",
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Streets%20of%20Rage%203.md"
+  },
+  {
+    "id": "ultimate-mortal-kombat-3",
+    "name": "Ultimate Mortal Kombat 3",
+    "region": "🇬🇧",
+    "cover": "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Ultimate%20Mortal%20Kombat%203%20(USA).png",
+    "url": "https://pub-13140bd15eda49b4a3f35bc937ab1c58.r2.dev/projects/genvault/Ultimate%20Mortal%20Kombat%203.md"
   }
 ]
